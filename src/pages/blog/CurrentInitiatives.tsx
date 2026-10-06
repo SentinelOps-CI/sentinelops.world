@@ -1,286 +1,125 @@
 import Layout from "@/components/Layout";
+import ResearchNote from "@/components/ResearchNote";
 import Seo from "@/components/Seo";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Calendar, ArrowLeft, Clock, Zap, Shield, CheckCircle, Target } from "lucide-react";
 
-const CurrentInitiatives = () => {
-const liveTracks = [
-{
-title: "Provable Runtime Control",
-icon: Shield,
-deliverables:
-"We produce an action-level specification and compile it into DFA-based monitors. A sidecar mediates all effects. A labeled event alphabet plus typed declassification supports the \MonNI predicate.",
-outcome:
-"If \MonNI accepts every execution prefix and the unwinding obligations hold, the local-to-global bridge yields termination-insensitive non-interference. Low-view equivalence on prefixes follows from the bridge.",
-metrics:
-"We track the ninety-fifth-percentile monitor latency, enforce zero false negatives by construction, and confirm equality of low views in controlled replays."
-},
-{
-title: "Unified Permissions (Call/Read/Write/Grant)",
-icon: CheckCircle,
-deliverables:
-"We implement attribute- and relationship-based guards with permission epochs and attach field-level witnesses, including Merkle-path membership and bounded taint-derivation proofs.",
-outcome:
-"One decision engine governs tools and documents consistently. Revocation proceeds safely within explicitly bounded epochs.",
-metrics:
-"We measure time to revocation, require human-readable explanations for decisions, and report the cost of verifying witnesses."
-},
-{
-title: "Certificates & Provenance",
-icon: Target,
-deliverables:
-"Each emission receives a CERT-V1 certificate binding policy and proof hashes plus automata and labeler hashes. The record includes the \MonNI verdict, permission decision, and witness-check outcomes. DSSE signatures and SBOM/SLSA provenance accompany the artifacts. Transparency-service digests add an optional public record.",
-outcome:
-"Independent parties verify the evidence through public artifacts and standard interfaces. This supports audit at arm’s length with independent access to the relevant evidence.",
-metrics:
-"We publish the proportion of certificates verified independently, the latency of inclusion proofs, and the completeness of provenance."
-},
-{
-title: "Deterministic Egress",
-icon: Zap,
-deliverables:
-"We standardize chunk size and flush cadence. Locale and time-zone settings are fixed. Optional rate padding plus a replay harness support reproducibility.",
-outcome:
-"Timing and length channels are bounded, and representative workloads maintain high replay determinism.",
-metrics:
-"We report the determinism rate, estimate residual channel capacity in bits per second under the declared profile, and track the false-block rate."
-}
-];
+const CurrentInitiatives = () => (
+  <Layout>
+    <Seo
+      title="Current Technical Program · SentinelOps"
+      description="The active SentinelOps technical program across runtime control, permissions, evidence records, replay, and conformance testing."
+      path="/blog/current-initiatives"
+      type="article"
+      jsonLd={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Current Technical Program",
+        datePublished: "2026-10-06",
+        description:
+          "The active SentinelOps technical program across runtime control, permissions, evidence records, replay, and conformance testing.",
+        author: { "@type": "Organization", name: "SentinelOps" },
+      }}
+    />
 
-const nearTermItems = [
-{
-category: "Standards drafts (public RFCs)",
-items: [
-"We will publish CERT-V1, a certificate schema that binds proofs and runtime verdicts to emissions.",
-"We will define EGRESS-DET-P1, a deterministic egress profile that constrains covert channels and enables faithful replay.",
-"We will release PERM-UNIFY-R1, a unified permission model with epochs and witnesses for field-level decisions.",
-"We will formalize MON-NI-BRIDGE, a statement of the preconditions under which local acceptance implies global non-interference."
-]
-},
-{
-category: "Interop events",
-items: [
-"We will run cross-runtime certificate verification exercises with shared replay suites.",
-"We will conduct deterministic-egress evaluations that compare profiles empirically.",
-"We will rehearse revocation and epoch-rollover scenarios under load.",
-"We will maintain public dashboards that report results and residual risks."
-]
-},
-{
-category: "External evaluations",
-items: [
-"We will commission standardized testbeds from runtime-verification experts and red teams.",
-"We will publish coverage metrics and residual-risk estimates derived from adversarial traces.",
-"We will analyze accept-and-deny precision with respect to ground-truth specifications.",
-"We will quantify monitor overhead and its variance across workloads."
-]
-}
-];
-
-return (
-<Layout>
-<Seo title="Current Initiatives · SentinelOps Blog" description="An update on active research and engineering threads across the SentinelOps verification stack and contributor community." path="/blog/current-initiatives" type="article" jsonLd={{"@context":"https://schema.org","@type":"Article","headline":"Current Initiatives","datePublished":"2025-02-12","description":"An update on active research and engineering threads across the SentinelOps verification stack and contributor community.","author":{"@type":"Organization","name":"SentinelOps"}}} />
-<article className="container mx-auto px-5 sm:px-6 py-12 sm:py-20 max-w-3xl article-paper">
-{/* Header */}
-      <header className="mb-12 pb-8 border-b border-border">
-        <Link to="/blog" className="eyebrow inline-flex items-center gap-2 hover:text-foreground transition-colors mb-8">
-          <ArrowLeft className="h-3 w-3" />
-          Return to writing
-        </Link>
-
-        <div className="eyebrow mb-6">
-          §&nbsp;Updates &nbsp;·&nbsp; August 1, 2025 &nbsp;·&nbsp; 11 min read
-        </div>
-
-        <h1 className="font-light tracking-tight text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-8">
-          Current Initiatives · What Is Running Now
-        </h1>
-
-        <p className="font-serif text-xl md:text-2xl leading-snug text-foreground/[0.85] italic">
-          The phase of aspirational statements has given way to execution. Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence. The immediate priority is scale and standardization. Heterogeneous implementations need clean interoperability, and auditors need direct access to public verification artifacts.
-        </p>
-      </header>
-
-    {/* Live Tracks */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Live Tracks</h2>
-        <div className="space-y-6">
-          {liveTracks.map((track, index) => (
-            <Card key={index} className="border-l-4 border-l-primary">
-              <CardContent className="p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <track.icon className="h-5 w-5 text-primary" />
-                  <h3 className="font-semibold text-lg">{track.title}</h3>
-                </div>
-
-                <div className="space-y-3 text-sm">
-                  <div>
-                    <span className="font-semibold">Deliverables: </span>
-                    <span className="font-normal">{track.deliverables}</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold">Outcome: </span>
-                    <span className="font-normal text-muted-foreground">{track.outcome}</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold">Metrics: </span>
-                    <span className="font-normal text-muted-foreground">{track.metrics}</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-
-    {/* Additional Tracks */}
-    <div className="grid md:grid-cols-2 gap-4 mb-8">
-      <Card>
-        <CardContent className="p-4">
-          <h3 className="font-semibold mb-3 flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-primary" />
-            Conformance Testing
-          </h3>
-          <div className="space-y-2 text-sm">
-            <p>
-              <strong>Deliverables:</strong>{" "}
-              <span className="font-normal">
-                We provide replay kits with representative good and bad traces, adversarial generators that stress chunking and polyglot behaviors, and equivalence tests that compare a reference semantics to the deployed runtime.
-              </span>
-            </p>
-            <p>
-              <strong>Outcome:</strong>{" "}
-              <span className="font-normal text-muted-foreground">
-                The community gains portable quality thresholds that remain independent of any single implementation.
-              </span>
-            </p>
-            <p>
-              <strong>Metrics:</strong>{" "}
-              <span className="font-normal text-muted-foreground">
-                We report coverage and assess counterexample reduction quality. Drift-detection rates indicate how early the system identifies divergence ahead of incidents.
-              </span>
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardContent className="p-4">
-          <h3 className="font-semibold mb-3 flex items-center gap-2">
-            <Zap className="h-5 w-5 text-primary" />
-            DX Tooling
-          </h3>
-          <div className="space-y-2 text-sm">
-            <p>
-              <strong>Deliverables:</strong>{" "}
-              <span className="font-normal">
-                We integrate continuous-integration gates and preview counterexamples directly in the editor. Adapter scaffolding supports faster integration. Domain templates cover retrieval-augmented generation with redaction plus common operations and support-agent patterns.
-              </span>
-            </p>
-            <p>
-              <strong>Outcome:</strong>{" "}
-              <span className="font-normal text-muted-foreground">
-                Teams reach first enforcement within hours. This shorter cycle accelerates safe iteration.
-              </span>
-            </p>
-            <p>
-              <strong>Metrics:</strong>{" "}
-              <span className="font-normal text-muted-foreground">
-                We track time to first enforcement, measure authoring error rates, and monitor weekly growth in policy coverage.
-              </span>
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-
-    {/* Near-term (6-12 months) */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Near-Term Horizon (Six to Twelve Months)</h2>
-        <div className="space-y-6">
-          {nearTermItems.map((category, index) => (
-            <div key={index}>
-              <h3 className="font-semibold mb-3">{category.category}</h3>
-              <ul className="space-y-1 text-sm font-normal text-muted-foreground ml-4">
-                {category.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          <div>
-            <h3 className="font-semibold mb-3">Marketplace Alpha</h3>
-            <p className="text-sm font-normal text-muted-foreground ml-4">
-              We will launch a curated marketplace of verified agents and templates with revenue sharing. Dependency changes trigger automated recertification through SLSA and in-toto rebuilds and checks.
-            </p>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-
-    {/* Evidence Loop */}
-    <Card className="mb-8 bg-trust/5 border-trust/20">
-      <CardContent className="p-6">
-        <h2 className="text-xl font-semibold mb-4">Evidence Loop</h2>
-        <div className="space-y-3 text-sm font-normal">
-          <p>
-            We publish reproducible traces and replay artifacts spanning representative and adversarial cases. Sample certificates accompany the release. Proof, automata, and labeler hashes support independent reproduction of findings.
+    <ResearchNote
+      section="Program update"
+      date="October 6, 2026"
+      readTime="11 min read"
+      title="Current Technical Program"
+      dek="SentinelOps is building a verification stack around one operational question. Which evidence supports the release of a consequential effect? The program joins action policy, permission state, runtime mediation, evidence identity, replay, and conformance testing into one inspectable execution record."
+    >
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">01 · Runtime control</div>
+        <div className="space-y-5">
+          <h2 className="text-2xl font-medium tracking-tight">Compile governed actions into executable monitors</h2>
+          <p className="leading-7 text-foreground/80">
+            Action-level specifications define admissible traces over a labeled event alphabet. Compilation produces deterministic monitors plus artifacts that document the relation between the source policy and the executable transition system. Runtime mediation places those monitors on the effect path.
           </p>
-          <p>
-            We characterize performance envelopes by reporting latency and throughput under declared egress profiles, we define reject budgets, and we attach incident post-mortems that include minimal counterexamples together with replay bundles.
-          </p>
-          <p>
-            We disseminate conformance results for every release, including pass–fail outcomes and drift indicators, and we attach inclusion proofs obtained from transparency logs to support ecosystem-level auditability.
+          <p className="leading-7 text-foreground/80">
+            The evaluation target is semantic agreement. Reference semantics and deployed verdicts need to match across representative traces and adversarial traces. Monitor cost is reported separately from semantic correctness.
           </p>
         </div>
-      </CardContent>
-    </Card>
+      </section>
 
-    {/* Why This Fits a Field Reference */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Why This Approach Fits a Field Reference</h2>
-        <div className="space-y-3 text-sm font-normal">
-          <div className="flex items-start gap-2">
-            <CheckCircle className="h-4 w-4 text-trust mt-0.5 flex-shrink-0" />
-            <span>
-              It prioritizes properties that are provable and enforceable online. Machine-checkable evidence replaces aspirational statements.
-            </span>
-          </div>
-          <div className="flex items-start gap-2">
-            <CheckCircle className="h-4 w-4 text-trust mt-0.5 flex-shrink-0" />
-            <span>
-              It standardizes externally facing interfaces across certificates, monitors, and replay artifacts. Diverse implementations interoperate under shared rigor.
-            </span>
-          </div>
-          <div className="flex items-start gap-2">
-            <CheckCircle className="h-4 w-4 text-trust mt-0.5 flex-shrink-0" />
-            <span>
-              It integrates supply-chain assurances such as SLSA and in-toto and couples them with transparency logs, thereby linking build-time provenance to runtime evidence.
-            </span>
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">02 · Permission state</div>
+        <div className="space-y-5">
+          <h2 className="text-2xl font-medium tracking-tight">Use one authorization model across tools and data</h2>
+          <p className="leading-7 text-foreground/80">
+            Calls and data operations reference the same permission state. Attribute-based rules and relationship-based rules feed one decision record. Permission epochs fix the state snapshot associated with a decision and give revocation a defined transition model.
+          </p>
+          <p className="leading-7 text-foreground/80">
+            Field-level decisions use compact witnesses where the policy model supports them. The evidence record identifies the witness scheme and verification result, keeping the authorization claim separate from the runtime policy claim.
+          </p>
+        </div>
+      </section>
+
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">03 · Evidence record</div>
+        <div className="space-y-7">
+          <h2 className="text-2xl font-medium tracking-tight">Bind every verdict to the artifacts that define its meaning</h2>
+          <p className="leading-7 text-foreground/80">
+            The certificate schema records policy identity and monitor identity. It also records permission state and verdict data. Relevant proof artifacts are referenced separately. Signatures protect artifact identity. Supply-chain provenance documents the software build associated with the runtime record.
+          </p>
+          <div className="overflow-x-auto border-y border-border">
+            <table className="w-full min-w-[660px] border-collapse text-left text-sm">
+              <thead className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                <tr className="border-b border-border">
+                  <th className="py-4 pr-6 font-medium">Record field</th>
+                  <th className="py-4 pr-6 font-medium">Purpose</th>
+                  <th className="py-4 font-medium">Independent check</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border text-foreground/75">
+                <tr><td className="py-4 pr-6 font-medium text-foreground">Policy hash</td><td className="py-4 pr-6">Names the governing specification</td><td className="py-4">Hash comparison</td></tr>
+                <tr><td className="py-4 pr-6 font-medium text-foreground">Monitor hash</td><td className="py-4 pr-6">Names executable semantics</td><td className="py-4">Artifact verification</td></tr>
+                <tr><td className="py-4 pr-6 font-medium text-foreground">Permission state</td><td className="py-4 pr-6">Names the authorization snapshot</td><td className="py-4">State reconstruction</td></tr>
+                <tr><td className="py-4 pr-6 font-medium text-foreground">Verdict</td><td className="py-4 pr-6">Records the release decision</td><td className="py-4">Reference replay</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </section>
 
-    <footer className="mt-16 pt-8 border-t border-border">
-          <Link to="/blog" className="eyebrow hover:text-foreground transition-colors inline-flex items-center gap-2">
-            <ArrowLeft className="h-3 w-3" />
-            Back to all writing
-          </Link>
-        </footer>
-  </article>
-</Layout>
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">04 · Replay</div>
+        <div className="space-y-5">
+          <h2 className="text-2xl font-medium tracking-tight">Make incident reconstruction a first-class output</h2>
+          <p className="leading-7 text-foreground/80">
+            Replay bundles record the execution fragment needed to reconstruct a selected decision under a declared profile. Egress normalization reduces variation caused by chunking and environment settings. The replay record also identifies state external to the bundle.
+          </p>
+          <p className="leading-7 text-foreground/80">
+            Independent reconstruction tests focus on verdict agreement and trace agreement. Divergence is classified as an engineering defect or as a stated profile limitation.
+          </p>
+        </div>
+      </section>
 
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">05 · Conformance</div>
+        <div className="space-y-5">
+          <h2 className="text-2xl font-medium tracking-tight">Test the deployed runtime against a reference semantics</h2>
+          <p className="leading-7 text-foreground/80">
+            Conformance work uses curated traces and adversarial generators. The test record compares source policy, reference decision, deployed decision, evidence record, and replay result. Counterexamples are reduced to the smallest trace that preserves the disagreement where practical.
+          </p>
+          <p className="leading-7 text-foreground/80">
+            This programme provides implementation teams with a direct engineering target. It also provides external evaluators with a stable basis for examining changes across runtime versions.
+          </p>
+        </div>
+      </section>
 
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">06 · Near-term outputs</div>
+        <div className="space-y-5">
+          <h2 className="text-2xl font-medium tracking-tight">Publish testable interfaces for external teams</h2>
+          <p className="leading-7 text-foreground/80">
+            Near-term work centers on certificate schema definition, deterministic replay profiles, unified permission semantics, and local-to-global information-flow statements. Each public interface is paired with a reference implementation or verifier plus conformance material.
+          </p>
+          <p className="leading-7 text-foreground/80">
+            The programme treats public evidence as part of the technical output. Documentation establishes the public interface. Reference traces provide test inputs. Implementation hashes identify artifacts. Evaluation records provide external teams with material for direct claim testing.
+          </p>
+        </div>
+      </section>
+    </ResearchNote>
+  </Layout>
 );
-};
 
 export default CurrentInitiatives;

@@ -1,265 +1,139 @@
 import Layout from "@/components/Layout";
+import ResearchNote from "@/components/ResearchNote";
 import Seo from "@/components/Seo";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Calendar, ArrowLeft, Clock, Users, Target, Globe } from "lucide-react";
 
-const BuildingInfrastructure = () => {
-const roleCategories = [
-{
-title: "Funders / Conveners",
-icon: Target,
-capabilities: "They provide capital and convening power. Program design expertise turns those resources into coherent research programmes.",
-asks: "Fund focused research organizations and interoperability events. Make public evidence packs part of grant deliverables, including certificates and replay artifacts."
-},
-{
-title: "Research Labs",
-icon: Globe,
-capabilities: "They contribute proofs, algorithms, and hardened testbeds.",
-asks: "Co-author reference proofs for compilation soundness and monitor acceptance. Advance non-interference variants and epoch semantics. Operate adversarial generators that stress the system."
-},
-{
-title: "Builders / Platforms",
-icon: Users,
-capabilities: "They implement sidecars and runtimes. They maintain adapters plus certificate infrastructure and invest in developer-experience tooling.",
-asks: "Adopt CERT-V1 and the related interoperability profiles. Export replay bundles for third-party verification. Support clause-level modes that progress from observe to shadow to enforce."
-}
-];
+const BuildingInfrastructure = () => (
+  <Layout>
+    <Seo
+      title="Building Verification Infrastructure · SentinelOps"
+      description="Technical note on the institutional structure and engineering structure of verification infrastructure for autonomous systems."
+      path="/blog/building-verification-infrastructure"
+      type="article"
+      jsonLd={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Building Verification Infrastructure",
+        datePublished: "2025-08-15",
+        description:
+          "Technical note on the institutional structure and engineering structure of verification infrastructure for autonomous systems.",
+        author: { "@type": "Organization", name: "SentinelOps" },
+      }}
+    />
 
-const engagementModes = [
-{
-title: "Cohort Pilots (multi-organization trials)",
-description: "Run ninety-day pilots with shared replay suites and public metrics. Track policy coverage and certificate verification. Track determinism and incident recovery time. Release evidence packs with appropriate redactions for independent reproduction of key results."
-},
-{
-title: "Interoperability Labs (quarterly)",
-description: "Host quarterly plug-fests for CERT-V1 and the related interoperability profiles. Cross-verify certificates across implementations. Evaluate deterministic egress and rehearse revocation plus epoch rollover."
-},
-{
-title: "Open RFCs (numbered, testable)",
-description: "Publish numbered RFCs that ship with a reference implementation and a conformance test, and pair every deprecation with a migration guide so that upgrades are safe and predictable."
-},
-{
-title: "Independent Evaluations",
-description: "Engage runtime-verification firms and red teams to run standardized testbeds. Publish residual-risk metrics alongside coverage and drift measurements for community audit."
-}
-];
-
-return (
-<Layout>
-<Seo title="Building Verification Infrastructure · SentinelOps Blog" description="How we ship runtime-enforced proofs at scale · the architecture, tradeoffs, and engineering decisions behind Provability Fabric." path="/blog/building-verification-infrastructure" type="article" jsonLd={{"@context":"https://schema.org","@type":"Article","headline":"Building Verification Infrastructure","datePublished":"2025-03-10","description":"How we ship runtime-enforced proofs at scale · the architecture, tradeoffs, and engineering decisions behind Provability Fabric.","author":{"@type":"Organization","name":"SentinelOps"}}} />
-<article className="container mx-auto px-5 sm:px-6 py-12 sm:py-20 max-w-3xl article-paper">
-{/* Header */}
-      <header className="mb-12 pb-8 border-b border-border">
-        <Link to="/blog" className="eyebrow inline-flex items-center gap-2 hover:text-foreground transition-colors mb-8">
-          <ArrowLeft className="h-3 w-3" />
-          Return to writing
-        </Link>
-
-        <div className="eyebrow mb-6">
-          §&nbsp;Infrastructure &nbsp;·&nbsp; August 15, 2025 &nbsp;·&nbsp; 10 min read
+    <ResearchNote
+      section="Infrastructure note"
+      date="August 15, 2025"
+      readTime="10 min read"
+      title="Building Verification Infrastructure"
+      dek="Verification infrastructure is an engineering system and an institutional system at the same time. Specifications define admissible behavior. Monitors govern execution. Certificates record the basis for each decision. Replay artifacts support independent examination. Durable adoption depends on stable interfaces across that chain."
+    >
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">01 · Unit of deployment</div>
+        <div className="space-y-5 text-base leading-7 text-foreground/80">
+          <h2 className="text-2xl font-medium tracking-tight text-foreground">Treat verification as infrastructure</h2>
+          <p>
+            Runtime verification has little institutional value as an isolated checker. Production use needs a chain that starts with an explicit policy and ends with evidence tied to an executed trace. Each stage needs an interface stable enough for independent implementation and external review.
+          </p>
+          <p>
+            The relevant deployment unit is a verification contract. It states the governed actions. It identifies the active policy snapshot. It fixes the monitor semantics. It records the artifacts used to justify acceptance or rejection. This contract turns an internal control into an inspectable system boundary.
+          </p>
         </div>
+      </section>
 
-        <h1 className="font-light tracking-tight text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-8">
-          Building Verification Infrastructure
-        </h1>
-
-        <p className="font-serif text-xl md:text-2xl leading-snug text-foreground/[0.85] italic">
-          The field has moved beyond statements of intent. Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence. The next stage depends on scale and shared standards. Interoperable implementations give auditors direct access to the evidence needed for independent verification. This essay maps the roles and engagement structures that move verification toward dependable public infrastructure.
-        </p>
-      </header>
-
-    {/* Role Map */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Role Map</h2>
-        <div className="space-y-4">
-          {roleCategories.map((role, index) => (
-            <Card key={index} className="border-l-4 border-l-primary">
-              <CardContent className="p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <role.icon className="h-5 w-5 text-primary" />
-                  <h3 className="font-semibold">{role.title}</h3>
-                </div>
-                <div className="space-y-2 text-sm">
-                  <p className="font-normal">
-                    <span className="font-semibold">Capabilities: </span>
-                    {role.capabilities}
-                  </p>
-                  <p className="font-normal text-muted-foreground">
-                    <span className="font-semibold">Asks: </span>
-                    {role.asks}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-
-    {/* Additional Roles */}
-    <div className="grid md:grid-cols-2 gap-4 mb-8">
-      <Card>
-        <CardContent className="p-4">
-          <h3 className="font-semibold mb-2">Auditors and Evaluators</h3>
-          <p className="text-sm text-muted-foreground mb-2 font-normal">
-            Their core capability is independent assessment through red-team exercises and vendor-independent runtime-verification expertise.
-          </p>
-          <p className="text-sm text-muted-foreground font-normal">
-            Author conformance suites and publish public residual-risk reports. Monitor transparency logs so ecosystem health is directly observable.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardContent className="p-4">
-          <h3 className="font-semibold mb-2">Standards and Policy</h3>
-          <p className="text-sm text-muted-foreground mb-2 font-normal">
-            These institutions provide process and legitimacy. Regulatory alignment adds the third ingredient for durable adoption in safety-critical domains.
-          </p>
-          <p className="text-sm text-muted-foreground font-normal">
-            Fast-track narrowly scoped and testable standards. Priority areas include certificate schemas and deterministic egress profiles. Permission epochs form a third area. Machine-verifiable artifacts demonstrate compliance.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardContent className="p-4">
-          <h3 className="font-semibold mb-2">Communities</h3>
-          <p className="text-sm text-muted-foreground mb-2 font-normal">
-            Communities sustain maintenance, attract contributors at scale, and provide the social proof that encourages conservative adopters to participate.
-          </p>
-          <p className="text-sm text-muted-foreground font-normal">
-            Operate an open RFC process backed by reference implementations. Host monthly technical demonstrations. Establish contributor pathways and recognize pilot champions who drive deployments.
-          </p>
-        </CardContent>
-      </Card>
-    </div>
-
-    {/* Engagement Modes */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Engagement Modes (Designed for Momentum)</h2>
-        <div className="space-y-4">
-          {engagementModes.map((mode, index) => (
-            <div key={index}>
-              <h3 className="font-semibold mb-2">{mode.title}</h3>
-              <p className="text-sm text-muted-foreground font-normal">{mode.description}</p>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-
-    {/* Fellowships & FROs */}
-    <Card className="mb-8 bg-trust/5 border-trust/20">
-      <CardContent className="p-6">
-        <h2 className="text-xl font-semibold mb-4">Fellowships and FROs</h2>
-        <p className="text-sm text-muted-foreground font-normal">
-          Fund postdoctoral researchers and engineers to close theory-to-practice gaps. Priority work includes witness compression and partial succinct proofs for streams. Formalization of epoch semantics belongs in the same programme. Time-boxed fellowships and focused research organizations provide clear milestones plus public artifacts.
-        </p>
-      </CardContent>
-    </Card>
-
-    {/* Current & Potential Participants */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Current and Potential Participants</h2>
-        <p className="text-sm text-muted-foreground mb-4 font-normal">
-          The following examples illustrate possible participation across an open field.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-4 text-sm">
-          <div>
-            <h3 className="font-semibold mb-2">Funders and Conveners</h3>
-            <p className="font-normal text-muted-foreground">
-              Illustrative examples include Beneficial AI and Convergent Research. DARPA programmes and initiatives pursuing an “AGI social contract” represent adjacent models.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-2">Labs and Programs</h3>
-            <p className="font-normal text-muted-foreground">
-              Representative efforts include ARIA and AIUC. Morph Labs, Judgment Labs, and Brain Trust add complementary capabilities across theory and systems.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-2">Projects and Companies</h3>
-            <p className="font-normal text-muted-foreground">
-              Atlas Computing and Project VAIL illustrate one part of the design space. Lunal, Phala Network, and Harmonic illustrate additional approaches to verifiable agents and attestable computation.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-2">Influencers and Connectors</h3>
-            <p className="font-normal text-muted-foreground">
-              Evan Miyazono and Tom Kalil are examples of potential connectors. Davidad at ARIA and Steve Omohundro add further bridges. Leaders at Beneficial AI and Morph also sit across relevant communities. These relationships support coordination across groups that currently operate separately.
-            </p>
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">02 · Division of work</div>
+        <div>
+          <h2 className="text-2xl font-medium tracking-tight">Different institutions own different proof obligations</h2>
+          <div className="mt-7 divide-y divide-border border-y border-border">
+            {[
+              [
+                "Research groups",
+                "Establish semantics, proof obligations, monitor synthesis methods, and reference theorems. Their output is a claim with an explicit scope plus artifacts that support independent checking.",
+              ],
+              [
+                "Platform teams",
+                "Integrate mediation into execution paths. Their responsibility is complete effect interception, stable policy identity, deterministic evidence production, and operational failure handling.",
+              ],
+              [
+                "Independent evaluators",
+                "Test conformance between the declared semantics and the deployed runtime. Their work centers on adversarial traces, replay, implementation drift, and evidence verification from public interfaces.",
+              ],
+              [
+                "Standards bodies and funders",
+                "Create shared schemas and durable test requirements. Funding terms gain leverage through public artifacts, conformance suites, and reproducible evaluation records.",
+              ],
+            ].map(([title, body]) => (
+              <div key={title} className="grid gap-3 py-6 md:grid-cols-[190px_1fr] md:gap-8">
+                <h3 className="font-medium text-foreground">{title}</h3>
+                <p className="leading-7 text-foreground/75">{body}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </section>
 
-    {/* Ecosystem KPIs */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Ecosystem KPIs</h2>
-        <div className="space-y-3 text-sm">
-          <div>
-            <h3 className="font-semibold mb-1">Coverage and Performance</h3>
-            <p className="font-normal text-muted-foreground">
-              Track the proportion of labeled and monitored effects. Report independent certificate-verification rates plus replay determinism. Reject-budget adherence and monitoring overhead complete the operational picture.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-1">Ecosystem Activity</h3>
-            <p className="font-normal text-muted-foreground">
-              Measure the number of verified agents and reusable templates, the cadence of interoperability events, and the share of independent evaluations completed within each quarter.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-1">Adoption</h3>
-            <p className="font-normal text-muted-foreground">
-              Monitor platform integrations that enforce deploy gates, deployments in regulated settings, and the availability of public incident reports accompanied by replay artifacts that enable external validation.
-            </p>
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">03 · Shared interfaces</div>
+        <div className="space-y-7">
+          <h2 className="text-2xl font-medium tracking-tight">Interoperability starts with evidence identity</h2>
+          <p className="leading-7 text-foreground/80">
+            Cross-implementation verification depends on a small set of stable objects. Policy identity ties an execution to a governed specification. Monitor identity ties a verdict to executable semantics. Certificate identity ties an emitted result to the relevant policy and runtime decision. Replay identity ties an incident record to the trace used for external examination.
+          </p>
+          <div className="overflow-x-auto border-y border-border">
+            <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+              <thead className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                <tr className="border-b border-border">
+                  <th className="py-4 pr-6 font-medium">Interface</th>
+                  <th className="py-4 pr-6 font-medium">Primary object</th>
+                  <th className="py-4 font-medium">External question</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border text-foreground/75">
+                <tr><td className="py-4 pr-6 font-medium text-foreground">Specification</td><td className="py-4 pr-6">Policy artifact</td><td className="py-4">Which behavior is governed?</td></tr>
+                <tr><td className="py-4 pr-6 font-medium text-foreground">Compilation</td><td className="py-4 pr-6">Monitor plus proof artifact</td><td className="py-4">Does execution reflect the declared semantics?</td></tr>
+                <tr><td className="py-4 pr-6 font-medium text-foreground">Runtime</td><td className="py-4 pr-6">Verdict record</td><td className="py-4">Which policy state governed this effect?</td></tr>
+                <tr><td className="py-4 pr-6 font-medium text-foreground">Evidence</td><td className="py-4 pr-6">Certificate and replay bundle</td><td className="py-4">Is the decision independently checkable?</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </section>
 
-    {/* Code of Practice */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Code of Practice</h2>
-        <p className="text-sm font-normal text-muted-foreground">
-          Evidence takes precedence over rhetoric. Implementations publish open specifications and monitors. Proofs, certificates, and replay artifacts support independent evaluation. Respectful collaboration keeps claims tied to tests and evidence.
-        </p>
-        <p className="text-sm font-normal text-muted-foreground mt-3">
-          Every project declares its guarantee scope and explicit exclusions. These declarations help adopters compose systems from evidence-backed assumptions.
-        </p>
-        <p className="text-sm font-normal text-muted-foreground mt-3">
-          Multi-stakeholder governance uses transparent roadmaps and explicit deprecation policies. This structure supports ecosystem evolution, protects early adopters, and limits standards fragmentation.
-        </p>
-      </CardContent>
-    </Card>
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">04 · Deployment sequence</div>
+        <div className="space-y-7">
+          <h2 className="text-2xl font-medium tracking-tight">Move from observation to enforcement through evidence</h2>
+          <div className="divide-y divide-border border-y border-border">
+            {[
+              ["Observe", "Run the monitor against production traces and record disagreement between intended policy and observed behavior."],
+              ["Shadow", "Evaluate policy decisions in the execution path and preserve the original effect path for comparison."],
+              ["Enforce", "Bind effect release to the monitor verdict and record the active policy identity in the emitted evidence."],
+              ["Audit", "Reconstruct selected traces through an independent verifier and compare the result with the production record."],
+            ].map(([stage, body], index) => (
+              <div key={stage} className="grid gap-3 py-5 md:grid-cols-[64px_130px_1fr] md:gap-6">
+                <div className="font-mono text-xs text-muted-foreground">0{index + 1}</div>
+                <h3 className="font-medium">{stage}</h3>
+                <p className="leading-7 text-foreground/75">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    <footer className="mt-16 pt-8 border-t border-border">
-          <Link to="/blog" className="eyebrow hover:text-foreground transition-colors inline-flex items-center gap-2">
-            <ArrowLeft className="h-3 w-3" />
-            Back to all writing
-          </Link>
-        </footer>
-  </article>
-</Layout>
-
-
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">05 · Institutional test</div>
+        <div className="space-y-5">
+          <h2 className="text-2xl font-medium tracking-tight">The system succeeds only if third parties verify it</h2>
+          <p className="leading-7 text-foreground/80">
+            Interoperability rests on public schemas and reference verifiers. Independent replay adds a second test. Published failure records add a third. The strongest infrastructure programme treats external reproduction as a primary engineering output.
+          </p>
+          <p className="leading-7 text-foreground/80">
+            Progress is best tracked through evidence quality. Relevant measures include policy coverage, verifier agreement, replay consistency, revocation behavior, monitor cost, and the fraction of incidents reconstructed from exported artifacts. These measures connect formal claims to operational performance.
+          </p>
+        </div>
+      </section>
+    </ResearchNote>
+  </Layout>
 );
-};
 
 export default BuildingInfrastructure;
