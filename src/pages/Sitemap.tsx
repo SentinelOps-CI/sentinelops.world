@@ -39,21 +39,21 @@ const Sitemap = () => {
   return (
     <Layout>
       <Seo
-        title="Sitemap — All Pages on SentinelOps"
-        description="Browse every public page on SentinelOps — products, mission, documentation, blog posts, and reference materials."
+        title="Sitemap · All Pages on SentinelOps"
+        description="Browse the public SentinelOps site across core pages, research writing, and reference materials."
         path="/sitemap"
       />
-      <article className="container-prose prose-paper">
+      <article className="container-article article-paper">
         <header className="mb-12 pb-8 border-b border-border">
           <div className="eyebrow mb-4">Index · Site map</div>
           <h1 className="font-light tracking-tight text-4xl md:text-5xl leading-[1.05]">Sitemap</h1>
           <p className="mt-6 text-lg italic text-foreground/80">
-            A complete index of pages and external resources published under the SentinelOps programme.
+            Complete index of pages and external resources published under the SentinelOps programme.
           </p>
         </header>
 
         <section className="mb-16">
-          <div className="eyebrow mb-6">§ I — Pages</div>
+          <div className="eyebrow mb-6">§ I · Pages</div>
           <dl className="divide-y divide-border border-y border-border">
             {sitePages.map((p, i) => (
               <div key={i} className="grid grid-cols-12 gap-4 py-3 items-baseline">
@@ -67,7 +67,7 @@ const Sitemap = () => {
         </section>
 
         <section className="mb-16">
-          <div className="eyebrow mb-6">§ II — External Repositories</div>
+          <div className="eyebrow mb-6">§ II · External Repositories</div>
           <dl className="divide-y divide-border border-y border-border">
             {externalLinks.map((l, i) => (
               <div key={i} className="grid grid-cols-12 gap-4 py-3 items-baseline">
@@ -81,9 +81,9 @@ const Sitemap = () => {
         </section>
 
         <section className="mb-16">
-          <div className="eyebrow mb-4">§ III — Machine-readable</div>
+          <div className="eyebrow mb-4">§ III · Machine-readable</div>
           <p>
-            A machine-readable index is published at <a href="/sitemap.xml">/sitemap.xml</a> for
+            Machine-readable index is published at <a href="/sitemap.xml">/sitemap.xml</a> for
             search-engine and crawler use.
           </p>
         </section>

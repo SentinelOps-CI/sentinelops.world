@@ -27,7 +27,7 @@ const PaperViewer = () => {
   }, [file]);
 
   useEffect(() => {
-    document.title = `${title} — View PDF`;
+    document.title = `${title} · View PDF`;
     // Canonical tag
     const link = document.createElement("link");
     link.rel = "canonical";
@@ -45,7 +45,7 @@ const PaperViewer = () => {
         setIsLoading(false);
         toast({
           title: "Missing file",
-          description: "No PDF file was specified.",
+          description: "Select a PDF file to open the viewer.",
           variant: "destructive",
         });
         return;
@@ -56,9 +56,9 @@ const PaperViewer = () => {
         const blob = await res.blob();
         // Basic content-type sanity check
         if (blob.type && !blob.type.includes("pdf")) {
-          // Still allow preview but inform user
+          // Continue preview and inform the user
           toast({
-            title: "Non-PDF content",
+            title: "Unexpected file type",
             description: "Attempting to preview the file.",
           });
         }
@@ -68,7 +68,7 @@ const PaperViewer = () => {
         console.error("PDF view error:", err);
         toast({
           title: "Unable to preview PDF",
-          description: "The file could not be loaded. You can still download it.",
+          description: "The preview request failed. Use the download action for the source file.",
           variant: "destructive",
         });
       } finally {
@@ -85,8 +85,8 @@ const PaperViewer = () => {
   return (
     <Layout>
       <Seo
-        title={`${title} — Paper Viewer | SentinelOps`}
-        description={`Read ${title} from SentinelOps — research papers on formal verification, runtime safety, and provably safe AI systems.`}
+        title={`${title} · Paper Viewer | SentinelOps`}
+        description={`Read ${title} from SentinelOps, featuring research on formal verification and runtime safety for provably safe AI systems.`}
         path="/papers/view"
       />
       <div className="container mx-auto px-4 py-8">

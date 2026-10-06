@@ -29,7 +29,7 @@ const Index = () => {
           toast({ title: "Already subscribed", description: "This email is already on the list." });
         } else throw error;
       } else {
-        toast({ title: "Subscribed", description: "Thank you — we'll be in touch." });
+        toast({ title: "Subscribed", description: "Thank you. We'll be in touch." });
         setEmail("");
       }
     } catch (err) {
@@ -44,17 +44,17 @@ const Index = () => {
     {
       n: "I",
       title: "Specification-driven",
-      body: "Every behavioural requirement begins as a precise specification — policy prose translated into machine-checkable constraints.",
+      body: "Every behavioural requirement starts as a formal specification. Policy statements translate into machine-checkable constraints.",
     },
     {
       n: "II",
       title: "Runtime mediation",
-      body: "Only behaviour accompanied by a valid proof is permitted to execute. Verification happens in-line, not after the fact.",
+      body: "Execution admits behaviour accompanied by a valid proof. Verification occurs in-line at runtime.",
     },
     {
       n: "III",
       title: "Audit by default",
-      body: "Every action ships with cryptographic evidence. Post-incident analysis becomes a matter of reading the record.",
+      body: "Every action ships with cryptographic evidence. Post-incident analysis follows directly from the evidence record.",
     },
   ];
 
@@ -62,8 +62,8 @@ const Index = () => {
     {
       figure: "Fig. 1",
       title: "Specify",
-      caption: "Policy prose is compiled into a formal specification.",
-      sample: `"Agent must not access user data\nwithout explicit consent."`,
+      caption: "Policy text is compiled into a formal specification.",
+      sample: `"Explicit consent authorizes\nagent access to user data."`,
     },
     {
       figure: "Fig. 2",
@@ -80,16 +80,16 @@ const Index = () => {
   ];
 
   const writing = [
-    { date: "2025-08-15", title: "How to Get Involved — On-Ramps & Programs", slug: "how-to-get-involved", dek: "Movements beat companies. The verifiable AI internet is built by researchers, builders, auditors, and adopters pulling together." },
+    { date: "2025-08-15", title: "How to Get Involved · On-Ramps & Programs", slug: "how-to-get-involved", dek: "Movements beat companies. Researchers and builders advance the verifiable AI internet through open collaboration. Auditors and adopters strengthen the same cycle." },
     { date: "2025-07-15", title: "Building Verification Infrastructure", slug: "building-verification-infrastructure", dek: "Multiple stacks already compile policies into monitors, mediate effects, and emit verifiable evidence. The next mile is scale and standards." },
-    { date: "2025-07-01", title: "Mapping the Space — Taxonomy & Interfaces", slug: "mapping-the-space", dek: "The safety conversation is noisy. What scales is evidence — properties you can prove and enforce online." },
+    { date: "2025-07-01", title: "Mapping the Space · Taxonomy & Interfaces", slug: "mapping-the-space", dek: "The safety conversation is noisy. Evidence scales through properties established by proof and enforced online." },
   ];
 
   return (
     <Layout>
       <Seo
         title="SentinelOps | Verified AI Runtime"
-        description="A research programme on provable safety for AI agents — specifications, machine-checked proofs, and runtime enforcement, open source, end to end."
+        description="SentinelOps is a research programme on provable safety for AI agents. Formal specifications and machine-checked proofs connect directly to runtime enforcement."
         path="/"
       />
 
@@ -109,8 +109,8 @@ const Index = () => {
                 </p>
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mb-10">
                   Specifications compile to proofs. Proofs are checked at runtime.
-                  Evidence is recorded for audit. The result is a substrate for AI systems
-                  you can actually reason about.
+                  Evidence is recorded for audit. The result is a substrate that supports
+                  rigorous analysis of AI systems.
                 </p>
 
                 <div className="flex flex-wrap gap-3 items-center">
@@ -202,15 +202,15 @@ const Index = () => {
             </div>
             <div className="lg:col-span-9 grid md:grid-cols-2 gap-7 md:gap-10 font-serif text-lg leading-relaxed">
               <p>
-                Modern AI agents are deployed faster than they can be reasoned about.
-                Testing approximates behaviour; it cannot guarantee it. In domains where
-                an unverified action is unacceptable — medicine, finance, infrastructure —
-                approximation is not enough.
+                Modern AI agents reach deployment faster than rigorous analysis keeps pace.
+                Testing estimates behaviour. Formal proof establishes stated properties.
+                High-consequence domains such as medicine and critical infrastructure demand
+                verified actions and explicit evidence.
               </p>
               <p>
-                <em>Provability Fabric</em> proposes a different posture: <strong>proof-carrying
-                behaviour</strong>. Specifications are first-class artefacts; proofs travel with
-                actions; the runtime is the verifier.
+                <em>Provability Fabric</em> uses <strong>proof-carrying behaviour</strong> as its
+                operating model. Specifications are first-class artefacts. Proofs travel with
+                actions. The runtime serves as the verifier.
               </p>
             </div>
           </div>
@@ -225,8 +225,8 @@ const Index = () => {
               <div className="section-title">
                 <h2 className="mb-4">From natural language to machine-checked guarantee.</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl">
-                  Three stages, in sequence. The output of one is the input to the next; the
-                  record of all three is the audit trail.
+                  Three stages run in sequence. Each output feeds the next stage. Their combined
+                  record forms the audit trail.
                 </p>
               </div>
             </div>
@@ -257,7 +257,7 @@ const Index = () => {
               <div className="mono text-[0.66rem] uppercase tracking-[0.11em] text-white/[0.45] mb-5">02 / Principles</div>
               <h2 className="!text-white mb-4">Proof over promises.</h2>
               <p className="text-white/[0.62] max-w-sm">
-                Three commitments that distinguish a verified system from one that is merely tested.
+                Three commitments distinguish a verified system from a tested system.
               </p>
             </div>
             <ol className="lg:col-span-8 grid sm:grid-cols-3 border-t border-white/20 sm:border-t-0 sm:border-l border-white/20">

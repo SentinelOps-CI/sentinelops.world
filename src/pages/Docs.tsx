@@ -9,29 +9,29 @@ const repositories = [
   { name: "SpecCursor", url: "https://github.com/SentinelOps-CI/speccursor", description: "Formal qualification for dependency upgrades and changes.", category: "Build & verify" },
   { name: "SpecSync", url: "https://github.com/SentinelOps-CI/SpecSync", description: "GitHub-native specification coverage and verification gates.", category: "Build & verify" },
   { name: "Lean Toolchain", url: "https://github.com/SentinelOps-CI/lean-toolchain", description: "Optimised Lean theorem prover distribution for verification workflows.", category: "Build & verify" },
-  { name: "Runtime Safety Kernels", url: "https://github.com/SentinelOps-CI/runtime-safety-kernels", description: "Minimal trusted computing base for AI system isolation.", category: "Runtime & assurance" },
-  { name: "Security Envelopes", url: "https://github.com/SentinelOps-CI/security-envelopes", description: "Cryptographic containers for sensitive AI operations.", category: "Runtime & assurance" },
-  { name: "Model Asset Guard", url: "https://github.com/SentinelOps-CI/model-asset-guard", description: "Integrity verification for AI models and training artefacts.", category: "Runtime & assurance" },
-  { name: "Post-Incident Proofs", url: "https://github.com/SentinelOps-CI/post-incident-proofs", description: "Cryptographically sealed audit trails for forensic analysis.", category: "Runtime & assurance" },
+  { name: "Runtime Safety Kernels", url: "https://github.com/SentinelOps-CI/runtime-safety-kernels", description: "Minimal trusted computing base for AI system isolation.", category: "Runtime & evidence" },
+  { name: "Security Envelopes", url: "https://github.com/SentinelOps-CI/security-envelopes", description: "Cryptographic containers for sensitive AI operations.", category: "Runtime & evidence" },
+  { name: "Model Asset Guard", url: "https://github.com/SentinelOps-CI/model-asset-guard", description: "Integrity verification for AI models and training artefacts.", category: "Runtime & evidence" },
+  { name: "Post-Incident Proofs", url: "https://github.com/SentinelOps-CI/post-incident-proofs", description: "Cryptographically sealed audit trails for forensic analysis.", category: "Runtime & evidence" },
   { name: "PF Testbed", url: "https://github.com/SentinelOps-CI/pf-testbed", description: "Testing framework for proof-carrying behaviour systems.", category: "Test & data" },
   { name: "Dataset Safety Specs", url: "https://github.com/SentinelOps-CI/dataset-safety-specs", description: "Formal specifications for training-data safety and compliance.", category: "Test & data" },
 ];
 
-const categories = ["Platform", "Build & verify", "Runtime & assurance", "Test & data"];
+const categories = ["Platform", "Build & verify", "Runtime & evidence", "Test & data"];
 
 const faqs = [
-  { q: "Where can I find API documentation?", a: "Each repository contains comprehensive API documentation in its README and accompanying markdown files. Look for /docs directories inside individual repositories for detailed guides." },
+  { q: "Where is the API documentation?", a: "Each repository contains API documentation in its README and accompanying markdown files. Detailed guides also appear in /docs directories inside individual repositories." },
   { q: "How do I contribute to the documentation?", a: "Documentation improvements are welcome. Submit pull requests to the relevant repository and follow each project's CONTRIBUTING guidelines." },
-  { q: "Which tool should I start with?", a: "For runtime verification, begin with Provability Fabric. For specification management, try Spec-to-Proof. For CI/CD integration, start with SpecSync." },
-  { q: "Are there integration examples available?", a: "Yes — most repositories include practical examples in their /examples directories. The PF Testbed repository contains comprehensive integration patterns and test cases." },
+  { q: "Which tool is the best starting point?", a: "Provability Fabric is the starting point for runtime verification. Spec-to-Proof covers specification management. SpecSync covers CI/CD integration." },
+  { q: "Are integration examples available?", a: "Yes. Most repositories include practical examples in their /examples directories. The PF Testbed repository contains integration patterns and test cases." },
   { q: "What programming languages are supported?", a: "Our tools primarily support Rust, TypeScript/JavaScript, and Python. Language-specific bindings are documented in each repository's README." },
 ];
 
 const Docs = () => (
   <Layout>
     <Seo
-      title="Documentation — Getting Started with Verification | SentinelOps"
-      description="Guides, API references, and FAQs for SentinelOps verification tools — Provability Fabric, Spec-to-Proof, SpecSync, and more."
+      title="Documentation · Getting Started with Verification | SentinelOps"
+      description="Guides and API references for SentinelOps verification tools, with FAQs covering core workflows."
       path="/docs"
     />
 
@@ -46,7 +46,7 @@ const Docs = () => (
             <h1 className="mb-7">Documentation.</h1>
             <p className="font-serif text-2xl leading-relaxed text-foreground/[0.86] max-w-3xl">
               Each product maintains its primary documentation in its repository. This page
-              is an index and an orientation — not a substitute for the source.
+              provides an index and orientation to those source materials.
             </p>
           </div>
         </div>

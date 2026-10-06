@@ -25,7 +25,7 @@ const Blog = () => {
         if (error.code === "23505") toast({ title: "Already subscribed", description: "This email is already on the list." });
         else throw error;
       } else {
-        toast({ title: "Subscribed", description: "Thank you — we'll be in touch." });
+        toast({ title: "Subscribed", description: "Thank you. We'll be in touch." });
         setEmail("");
       }
     } catch (err) {
@@ -37,24 +37,24 @@ const Blog = () => {
   };
 
   const blogPosts = [
-    { id: 6, title: "How to Get Involved — On-Ramps & Programs", description: "Movements beat companies. The verifiable AI internet is built by researchers, builders, auditors, and adopters pulling together — openly and repeatedly.", date: "2025-08-15", category: "Community", readTime: "9 min", slug: "how-to-get-involved" },
-    { id: 5, title: "Current Initiatives — What's Running Now", description: "Multiple stacks already compile policies into monitors, mediate effects, and emit verifiable evidence. The next mile is scale and standards.", date: "2025-08-01", category: "Updates", readTime: "11 min", slug: "current-initiatives" },
-    { id: 4, title: "Building Verification Infrastructure", description: "We are past intent. Multiple stacks already compile policies into monitors, mediate effects, and emit verifiable evidence.", date: "2025-07-15", category: "Infrastructure", readTime: "10 min", slug: "building-verification-infrastructure" },
-    { id: 3, title: "Mapping the Space — Taxonomy & Interfaces", description: "The safety conversation is noisy — prompts, heuristics, \"guardrails.\" What actually scales is evidence: properties you can prove and enforce online.", date: "2025-07-01", category: "Technical", readTime: "15 min", slug: "mapping-the-space" },
-    { id: 2, title: "Ecosystem Development Timeline — 2025 → 2027", description: "Safety emerges as a cadence: spec → prove → run → demonstrate → standardise, repeated across domains until it becomes the norm.", date: "2025-06-15", category: "Roadmap", readTime: "8 min", slug: "ecosystem-development-timeline" },
-    { id: 1, title: "The Verifiable AI Ecosystem", description: "Three years from now, the \"AI internet\" feels boringly safe. Users don't click new checkboxes; they just benefit from a fabric where every agent action is mediated.", date: "2025-06-01", category: "Vision", readTime: "12 min", slug: "verifiable-ai-ecosystem" },
+    { id: 6, title: "How to Get Involved · On-Ramps & Programs", description: "Movements beat companies. Researchers and builders advance the verifiable AI internet through open, repeated collaboration.", date: "2025-08-15", category: "Community", readTime: "9 min", slug: "how-to-get-involved" },
+    { id: 5, title: "Current Initiatives · What's Running Now", description: "Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence. The next mile is scale and standards.", date: "2025-08-01", category: "Updates", readTime: "11 min", slug: "current-initiatives" },
+    { id: 4, title: "Building Verification Infrastructure", description: "We are past intent. Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence.", date: "2025-07-15", category: "Infrastructure", readTime: "10 min", slug: "building-verification-infrastructure" },
+    { id: 3, title: "Mapping the Space · Taxonomy & Interfaces", description: "The safety conversation is noisy. Evidence scales through properties established by proof and enforced online.", date: "2025-07-01", category: "Technical", readTime: "15 min", slug: "mapping-the-space" },
+    { id: 2, title: "Ecosystem Development Timeline · 2025 → 2027", description: "Safety emerges through a repeated cadence. Specification leads to proof and execution. Demonstration then supports standardisation across domains.", date: "2025-06-15", category: "Roadmap", readTime: "8 min", slug: "ecosystem-development-timeline" },
+    { id: 1, title: "The Verifiable AI Ecosystem", description: "Three years from now, the \"AI internet\" feels boringly safe. Users benefit from a fabric in which every agent action is mediated through verified controls.", date: "2025-06-01", category: "Vision", readTime: "12 min", slug: "verifiable-ai-ecosystem" },
   ];
 
   const researchPapers = [
     { id: 1, title: "System Architecture", description: "Comprehensive architectural design and formal specifications for verifiable AI systems.", type: "Architecture", pages: "19 pages", url: "/papers/architecture.pdf" },
     { id: 2, title: "Technical Guide", description: "Detailed technical documentation covering implementation methodologies and runtime verification techniques.", type: "Technical", pages: "14 pages", url: "/papers/technical.pdf" },
-    { id: 3, title: "Whitepaper", description: "Vision, methodology, and strategic roadmap for building trusted AI infrastructure at scale.", type: "Whitepaper", pages: "37 pages", url: "/papers/whitepaper.pdf" },
+    { id: 3, title: "Whitepaper", description: "Strategic roadmap for trusted AI infrastructure, grounded in the programme methodology and vision.", type: "Whitepaper", pages: "37 pages", url: "/papers/whitepaper.pdf" },
   ];
 
   return (
     <Layout>
       <Seo
-        title="Writing — Formal Methods for AI Safety | SentinelOps"
+        title="Writing · Formal Methods for AI Safety | SentinelOps"
         description="Deep dives into formal verification, runtime safety kernels, and the open-source infrastructure for provably safe AI agents."
         path="/blog"
       />
@@ -69,8 +69,8 @@ const Blog = () => {
             <div className="lg:col-span-9 max-w-4xl">
               <h1 className="mb-7">Writing.</h1>
               <p className="font-serif text-2xl leading-relaxed text-foreground/[0.86] max-w-3xl">
-                Essays, technical notes, and field reports on formal methods, runtime
-                verification, and the construction of provably safe AI.
+                Research writing spans formal methods and runtime verification. Technical notes
+                and field reports examine the construction of provably safe AI.
               </p>
             </div>
           </div>
@@ -151,7 +151,7 @@ const Blog = () => {
             <div className="md:col-span-6">
               <div className="eyebrow mb-3">Correspondence</div>
               <h2 className="mb-2">Receive new writing.</h2>
-              <p className="text-muted-foreground">Occasional dispatches. No marketing.</p>
+              <p className="text-muted-foreground">Occasional research dispatches for technical readers.</p>
             </div>
             <form onSubmit={handleSubscribe} className="md:col-span-6 flex flex-col sm:flex-row gap-3">
               <Input

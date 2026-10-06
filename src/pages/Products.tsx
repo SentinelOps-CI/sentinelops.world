@@ -36,14 +36,14 @@ const sections: { code: string; name: string; items: Product[] }[] = [
       { num: "2.1", id: "spec-to-proof", title: "Spec-to-Proof", status: "Active", abstract: "Compile natural-language specifications into Lean theorem proofs. Transforms policy documents into machine-checkable mathematical artefacts.", tags: ["LLM-to-Lean", "Policy compilation"], repo: "https://github.com/SentinelOps-CI/spec-to-proof" },
       { num: "2.2", id: "speccursor", title: "SpecCursor", status: "Active", abstract: "Formal qualification for dependency upgrades. Ensures code changes preserve existing behavioural guarantees through automated proof verification.", tags: ["Dependency safety", "Change verification"], repo: "https://github.com/SentinelOps-CI/speccursor" },
       { num: "2.3", id: "specsync", title: "SpecSync", status: "Active", abstract: "GitHub-native specification coverage and verification gates, integrated into pull-request workflows.", tags: ["GitHub Actions", "CI/CD gates"], repo: "https://github.com/SentinelOps-CI/SpecSync" },
-      { num: "2.4", id: "lean-toolchain", title: "Lean Toolchain", status: "Active", abstract: "A curated distribution of the Lean theorem prover with extensions for AI safety verification workflows.", tags: ["Lean 4", "Verification library"], repo: "https://github.com/SentinelOps-CI/lean-toolchain" },
+      { num: "2.4", id: "lean-toolchain", title: "Lean Toolchain", status: "Active", abstract: "Curated Lean theorem prover distribution with extensions for AI safety verification workflows.", tags: ["Lean 4", "Verification library"], repo: "https://github.com/SentinelOps-CI/lean-toolchain" },
     ],
   },
   {
     code: "§3",
-    name: "Runtime & assurance",
+    name: "Runtime & evidence",
     items: [
-      { num: "3.1", id: "runtime-safety-kernels", title: "Runtime Safety Kernels", status: "Active", abstract: "A minimal trusted computing base — lightweight kernels providing hardware-level isolation for AI workloads with minimal attack surface.", tags: ["Isolation", "Hardware security"], repo: "https://github.com/SentinelOps-CI/runtime-safety-kernels" },
+      { num: "3.1", id: "runtime-safety-kernels", title: "Runtime Safety Kernels", status: "Active", abstract: "Minimal trusted computing kernels provide hardware-level isolation for AI workloads with a reduced attack surface.", tags: ["Isolation", "Hardware security"], repo: "https://github.com/SentinelOps-CI/runtime-safety-kernels" },
       { num: "3.2", id: "security-envelopes", title: "Security Envelopes", status: "Beta", abstract: "Encrypted execution environments providing confidentiality and integrity guarantees for AI model inference and training.", tags: ["Encrypted execution", "Confidential computing"], repo: "https://github.com/SentinelOps-CI/security-envelopes" },
       { num: "3.3", id: "model-asset-guard", title: "Model Asset Guard", status: "Active", abstract: "Cryptographic verification of model weights, training data, and associated metadata to prevent tampering and ensure provenance.", tags: ["Model integrity", "Provenance"], repo: "https://github.com/SentinelOps-CI/model-asset-guard" },
       { num: "3.4", id: "post-incident-proofs", title: "Post-Incident Proofs", status: "Research", abstract: "An immutable, cryptographically sealed log of AI system behaviour, suitable for forensic analysis and compliance reporting.", tags: ["Audit trails", "Forensics"], repo: "https://github.com/SentinelOps-CI/post-incident-proofs" },
@@ -53,7 +53,7 @@ const sections: { code: string; name: string; items: Product[] }[] = [
     code: "§4",
     name: "Test & data",
     items: [
-      { num: "4.1", id: "pf-testbed", title: "PF Testbed", status: "Active", abstract: "A testing framework for proof-carrying behaviour systems.", tags: ["Testing", "Integration patterns"], repo: "https://github.com/SentinelOps-CI/pf-testbed" },
+      { num: "4.1", id: "pf-testbed", title: "PF Testbed", status: "Active", abstract: "Testing framework for proof-carrying behaviour systems.", tags: ["Testing", "Integration patterns"], repo: "https://github.com/SentinelOps-CI/pf-testbed" },
       { num: "4.2", id: "dataset-safety-specs", title: "Dataset Safety Specs", status: "Active", abstract: "Formal specifications for training-data safety and compliance.", tags: ["Data safety", "Compliance"], repo: "https://github.com/SentinelOps-CI/dataset-safety-specs" },
     ],
   },
@@ -70,8 +70,8 @@ const Products = () => {
   return (
     <Layout>
       <Seo
-        title="Products — Open-Source AI Verification Tools | SentinelOps"
-        description="Provability Fabric, Spec-to-Proof, SpecSync, SpecCursor, Lean Toolchain, Runtime Safety Kernels and more — the SentinelOps suite for verifiable AI."
+        title="Products · Open-Source AI Verification Tools | SentinelOps"
+        description="SentinelOps develops verifiable AI tooling from formal specification through proof and runtime verification, with system integrity built into the stack."
         path="/products"
       />
 
@@ -85,8 +85,8 @@ const Products = () => {
             <div className="lg:col-span-9 max-w-4xl">
               <h1 className="mb-7">Products.</h1>
               <p className="font-serif text-2xl leading-relaxed text-foreground/[0.86] max-w-3xl">
-                A suite of open-source tools for building verifiable AI systems — from
-                specification, through proof, to runtime. Each tool is published under a
+                The open-source suite spans specification, proof, and runtime verification.
+                Each tool is published under a
                 permissive licence and developed in public.
               </p>
             </div>

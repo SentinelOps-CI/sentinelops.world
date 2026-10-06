@@ -7,25 +7,25 @@ const Careers = () => {
       title: "Formal Verification Engineer",
       type: "Full-time · Remote",
       description:
-        "Develop proof systems and verification tools for behavioural safety of autonomous agents. Work with Lean, Coq, Rust, and TypeScript on production-grade monitors and reference proofs.",
+        "Develop proof systems and verification tools for behavioural safety of autonomous agents. Work primarily with Lean and Rust. Supporting systems use Coq and TypeScript.",
     },
     {
       title: "ML Safety Researcher",
       type: "Full-time · Remote",
       description:
-        "Research and formalize safety constraints and verification patterns for machine-learning systems. Publish artifacts, datasets, and reproducible benchmarks alongside written results.",
+        "Research and formalize safety constraints plus verification patterns for machine-learning systems. Publish artifacts and datasets alongside reproducible benchmarks and written results.",
     },
     {
       title: "Developer Experience Engineer",
       type: "Full-time · Remote",
       description:
-        "Make formal verification accessible through writing, tooling, and end-to-end developer onboarding. Maintain documentation, examples, CI, and contributor pathways.",
+        "Make formal verification accessible through technical writing and tooling. Build end-to-end developer onboarding. Maintain documentation and examples alongside CI and contributor pathways.",
     },
   ];
 
   const values = [
     { title: "Safety first", body: "We prioritize the soundness and reliability of AI systems above all else." },
-    { title: "Open source", body: "We work in the open and produce artifacts that others can reproduce." },
+    { title: "Open source", body: "We work in the open and publish artifacts designed for independent reproduction." },
     { title: "Community", body: "We foster an inclusive environment where diverse perspectives strengthen the work." },
     { title: "Impact", body: "We build tools that meaningfully shape the future of trustworthy AI." },
   ];
@@ -33,11 +33,11 @@ const Careers = () => {
   return (
     <Layout>
       <Seo
-        title="Careers — Join the Verified-AI Mission | SentinelOps"
-        description="Open roles and ways to contribute to SentinelOps — help build the open-source infrastructure for provably safe AI systems."
+        title="Careers · Join the Verified-AI Mission | SentinelOps"
+        description="Open roles and collaboration paths at SentinelOps for researchers and engineers building open-source infrastructure for provably safe AI systems."
         path="/careers"
       />
-      <article className="container-prose prose-paper">
+      <article className="container-article article-paper">
         <header className="mb-12 pb-8 border-b border-border">
           <div className="eyebrow mb-4">Programme · Calls for collaboration</div>
           <h1 className="font-light tracking-tight text-4xl md:text-5xl leading-[1.05]">Careers</h1>
@@ -48,7 +48,7 @@ const Careers = () => {
         </header>
 
         <section className="mb-16">
-          <div className="eyebrow mb-6">§ I — Open Positions</div>
+          <div className="eyebrow mb-6">§ I · Open Positions</div>
           <div className="space-y-10">
             {openings.map((o, i) => (
               <article key={i} className="grid grid-cols-12 gap-4">
@@ -67,7 +67,7 @@ const Careers = () => {
         </section>
 
         <section className="mb-16">
-          <div className="eyebrow mb-6">§ II — How to Apply</div>
+          <div className="eyebrow mb-6">§ II · How to Apply</div>
           <p>
             Write to <a href="mailto:careers@sentinelops.dev">careers@sentinelops.dev</a> with a brief note on
             your interest, a résumé, and any open-source contributions or publications relevant to the role.
@@ -77,7 +77,7 @@ const Careers = () => {
         </section>
 
         <section className="mb-16">
-          <div className="eyebrow mb-6">§ III — What We Value</div>
+          <div className="eyebrow mb-6">§ III · What We Value</div>
           <dl className="divide-y divide-border border-y border-border">
             {values.map((v, i) => (
               <div key={i} className="grid grid-cols-12 gap-4 py-5">
@@ -89,7 +89,7 @@ const Careers = () => {
         </section>
 
         <footer className="mt-16 pt-8 border-t border-border text-sm text-muted-foreground italic">
-          Remote-first. Generous time, conference budget, equipment, and the freedom to publish.
+          Remote-first. The role includes generous research time and a conference budget. Equipment and publication freedom support the work.
         </footer>
       </article>
     </Layout>

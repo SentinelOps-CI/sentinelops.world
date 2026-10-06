@@ -38,9 +38,6 @@ const Layout = ({ children }: LayoutProps) => {
           <span className="mono text-[0.62rem] uppercase tracking-[0.14em] text-white/[0.65]">
             SentinelOps research programme
           </span>
-          <span className="hidden sm:block mono text-[0.62rem] uppercase tracking-[0.14em] text-white/50">
-            Formal methods · Runtime verification · Open source
-          </span>
         </div>
       </div>
 
@@ -154,8 +151,8 @@ const Layout = ({ children }: LayoutProps) => {
                 </div>
               </div>
               <p className="font-serif text-lg leading-relaxed text-white/[0.78] max-w-xl">
-                A research programme on provable safety for AI agents — specifications,
-                machine-checked proofs, and runtime enforcement.
+                SentinelOps is a research programme on provable safety for AI agents, spanning
+                specifications, machine-checked proofs, and runtime enforcement.
               </p>
               <p className="mono text-[0.62rem] uppercase tracking-[0.12em] text-white/[0.45] mt-8">
                 © 2026 SentinelOps · All rights reserved
@@ -176,9 +173,8 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
 
             <div className="md:col-span-3">
-              <div className="mono text-[0.62rem] uppercase tracking-[0.12em] text-white/[0.45] mb-4">Colophon</div>
+              <div className="mono text-[0.62rem] uppercase tracking-[0.12em] text-white/[0.45] mb-4">Reference</div>
               <ul className="space-y-2.5 text-sm text-white/[0.65]">
-                <li>Newsreader · IBM Plex Sans · IBM Plex Mono</li>
                 <li>
                   <Link to="/legal/terms" className="hover:text-white">Terms</Link>
                   <span className="mx-2 text-white/25">/</span>

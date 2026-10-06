@@ -32,7 +32,7 @@ The build output is written to `dist/`. The prebuild step regenerates `public/si
 
 Production deploys from `main` through Vercel. The canonical domain is `https://sentinelops.world`.
 
-The site uses client-side routing. `vercel.json` rewrites application routes to `index.html` while preserving static assets.
+The site uses client-side routing. `vercel.json` rewrites application routes to `index.html` and preserves static assets.
 
 ## Environment
 

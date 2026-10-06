@@ -7,7 +7,7 @@ SentinelOps builds Provability Fabric and a suite of related tools (Spec-to-Proo
 ## Pages
 
 - [Home](/): Overview of the SentinelOps platform and Provability Fabric.
-- [Products](/products): The verification tools — Provability Fabric, Spec-to-Proof, SpecCursor, SpecSync, Lean Toolchain, Runtime Safety Kernels, Security Envelopes, Model Asset Guard.
+- [Products](/products): The verification suite includes Provability Fabric, Spec-to-Proof, SpecCursor, SpecSync, Lean Toolchain, Runtime Safety Kernels, Security Envelopes, and Model Asset Guard.
 - [Mission](/mission): Vision, principles, and roadmap for provably safe AI.
 - [Docs](/docs): Documentation, getting started guide, and FAQs.
 - [Blog](/blog): Research notes, whitepapers, and project updates.

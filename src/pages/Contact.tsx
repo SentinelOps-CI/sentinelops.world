@@ -5,12 +5,12 @@ const channels = [
   {
     label: "Press & media",
     address: "press@sentinelops.dev",
-    note: "Interviews, background briefings, and media inquiries.",
+    note: "Interviews and background briefings for media inquiries.",
   },
   {
     label: "Careers",
     address: "careers@sentinelops.dev",
-    note: "Open roles, research collaborations, and applications.",
+    note: "Open roles and research collaborations, including applications.",
   },
   {
     label: "Privacy",
@@ -20,15 +20,15 @@ const channels = [
   {
     label: "Legal",
     address: "legal@sentinelops.dev",
-    note: "Terms, licensing, and legal correspondence.",
+    note: "Terms and licensing questions, including legal correspondence.",
   },
 ];
 
 const Contact = () => (
   <Layout>
     <Seo
-      title="Contact — SentinelOps"
-      description="Contact SentinelOps for press, careers, privacy, legal matters, or technical questions about the open-source verification programme."
+      title="Contact · SentinelOps"
+      description="Contact SentinelOps for institutional inquiries, technical questions, or correspondence about the open-source verification programme."
       path="/contact"
     />
 
@@ -80,7 +80,7 @@ const Contact = () => (
         <div className="eyebrow mb-4">Technical questions</div>
         <h2 className="mb-4">Work in public.</h2>
         <p className="text-muted-foreground max-w-2xl mb-6">
-          For implementation questions, bug reports, or project-specific discussion, use the issue tracker in the relevant SentinelOps repository so the technical record remains public and reproducible.
+          Use the relevant SentinelOps issue tracker for implementation questions and bug reports. Project-specific discussion also belongs there. The public issue record supports reproducible technical review.
         </p>
         <a
           href="https://github.com/orgs/SentinelOps-CI/repositories"
