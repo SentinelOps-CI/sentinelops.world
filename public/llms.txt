@@ -1,0 +1,31 @@
+# SentinelOps
+
+> Open-source verification platform that turns natural-language specifications into machine-checked proofs enforced at AI runtime.
+
+SentinelOps builds Provability Fabric and a suite of related tools (Spec-to-Proof, SpecCursor, SpecSync, Lean Toolchain, Runtime Safety Kernels, Security Envelopes, Model Asset Guard) that give AI agents mathematical guarantees about their behavior.
+
+## Pages
+
+- [Home](/): Overview of the SentinelOps platform and Provability Fabric.
+- [Products](/products): The verification tools — Provability Fabric, Spec-to-Proof, SpecCursor, SpecSync, Lean Toolchain, Runtime Safety Kernels, Security Envelopes, Model Asset Guard.
+- [Mission](/mission): Vision, principles, and roadmap for provably safe AI.
+- [Docs](/docs): Documentation, getting started guide, and FAQs.
+- [Blog](/blog): Research notes, whitepapers, and project updates.
+- [Careers](/careers): Roles and how to contribute.
+- [Press](/press): Media resources and company information.
+- [Status](/status): Service and repository status.
+
+## Blog posts
+
+- [The Verifiable AI Ecosystem](/blog/verifiable-ai-ecosystem): Overview of the open-source verification stack.
+- [Ecosystem Development Timeline](/blog/ecosystem-development-timeline): Milestones in the verified-AI roadmap.
+- [Mapping the Space](/blog/mapping-the-space): Survey of formal methods relevant to AI safety.
+- [Building Verification Infrastructure](/blog/building-verification-infrastructure): How we ship runtime-enforced proofs.
+- [Current Initiatives](/blog/current-initiatives): Active research and engineering threads.
+- [How to Get Involved](/blog/how-to-get-involved): Contributor onboarding guide.
+
+## Optional
+
+- [Terms](/legal/terms)
+- [Privacy](/legal/privacy)
+- [Sitemap](/sitemap)
