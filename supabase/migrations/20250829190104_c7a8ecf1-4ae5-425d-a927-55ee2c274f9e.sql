@@ -10,15 +10,15 @@ CREATE TABLE public.subscribers (
 ALTER TABLE public.subscribers ENABLE ROW LEVEL SECURITY;
 
 -- Create policy to allow anyone to insert (public signup)
-CREATE POLICY "Anyone can subscribe to newsletter" 
-ON public.subscribers 
-FOR INSERT 
+CREATE POLICY "Anyone can subscribe to newsletter"
+ON public.subscribers
+FOR INSERT
 WITH CHECK (true);
 
 -- Create policy to prevent reading subscriber emails (admin only)
-CREATE POLICY "Only admins can view subscribers" 
-ON public.subscribers 
-FOR SELECT 
+CREATE POLICY "Only admins can view subscribers"
+ON public.subscribers
+FOR SELECT
 USING (false);
 
 -- Create function to update timestamps

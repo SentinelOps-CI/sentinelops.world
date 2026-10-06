@@ -12,7 +12,7 @@ const Status = () => {
     },
     {
       name: "Documentation Sites",
-      status: "operational", 
+      status: "operational",
       uptime: "99.95%",
       lastIncident: "No recent incidents"
     },
@@ -33,7 +33,7 @@ const Status = () => {
       duration: "45 minutes"
     },
     {
-      date: "2023-12-15", 
+      date: "2023-12-15",
       title: "Documentation Update",
       description: "Scheduled maintenance for documentation site improvements",
       status: "resolved",

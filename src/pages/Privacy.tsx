@@ -26,7 +26,7 @@ const Privacy = () => {
                 <h2 className="text-2xl font-light mb-4">§ 1. Information We Collect</h2>
                 <div className="space-y-3">
                   <p>We collect minimal information necessary to provide our services:</p>
-                  
+
                   <div>
                     <h3 className="eyebrow mb-2">Information You Provide</h3>
                     <ul className="list-disc list-inside space-y-1">
@@ -77,8 +77,8 @@ const Privacy = () => {
               <section>
                 <h2 className="text-2xl font-light mb-4">§ 4. Data Security</h2>
                 <p>
-                  We implement appropriate security measures to protect your information against unauthorized 
-                  access, alteration, disclosure, or destruction. This includes encryption of data in transit 
+                  We implement appropriate security measures to protect your information against unauthorized
+                  access, alteration, disclosure, or destruction. This includes encryption of data in transit
                   and at rest, regular security assessments, and access controls.
                 </p>
               </section>
@@ -86,8 +86,8 @@ const Privacy = () => {
               <section>
                 <h2 className="text-2xl font-light mb-4">§ 5. Data Retention</h2>
                 <p>
-                  We retain personal information only as long as necessary to fulfill the purposes outlined 
-                  in this policy, comply with legal obligations, resolve disputes, and enforce agreements. 
+                  We retain personal information only as long as necessary to fulfill the purposes outlined
+                  in this policy, comply with legal obligations, resolve disputes, and enforce agreements.
                   When data is no longer needed, we securely delete or anonymize it.
                 </p>
               </section>
@@ -112,8 +112,8 @@ const Privacy = () => {
               <section>
                 <h2 className="text-2xl font-light mb-4">§ 7. Open Source Considerations</h2>
                 <p>
-                  When you contribute to our open-source projects, your contributions (including any personal 
-                  information in commit messages or comments) become part of the public repository and are 
+                  When you contribute to our open-source projects, your contributions (including any personal
+                  information in commit messages or comments) become part of the public repository and are
                   governed by the applicable open-source license.
                 </p>
               </section>
@@ -121,8 +121,8 @@ const Privacy = () => {
               <section>
                 <h2 className="text-2xl font-light mb-4">§ 8. Children's Privacy</h2>
                 <p>
-                  Our services are not directed to children under 13. We do not knowingly collect personal 
-                  information from children under 13. If we become aware that a child under 13 has provided 
+                  Our services are not directed to children under 13. We do not knowingly collect personal
+                  information from children under 13. If we become aware that a child under 13 has provided
                   us with personal information, we will delete such information.
                 </p>
               </section>
@@ -130,8 +130,8 @@ const Privacy = () => {
               <section>
                 <h2 className="text-2xl font-light mb-4">§ 9. International Transfers</h2>
                 <p>
-                  Your information may be transferred to and processed in countries other than your own. 
-                  We ensure appropriate safeguards are in place to protect your information in accordance 
+                  Your information may be transferred to and processed in countries other than your own.
+                  We ensure appropriate safeguards are in place to protect your information in accordance
                   with this privacy policy.
                 </p>
               </section>
@@ -139,7 +139,7 @@ const Privacy = () => {
               <section>
                 <h2 className="text-2xl font-light mb-4">§ 10. Changes to This Policy</h2>
                 <p>
-                  We may update this privacy policy from time to time. We will notify you of any material 
+                  We may update this privacy policy from time to time. We will notify you of any material
                   changes by posting the new policy on our website and updating the "Last updated" date.
                 </p>
               </section>
@@ -147,15 +147,15 @@ const Privacy = () => {
               <section>
                 <h2 className="text-2xl font-light mb-4">§ 11. Contact Us</h2>
                 <p>
-                  If you have questions about this privacy policy or our privacy practices, please contact 
+                  If you have questions about this privacy policy or our privacy practices, please contact
                   us at privacy@sentinelops.dev.
                 </p>
               </section>
 
               <div className="border-t border-border pt-6 mt-12">
                 <p className="text-sm text-muted-foreground italic">
-                  Note. This privacy policy is provided as a template and may not reflect 
-                  all legal requirements. For actual deployment, please consult with legal counsel to ensure 
+                  Note. This privacy policy is provided as a template and may not reflect
+                  all legal requirements. For actual deployment, please consult with legal counsel to ensure
                   compliance with applicable privacy laws and regulations.
                 </p>
               </div>
