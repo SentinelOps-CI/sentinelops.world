@@ -37,7 +37,7 @@ const Blog = () => {
   };
 
   const blogPosts = [
-    { id: 6, title: "How to Get Involved · On-Ramps & Programs", description: "Movements beat companies. Researchers and builders advance the verifiable AI internet through open, repeated collaboration.", date: "2025-08-15", category: "Community", readTime: "9 min", slug: "how-to-get-involved" },
+    { id: 6, title: "Contributing to Verification Infrastructure", description: "Technical participation guide for public work across the SentinelOps verification stack.", date: "2025-08-15", category: "Participation", readTime: "7 min", slug: "how-to-get-involved" },
     { id: 5, title: "Current Initiatives · What's Running Now", description: "Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence. The next mile is scale and standards.", date: "2025-08-01", category: "Updates", readTime: "11 min", slug: "current-initiatives" },
     { id: 4, title: "Building Verification Infrastructure", description: "We are past intent. Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence.", date: "2025-07-15", category: "Infrastructure", readTime: "10 min", slug: "building-verification-infrastructure" },
     { id: 3, title: "Mapping the Space · Taxonomy & Interfaces", description: "The safety conversation is noisy. Evidence scales through properties established by proof and enforced online.", date: "2025-07-01", category: "Technical", readTime: "15 min", slug: "mapping-the-space" },

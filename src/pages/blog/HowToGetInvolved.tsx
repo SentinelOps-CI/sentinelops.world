@@ -1,239 +1,231 @@
 import Layout from "@/components/Layout";
+import ResearchNote from "@/components/ResearchNote";
 import Seo from "@/components/Seo";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Calendar, ArrowLeft, Clock, Users, BookOpen, Code, Target, CheckSquare } from "lucide-react";
 
-const HowToGetInvolved = () => {
-const programs = [
-{
-letter: "A",
-title: "Research & Standards",
-icon: BookOpen,
-workingGroups:
-"Working groups focus first on information-flow control and non-interference. Provenance plus certificate design form a second track. Deterministic egress and permission epochs form a third. Another group studies bridges between zero-knowledge proofs and trusted execution environments.",
-deliverables:
-"The program delivers numbered RFCs with accompanying proofs and reference monitors, formal conformance suites that permit independent verification, and position and vision papers that align research with practice."
-},
-{
-letter: "B",
-title: "Engineering & Pilots",
-icon: Code,
-workingGroups:
-"Pilot cohorts use a staged workflow that progresses from observe to shadow and enforce. Cohorts share metrics and evidence across organizations.",
-deliverables:
-"Interoperability labs convene quarterly plug-fests that certify implementations against the conformance suite. Developer-experience grants fund authoring tools and adapters. Test generators plus marketplace integrations extend the same programme."
-},
-{
-letter: "C",
-title: "Evaluation & Evidence",
-icon: Target,
-workingGroups:
-"Independent evaluation teams operate standardized testbeds and publish residual-risk reports. Coverage plus drift form the core metrics, with overhead reported separately.",
-deliverables:
-"The program maintains optional transparency logs for certificate digests and publishes reproducible artifacts that enable audit at arm’s length."
-},
-{
-letter: "D",
-title: "Community & Education",
-icon: Users,
-workingGroups:
-"Reading groups study runtime verification and information-flow control. Provenance and succinct zero-knowledge proofs form additional tracks, with emphasis on implementation details.",
-deliverables:
-"Fellowships support contributors across proofs and runtime systems. Standards work forms a third path. Monthly technical sessions present demonstrations and incident reviews, followed by lessons learned."
-}
-];
+const HowToGetInvolved = () => (
+  <Layout>
+    <Seo
+      title="Contributing to Verification Infrastructure · SentinelOps"
+      description="Contribution guide for SentinelOps verification infrastructure, from formal specifications through runtime controls and independent evaluation."
+      path="/blog/how-to-get-involved"
+      type="article"
+      jsonLd={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Contributing to Verification Infrastructure",
+        datePublished: "2025-08-15",
+        dateModified: "2026-10-06",
+        description:
+          "Contribution guide for SentinelOps verification infrastructure, from formal specifications through runtime controls and independent evaluation.",
+        author: { "@type": "Organization", name: "SentinelOps" },
+      }}
+    />
 
-const checklist = [
-"Run the sidecar in observe-only mode and export traces.",
-"Draft a policy in ActionDSL, compile monitors, and execute replays.",
-"Enable shadowing on low-risk clauses and validate certificates in continuous integration.",
-"Switch to enforcement with a defined reject budget and publish evidence packs.",
-"Join a working group and propose or implement an RFC."
-];
-
-const kpiCategories = [
-{
-title: "Technical Performance",
-items: [
-"Measure the coverage as the percentage of effects that are labeled and monitored.",
-"Track the rate at which certificates are verified independently.",
-"Verify the determinism of replays under declared egress profiles.",
-"Monitor adherence to the reject budget across releases.",
-"Quantify the performance overhead introduced by monitoring and evidence generation."
-]
-},
-{
-title: "Ecosystem Growth",
-items: [
-"Count the number of verified agents and reusable templates.",
-"Record the frequency and breadth of interoperability events.",
-"Report the number of independent evaluations completed per quarter."
-]
-},
-{
-title: "Adoption & Impact",
-items: [
-"Record platform integrations that enforce deploy gates based on certificates.",
-"Document deployments in regulated environments that rely on verifiable evidence.",
-"Publish public incident reports that include replay bundles for external review."
-]
-}
-];
-
-return (
-<Layout>
-<Seo title="How to Get Involved · SentinelOps Blog" description="Contributor onboarding for SentinelOps · issues to start with, repos by category, and the channels where the community coordinates." path="/blog/how-to-get-involved" type="article" jsonLd={{"@context":"https://schema.org","@type":"Article","headline":"How to Get Involved","datePublished":"2025-01-18","description":"Contributor onboarding for SentinelOps · issues to start with, repos by category, and the channels where the community coordinates.","author":{"@type":"Organization","name":"SentinelOps"}}} />
-<article className="container mx-auto px-5 sm:px-6 py-12 sm:py-20 max-w-3xl article-paper">
-{/* Header */}
-      <header className="mb-12 pb-8 border-b border-border">
-        <Link to="/blog" className="eyebrow inline-flex items-center gap-2 hover:text-foreground transition-colors mb-8">
-          <ArrowLeft className="h-3 w-3" />
-          Return to writing
-        </Link>
-
-        <div className="eyebrow mb-6">
-          §&nbsp;Community &nbsp;·&nbsp; July 1, 2025 &nbsp;·&nbsp; 9 min read
+    <ResearchNote
+      section="Participation note"
+      date="Revised October 6, 2026"
+      readTime="7 min read"
+      title="Contributing to Verification Infrastructure"
+      dek="SentinelOps is developed through public technical artifacts. Useful contributions improve specifications, runtime enforcement, evidence production, replay, or independent evaluation. Each contribution earns its value through an inspectable claim and a reproducible result."
+    >
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">01 · Contribution standard</div>
+        <div className="space-y-5 text-base leading-7 text-foreground/80">
+          <h2 className="text-2xl font-medium tracking-tight text-foreground">
+            Tie every contribution to a verifiable object
+          </h2>
+          <p>
+            Source changes need tests tied to the claimed behavior. Specification changes need explicit semantics and worked examples. Evaluation changes need reproducible inputs plus machine-readable outputs. Documentation changes need correspondence with the implementation.
+          </p>
+          <p>
+            Technical discussion has highest value once it resolves a specific engineering or formal question. The project favors contributions that reduce ambiguity between a stated guarantee and the mechanism used to establish it.
+          </p>
         </div>
+      </section>
 
-        <h1 className="font-light tracking-tight text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-8">
-          How to Get Involved · On-Ramps and Programs
-        </h1>
-
-        <p className="font-serif text-xl md:text-2xl leading-snug text-foreground/[0.85] italic">
-          Movements outlast companies through shared methods and open evidence. Verifiable AI infrastructure depends on coordinated work across research and engineering. Audit plus adoption complete the institutional cycle. Repeated specification and proof feed execution. Demonstration closes the cycle and establishes rigorous practice as the norm.
-        </p>
-      </header>
-
-    {/* Programs */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Programs (choose your lane)</h2>
-        <div className="space-y-6">
-          {programs.map((program, index) => (
-            <Card key={index} className="border-l-4 border-l-primary">
-              <CardContent className="p-4">
-                <div className="flex items-start gap-3">
-                  <div className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm flex-shrink-0">
-                    {program.letter}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <program.icon className="h-5 w-5 text-primary" />
-                      <h3 className="font-semibold text-lg">{program.title}</h3>
-                    </div>
-                    <div className="space-y-2 text-sm">
-                      <div>
-                        <span className="font-semibold">Working Groups: </span>
-                        <span className="font-normal">{program.workingGroups}</span>
-                      </div>
-                      <div>
-                        <span className="font-semibold">Deliverables: </span>
-                        <span className="font-normal text-muted-foreground">{program.deliverables}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-
-    {/* Starter Checklist */}
-    <Card className="mb-8 bg-trust/5 border-trust/20">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Starter Checklist (any organization)</h2>
-        <div className="space-y-3">
-          {checklist.map((item, index) => (
-            <div key={index} className="flex items-start gap-3">
-              <div className="bg-trust text-white w-6 h-6 rounded-full flex items-center justify-center font-semibold text-sm flex-shrink-0">
-                {index + 1}
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">02 · Work surfaces</div>
+        <div>
+          <h2 className="text-2xl font-medium tracking-tight">
+            Work across the verification chain
+          </h2>
+          <div className="mt-7 divide-y divide-border border-y border-border">
+            {[
+              [
+                "Policy and semantics",
+                "Define the governed action model. Specify state transitions. State admissibility rules in a form suitable for implementation and review.",
+              ],
+              [
+                "Runtime mediation",
+                "Improve effect interception and monitor execution. Test rejection behavior. Record the active policy identity at the execution boundary.",
+              ],
+              [
+                "Evidence and replay",
+                "Strengthen certificate structure. Bind records to executed traces. Improve independent reconstruction of runtime decisions.",
+              ],
+              [
+                "Evaluation",
+                "Construct adversarial traces. Measure verifier agreement. Publish reproducible evaluation records tied to declared configurations.",
+              ],
+            ].map(([title, body]) => (
+              <div key={title} className="grid gap-3 py-6 md:grid-cols-[190px_1fr] md:gap-8">
+                <h3 className="font-medium text-foreground">{title}</h3>
+                <p className="leading-7 text-foreground/75">{body}</p>
               </div>
-              <span className="text-sm font-normal">{item}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">03 · Public repositories</div>
+        <div className="space-y-7">
+          <h2 className="text-2xl font-medium tracking-tight">
+            Start from an existing technical surface
+          </h2>
+          <p className="leading-7 text-foreground/80">
+            Contribution starts from the public artifact closest to the proposed change. Read its tests and current interfaces. Reproduce the relevant behavior locally. Scope the change around one claim suitable for independent examination.
+          </p>
+
+          <div className="divide-y divide-border border-y border-border">
+            <div className="grid gap-3 py-6 md:grid-cols-[190px_1fr] md:gap-8">
+              <a
+                href="https://github.com/SentinelOps-CI/provability-fabric"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium underline underline-offset-4 decoration-border hover:decoration-foreground"
+              >
+                Provability Fabric
+              </a>
+              <p className="leading-7 text-foreground/75">
+                Runtime control, formal policy machinery, evidence generation, replay, and conformance work for agent execution.
+              </p>
             </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
 
-    {/* Ecosystem KPIs */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Ecosystem KPIs</h2>
-        <div className="grid md:grid-cols-3 gap-4">
-          {kpiCategories.map((category, index) => (
-            <Card key={index}>
-              <CardContent className="p-4">
-                <h3 className="font-semibold mb-3">{category.title}</h3>
-                <ul className="space-y-1">
-                  {category.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-2">
-                      <CheckSquare className="h-3 w-3 text-trust mt-1 flex-shrink-0" />
-                      <span className="text-xs font-normal">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+            <div className="grid gap-3 py-6 md:grid-cols-[190px_1fr] md:gap-8">
+              <a
+                href="https://github.com/SentinelOps-CI/model-asset-guard"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium underline underline-offset-4 decoration-border hover:decoration-foreground"
+              >
+                Model Asset Guard
+              </a>
+              <p className="leading-7 text-foreground/75">
+                Verification work for fixed model artifacts, with emphasis on integrity checks across model assets and associated metadata.
+              </p>
+            </div>
 
-    {/* Code of Practice */}
-    <Card className="mb-8">
-      <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">Code of Practice</h2>
-        <div className="space-y-3 text-sm font-normal">
-          <div className="flex items-start gap-2">
-            <CheckSquare className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-            <span>Evidence takes precedence over rhetoric. Projects publish open artifacts and maintain respectful collaboration.</span>
-          </div>
-          <div className="flex items-start gap-2">
-            <CheckSquare className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-            <span>Every effort states its guarantee scope and explicit exclusions.</span>
-          </div>
-          <div className="flex items-start gap-2">
-            <CheckSquare className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-            <span>Governance is multi-stakeholder, with transparent roadmaps and explicit deprecation policies. The ecosystem evolves under shared standards and preserves evidence interoperability.</span>
+            <div className="grid gap-3 py-6 md:grid-cols-[190px_1fr] md:gap-8">
+              <a
+                href="https://github.com/SentinelOps-CI/sentinelops.world"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium underline underline-offset-4 decoration-border hover:decoration-foreground"
+              >
+                SentinelOps website
+              </a>
+              <p className="leading-7 text-foreground/75">
+                Public documentation and research notes. Contributions here need technical correspondence with the repositories they describe.
+              </p>
+            </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </section>
 
-    {/* Get Started CTA */}
-    <Card className="bg-gradient-to-r from-primary/5 to-trust/5 border-primary/20">
-      <CardContent className="p-8 text-center">
-        <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-        <h2 className="text-2xl font-semibold mb-3">Ready to Get Started?</h2>
-        <p className="text-muted-foreground mb-6 max-w-2xl mx-auto font-normal">
-          Join the community building verifiable AI infrastructure. Choose a programme aligned with your expertise and contribute artifacts designed for independent verification.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" asChild className="font-medium">
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">04 · Review standard</div>
+        <div className="space-y-7">
+          <h2 className="text-2xl font-medium tracking-tight">
+            Review the claim and the artifact together
+          </h2>
+          <div className="overflow-x-auto border-y border-border">
+            <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+              <thead className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                <tr className="border-b border-border">
+                  <th className="py-4 pr-6 font-medium">Change</th>
+                  <th className="py-4 font-medium">Review question</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border text-foreground/75">
+                <tr>
+                  <td className="py-4 pr-6 font-medium text-foreground">Specification</td>
+                  <td className="py-4">Is the claim scope explicit and testable from the declared semantics?</td>
+                </tr>
+                <tr>
+                  <td className="py-4 pr-6 font-medium text-foreground">Runtime code</td>
+                  <td className="py-4">Does the execution path mediate the intended effect and expose rejection behavior?</td>
+                </tr>
+                <tr>
+                  <td className="py-4 pr-6 font-medium text-foreground">Evidence artifact</td>
+                  <td className="py-4">Does the record bind the decision to the relevant policy identity and executed trace?</td>
+                </tr>
+                <tr>
+                  <td className="py-4 pr-6 font-medium text-foreground">Evaluation</td>
+                  <td className="py-4">Does the published record support independent reconstruction of the result?</td>
+                </tr>
+                <tr>
+                  <td className="py-4 pr-6 font-medium text-foreground">Documentation</td>
+                  <td className="py-4">Does the text correspond to the current implementation and public interfaces?</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">05 · First contribution</div>
+        <div className="space-y-7">
+          <h2 className="text-2xl font-medium tracking-tight">
+            Keep the first change bounded and reproducible
+          </h2>
+          <div className="divide-y divide-border border-y border-border">
+            {[
+              ["01", "Read", "Study the relevant repository documentation, tests, and current interfaces."],
+              ["02", "Reproduce", "Establish the current behavior from a fixed revision and record the configuration used."],
+              ["03", "Change", "Implement one bounded improvement with tests or evidence tied to the stated claim."],
+              ["04", "Submit", "Open a focused pull request that states the claim scope and includes the material needed for independent review."],
+            ].map(([number, title, body]) => (
+              <div key={number} className="grid gap-3 py-5 md:grid-cols-[64px_110px_1fr] md:gap-6">
+                <div className="font-mono text-xs text-muted-foreground">{number}</div>
+                <h3 className="font-medium">{title}</h3>
+                <p className="leading-7 text-foreground/75">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-6 border-t border-border pt-8 md:grid-cols-[150px_1fr] md:gap-10">
+        <div className="eyebrow">06 · Coordination</div>
+        <div className="space-y-5">
+          <h2 className="text-2xl font-medium tracking-tight">
+            Keep technical decisions close to the public record
+          </h2>
+          <p className="leading-7 text-foreground/80">
+            SentinelOps favors public technical records for design choices that affect claims, interfaces, or evaluation. Review centers on claim scope, reproducibility, and external checkability. High-leverage contributions make the relation between a stated guarantee and its supporting artifact easier to inspect.
+          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-3 pt-2 text-sm">
             <a
               href="https://github.com/orgs/SentinelOps-CI/repositories"
               target="_blank"
               rel="noopener noreferrer"
+              className="underline underline-offset-4 decoration-border hover:decoration-foreground"
             >
-              Join on GitHub
+              Browse SentinelOps repositories
             </a>
-          </Button>
-          <Button variant="outline" size="lg" asChild className="font-medium">
-            <Link to="/docs">Read Documentation</Link>
-          </Button>
+            <a
+              href="/docs"
+              className="underline underline-offset-4 decoration-border hover:decoration-foreground"
+            >
+              Read technical documentation
+            </a>
+          </div>
         </div>
-      </CardContent>
-    </Card>
-  </article>
-</Layout>
-
-
+      </section>
+    </ResearchNote>
+  </Layout>
 );
-};
 
 export default HowToGetInvolved;
