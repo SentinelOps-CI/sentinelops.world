@@ -1,0 +1,22 @@
+name: Temporary lockfile diagnosis
+on:
+  pull_request:
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/lockfile-diagnostic.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Resolve package metadata without installing code
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          node -e 'const l=require("./package-lock.json"); console.log("LOCKDATA="+JSON.stringify({root:l.packages[""].dependencies["react-helmet-async"],helmet:l.packages["node_modules/react-helmet-async"],compare:l.packages["node_modules/react-fast-compare"]}))'
