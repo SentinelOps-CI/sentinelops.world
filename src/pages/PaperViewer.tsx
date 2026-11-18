@@ -28,6 +28,7 @@ const PaperViewer = () => {
 
   useEffect(() => {
     let revoked = false;
+    let createdUrl: string | null = null;
     const load = async () => {
       if (!safeFileUrl) {
         setIsLoading(false);
@@ -51,7 +52,12 @@ const PaperViewer = () => {
           });
         }
         const url = URL.createObjectURL(blob);
-        if (!revoked) setBlobUrl(url);
+        if (!revoked) {
+          createdUrl = url;
+          setBlobUrl(url);
+        } else {
+          URL.revokeObjectURL(url);
+        }
       } catch (err) {
         console.error("PDF view error:", err);
         toast({
@@ -66,7 +72,7 @@ const PaperViewer = () => {
     load();
     return () => {
       revoked = true;
-      if (blobUrl) URL.revokeObjectURL(blobUrl);
+      if (createdUrl) URL.revokeObjectURL(createdUrl);
     };
   }, [safeFileUrl, toast]);
 
