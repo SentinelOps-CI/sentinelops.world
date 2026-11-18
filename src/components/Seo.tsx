@@ -22,8 +22,12 @@ const Seo = ({ title, description, path, type = "website", jsonLd, noIndex = fal
         publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "SentinelOps", url: SITE_URL },
       }
     : schema);
+  const jsonLdScripts = schemas.map((schema) => ({
+    type: "application/ld+json",
+    innerHTML: JSON.stringify(schema).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026"),
+  }));
   return (
-    <Helmet>
+    <Helmet script={jsonLdScripts}>
       <title>{title}</title>
       <meta name="description" content={description} />
       {noIndex && <meta name="robots" content="noindex,follow" />}
@@ -35,9 +39,6 @@ const Seo = ({ title, description, path, type = "website", jsonLd, noIndex = fal
       <meta property="og:site_name" content="SentinelOps" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      {schemas.map((schema, i) => (
-        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026") }} />
-      ))}
     </Helmet>
   );
 };
