@@ -7,6 +7,7 @@ const NotFound = () => {
   return (
     <Layout>
       <Seo
+        noIndex
         title="Page Unavailable · SentinelOps"
         description="This address points outside the current SentinelOps site map. Browse the core site map or research journal."
         path="/404"

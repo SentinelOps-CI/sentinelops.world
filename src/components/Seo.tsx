@@ -8,16 +8,26 @@ interface SeoProps {
   path: string;
   type?: "website" | "article";
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noIndex?: boolean;
 }
 
-const Seo = ({ title, description, path, type = "website", jsonLd }: SeoProps) => {
+const Seo = ({ title, description, path, type = "website", jsonLd, noIndex = false }: SeoProps) => {
   const url = `${SITE_URL}${path}`;
-  const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const inputSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const schemas = inputSchemas.map((schema) => schema["@type"] === "Article"
+    ? {
+        ...schema,
+        url,
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+        publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "SentinelOps", url: SITE_URL },
+      }
+    : schema);
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
+      {noIndex && <meta name="robots" content="noindex,follow" />}
+      {!noIndex && <link rel="canonical" href={url} />}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
@@ -26,7 +36,7 @@ const Seo = ({ title, description, path, type = "website", jsonLd }: SeoProps) =
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {schemas.map((schema, i) => (
-        <script key={i} type="application/ld+json">{JSON.stringify(schema)}</script>
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026") }} />
       ))}
     </Helmet>
   );

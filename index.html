@@ -9,6 +9,7 @@
     <meta name="author" content="SentinelOps" />
 
     <link rel="icon" href="/brand/sentinelops-mark.png" type="image/png">
+    <link rel="alternate" type="application/atom+xml" title="SentinelOps Research Notes" href="/feed.xml" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,9 +27,11 @@
       {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": "https://sentinelops.world/#organization",
         "name": "SentinelOps",
         "url": "https://sentinelops.world/",
         "logo": "https://sentinelops.world/brand/sentinelops-mark.png",
+        "sameAs": ["https://github.com/SentinelOps-CI"],
         "description": "Open-source verification platform that turns specifications into machine-checked proofs enforced at AI runtime."
       }
     </script>
@@ -37,7 +40,8 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "SentinelOps",
-        "url": "https://sentinelops.world/"
+        "url": "https://sentinelops.world/",
+        "publisher": { "@id": "https://sentinelops.world/#organization" }
       }
     </script>
   </head>

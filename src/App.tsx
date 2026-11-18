@@ -25,9 +25,9 @@ import HowToGetInvolved from "./pages/blog/HowToGetInvolved";
 import PaperViewer from "./pages/PaperViewer";
 import { Toaster } from "@/components/ui/toaster";
 
-function App() {
+export function AppRoutes() {
   return (
-    <Router>
+    <>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/products" element={<Products />} />
@@ -54,8 +54,12 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
-    </Router>
+    </>
   );
+}
+
+function App() {
+  return <Router><AppRoutes /></Router>;
 }
 
 export default App;

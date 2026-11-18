@@ -27,18 +27,6 @@ const PaperViewer = () => {
   }, [file]);
 
   useEffect(() => {
-    document.title = `${title} · View PDF`;
-    // Canonical tag
-    const link = document.createElement("link");
-    link.rel = "canonical";
-    link.href = window.location.href;
-    document.head.appendChild(link);
-    return () => {
-      document.head.removeChild(link);
-    };
-  }, [title]);
-
-  useEffect(() => {
     let revoked = false;
     const load = async () => {
       if (!safeFileUrl) {
@@ -85,6 +73,7 @@ const PaperViewer = () => {
   return (
     <Layout>
       <Seo
+        noIndex
         title={`${title} · Paper Viewer | SentinelOps`}
         description={`Read ${title} from SentinelOps, featuring research on formal verification and runtime safety for provably safe AI systems.`}
         path="/papers/view"

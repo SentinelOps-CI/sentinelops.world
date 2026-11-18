@@ -37,12 +37,12 @@ const Blog = () => {
   };
 
   const blogPosts = [
+    { id: 5, title: "Current Technical Program", description: "Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence. The next mile is scale and standards.", date: "2026-10-06", category: "Updates", readTime: "11 min", slug: "current-initiatives" },
     { id: 6, title: "Contributing to Verification Infrastructure", description: "Technical participation guide for public work across the SentinelOps verification stack.", date: "2025-08-15", category: "Participation", readTime: "7 min", slug: "how-to-get-involved" },
-    { id: 5, title: "Current Initiatives · What's Running Now", description: "Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence. The next mile is scale and standards.", date: "2025-08-01", category: "Updates", readTime: "11 min", slug: "current-initiatives" },
-    { id: 4, title: "Building Verification Infrastructure", description: "We are past intent. Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence.", date: "2025-07-15", category: "Infrastructure", readTime: "10 min", slug: "building-verification-infrastructure" },
-    { id: 3, title: "Mapping the Space · Taxonomy & Interfaces", description: "The safety conversation is noisy. Evidence scales through properties established by proof and enforced online.", date: "2025-07-01", category: "Technical", readTime: "15 min", slug: "mapping-the-space" },
-    { id: 2, title: "Ecosystem Development Timeline · 2025 → 2027", description: "Safety emerges through a repeated cadence. Specification leads to proof and execution. Demonstration then supports standardisation across domains.", date: "2025-06-15", category: "Roadmap", readTime: "8 min", slug: "ecosystem-development-timeline" },
-    { id: 1, title: "The Verifiable AI Ecosystem", description: "Three years from now, the \"AI internet\" feels boringly safe. Users benefit from a fabric in which every agent action is mediated through verified controls.", date: "2025-06-01", category: "Vision", readTime: "12 min", slug: "verifiable-ai-ecosystem" },
+    { id: 4, title: "Building Verification Infrastructure", description: "We are past intent. Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence.", date: "2025-08-15", category: "Infrastructure", readTime: "10 min", slug: "building-verification-infrastructure" },
+    { id: 2, title: "Verification Infrastructure Development Sequence", description: "Safety emerges through a repeated cadence. Specification leads to proof and execution. Demonstration then supports standardisation across domains.", date: "2025-07-15", category: "Roadmap", readTime: "8 min", slug: "ecosystem-development-timeline" },
+    { id: 3, title: "Mapping the Verification Space", description: "The safety conversation is noisy. Evidence scales through properties established by proof and enforced online.", date: "2025-06-15", category: "Technical", readTime: "15 min", slug: "mapping-the-space" },
+    { id: 1, title: "The Verifiable AI Ecosystem", description: "Three years from now, the \"AI internet\" feels boringly safe. Users benefit from a fabric in which every agent action is mediated through verified controls.", date: "2025-05-30", category: "Vision", readTime: "12 min", slug: "verifiable-ai-ecosystem" },
   ];
 
   const researchPapers = [
@@ -92,7 +92,7 @@ const Blog = () => {
                 >
                   <div className="md:col-span-2">
                     <time className="eyebrow text-foreground block">
-                      {new Date(post.date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
+                      {new Date(post.date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" })}
                     </time>
                     <span className="eyebrow text-muted-foreground mt-1 block">{post.category}</span>
                   </div>

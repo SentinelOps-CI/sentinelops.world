@@ -1,0 +1,47 @@
+name: Discoverability build
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'scripts/**'
+      - 'index.html'
+      - 'vercel.json'
+      - 'package*.json'
+      - '.github/workflows/discoverability.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'scripts/**'
+      - 'index.html'
+      - 'vercel.json'
+      - 'package*.json'
+      - '.github/workflows/discoverability.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  static-html:
+    name: Build and verify crawlable HTML
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - name: Install dependencies from lockfile
+        run: npm ci
+      - name: Lint application
+        run: npm run lint
+      - name: Type-check application
+        run: npx tsc --project tsconfig.app.json --noEmit
+      - name: Build and check prerendered pages
+        run: npm run build

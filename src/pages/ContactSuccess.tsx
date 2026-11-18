@@ -7,6 +7,7 @@ const ContactSuccess = () => {
   return (
     <Layout>
       <Seo
+        noIndex
         title="Message Received · SentinelOps"
         description="Thanks for reaching out. We've received your message and will get back to you shortly."
         path="/contact/success"

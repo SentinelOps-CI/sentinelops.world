@@ -7,6 +7,7 @@ const SubscribeSuccess = () => {
   return (
     <Layout>
       <Seo
+        noIndex
         title="Subscribed · Thanks for Joining | SentinelOps"
         description="You're subscribed to the SentinelOps newsletter. Expect updates on verified AI research, releases, and contributor calls."
         path="/subscribe/success"
