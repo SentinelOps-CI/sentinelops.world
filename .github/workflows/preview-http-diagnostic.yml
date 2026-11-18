@@ -1,0 +1,19 @@
+name: Temporary preview HTTP verification
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/preview-http-diagnostic.yml'
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check served preview routes and assets
+        run: |
+          node scripts/check-live.mjs https://sentinelopsworld-git-seo-prerender-discover-71a65c-lar-projects.vercel.app
