@@ -8,11 +8,10 @@ import { resolve, join } from "node:path";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server.js";
-import helmetPackage from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 import { createServer } from "vite";
 import { indexedRoutes } from "./site-routes.mjs";
 
-const { HelmetProvider } = helmetPackage;
 const dist = resolve("dist");
 const template = await readFile(join(dist, "index.html"), "utf8");
 
