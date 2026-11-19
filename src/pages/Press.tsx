@@ -33,11 +33,8 @@ const Press = () => (
     <section className="border-b border-[hsl(var(--rule))] bg-[hsl(var(--paper-bright))]">
       <div className="container-paper py-16 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-          <div className="lg:col-span-3">
-            <div className="hero-kicker">Background</div>
-            <div className="eyebrow mt-4">Media reference</div>
-          </div>
-          <div className="lg:col-span-9 max-w-4xl">
+
+<div className="lg:col-span-12 max-w-4xl">
             <h1 className="mb-7">Press and research background.</h1>
             <p className="text-xl sm:text-2xl leading-relaxed max-w-3xl">
               An introduction to SentinelOps and direct references for journalists and

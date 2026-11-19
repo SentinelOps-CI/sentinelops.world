@@ -144,10 +144,17 @@ try {
     for (const label of ["Products", "Mission", "Docs", "Writing"]) {
       assert.equal(await menu.getByRole("link", { name: label }).count(), 1);
     }
-    await page.getByRole("complementary", { name: "Illustrative proof-carrying behaviour model" }).waitFor();
+    await page.getByRole("complementary", { name: "Provability Fabric project example" }).waitFor();
+    assert.equal(await page.locator(".site-brand__name").innerText(), "SentinelOps");
+    assert.equal(await page.locator(".institutional-strip").count(), 0);
+    assert.equal(await page.locator(".site-brand__subline").count(), 0);
+    assert.match(await page.locator("aside.home-hero__aside").innerText(), /One of the SentinelOps projects/);
+    await page.locator("details.home-hero__technical > summary").click();
     assert.match(await page.locator("main").innerText(), /Lean 4.*Rust.*WASM/s);
     assert.match(await page.locator("main").innerText(), /licence/i);
-    assert.match(await page.locator("main").innerText(), /proof-carrying behaviour/i);
+    assert.match(await page.locator("aside.home-hero__aside").innerText(), /Provability Fabric/);
+    await page.locator("details.home-hero__project-detail > summary").click();
+    assert.match(await page.locator("main").innerText(), /Proof status/);
     await page.goto(origin + "/products", { waitUntil: "load" });
     assert.equal(await page.locator("main details.research-source-note").count(), 11);
     await page.locator("main details.research-source-note").first().locator("summary").click();

@@ -48,7 +48,7 @@ const files = {
   blog: read("src/pages/Blog.tsx"),
 };
 const expected = {
-  layout: ["Products", "Mission", "Docs", "Writing", "Provability Fabric", "sentinelops-mark.png", "Sitemap", "Privacy", "Terms", "Status"],
+  layout: ["Products", "Mission", "Docs", "Writing", "sentinelops-mark.png", "Sitemap", "Privacy", "Terms", "Status"],
   home: ["Provable safety for autonomous agents", "Provability Fabric", "Proof-carrying behaviour", "Stack", "Licence", "Mode", "Lean 4", "Rust", "WASM", "Specification-driven", "Runtime mediation", "Audit by default", "Specify", "Prove", "Enforce", "Receive new writing", "subscribe-email"],
   mission: ["Safety first", "Rigour", "Open collaboration", "Practical innovation", "Empirical testing", "Formal verification", "Foundation", "Industry adoption", "Standard setting", "Ubiquitous verification", "2024", "2025", "2026", "2027+"],
   products: ["Products.", "Original project description and classification", "originalNumber", "topics", "previousStatus", "Browse all repositories"],
@@ -64,6 +64,10 @@ for (const [page, items] of Object.entries(expected)) {
     assert.ok(files[page].includes(item), page + " lost original element: " + item);
   }
 }
+// SentinelOps is the parent organization; Provability Fabric is a project only.
+assert.doesNotMatch(files.layout, /Provability Fabric|institutional-strip|site-brand__subline|site-footer__subtitle/);
+assert.match(files.home, /One of the SentinelOps projects/);
+assert.match(files.home, /View this project/);
 const projectNames = [...files.projects.matchAll(/originalNumber:\s*"([^"]+)"/g)].map((match) => match[1]);
 assert.equal(projectNames.length, 11);
 assert.equal(new Set(projectNames).size, 11);

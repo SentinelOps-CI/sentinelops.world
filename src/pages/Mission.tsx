@@ -87,11 +87,8 @@ const Mission = () => (
     <section className="border-b border-[hsl(var(--rule))] bg-[hsl(var(--paper-bright))]">
       <div className="container-paper py-16 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-          <div className="lg:col-span-3">
-            <div className="hero-kicker">Research method</div>
-            <div className="eyebrow mt-4">Statement of purpose</div>
-          </div>
-          <div className="lg:col-span-9 max-w-5xl">
+
+<div className="lg:col-span-12 max-w-5xl">
             <h1 className="mb-7">From formal claims to controlled execution.</h1>
             <p className="text-xl sm:text-2xl leading-relaxed max-w-4xl text-foreground/85">
               SentinelOps investigates the conditions under which specified properties of

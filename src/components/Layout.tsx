@@ -33,13 +33,6 @@ const Layout = ({ children }: LayoutProps) => {
         Skip to main content
       </a>
 
-      <div className="institutional-strip">
-        <div className="container-paper institutional-strip__inner">
-          <span>SentinelOps / Formal methods and agent execution</span>
-          <span className="institutional-strip__right">Open research / Versioned sources</span>
-        </div>
-      </div>
-
       <header className="site-header">
         <div className="container-paper site-header__inner">
           <Link to="/" className="site-brand" aria-label="SentinelOps — home">
@@ -51,10 +44,7 @@ const Layout = ({ children }: LayoutProps) => {
                 height="30"
               />
             </span>
-            <span className="site-brand__text">
-              <span className="site-brand__name">SentinelOps</span>
-              <span className="site-brand__subline">Provability Fabric</span>
-            </span>
+            <span className="site-brand__name">SentinelOps</span>
           </Link>
 
           <nav className="site-nav" aria-label="Main navigation">
@@ -134,25 +124,18 @@ const Layout = ({ children }: LayoutProps) => {
                 </Link>
                 <div>
                   <Link to="/" className="site-footer__name">SentinelOps</Link>
-                  <div className="site-footer__subtitle">Provability Fabric</div>
                 </div>
               </div>
-              <p>
-                Open research on formal specifications, runtime mediation, and inspectable
-                evidence for autonomous software.
-              </p>
               <a href={GITHUB_ORG} target="_blank" rel="noopener noreferrer" className="site-footer__source">
                 Inspect the source <span aria-hidden="true">↗</span>
               </a>
             </div>
             <nav aria-label="Footer navigation" className="site-footer__links">
-              <div className="site-footer__links-title">Explore</div>
               {navLinks.map((item) => (
                 <Link to={item.to} key={item.to}>{item.label}</Link>
               ))}
             </nav>
             <nav aria-label="Policies and contact" className="site-footer__links">
-              <div className="site-footer__links-title">Reference</div>
               <Link to="/contact">Contact</Link>
               <Link to="/status">Status</Link>
               <Link to="/sitemap">Sitemap</Link>
@@ -163,7 +146,6 @@ const Layout = ({ children }: LayoutProps) => {
 
           <div className="site-footer__baseline">
             <span>© 2026 SentinelOps · All rights reserved</span>
-            <span>Open research infrastructure / sentinelops.world</span>
           </div>
         </div>
       </footer>

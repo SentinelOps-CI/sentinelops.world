@@ -62,11 +62,8 @@ const Blog = () => {
       <section className="border-b border-[hsl(var(--rule))] bg-[hsl(var(--paper-bright))]">
         <div className="container-paper py-16 sm:py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-            <div className="lg:col-span-3 pt-2">
-              <div className="hero-kicker">Journal</div>
-              <div className="eyebrow mt-4">Research & writing</div>
-            </div>
-            <div className="lg:col-span-9 max-w-4xl">
+
+<div className="lg:col-span-12 max-w-4xl">
               <h1 className="mb-7">Writing.</h1>
               <p className="font-serif text-2xl leading-relaxed text-foreground/[0.86] max-w-3xl">
                 Research writing spans formal methods and runtime verification. Technical notes

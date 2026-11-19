@@ -7,8 +7,6 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
-const GITHUB_ORG = "https://github.com/orgs/SentinelOps-CI/repositories";
-
 const Index = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
