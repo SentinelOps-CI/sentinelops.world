@@ -25,9 +25,7 @@ const forbidden = [
   [/Testing approximates\. Proof guarantees|mathematical certainty/gi, ["mission"]],
   [/Every action ships with cryptographic evidence|every action an AI agent/gi, ["home"]],
   [/proof_status|policy_hash|effect_gate/gi, ["home"]],
-  [/state:\s*"Operational"|Current incident register is clear|state:\s*"Active"/gi, ["status"]],
-  [/receives backing for formal verification|Founded in 2023|respond within\s+four hours/gi, ["press"]],
-  [/Full-time · Remote|conference budget|generous research time/gi, ["careers"]],
+  [/\bstate:\s*"Operational"|Current incident register is clear|\bstate:\s*"Active"/gi, ["status"]],
 ];
 for (const [pattern, pages] of forbidden) {
   for (const page of pages) {
@@ -40,9 +38,13 @@ assert.match(source.status, /does not measure\s+availability continuously/);
 assert.match(source.status, /issues\/3/);
 assert.match(source.press, /primary materials/i);
 assert.match(source.careers, /not a listing of\s+confirmed paid vacancies/i);
+assert.match(source.press, /previous website/i, "Historical press entries need context");
+assert.match(source.careers, /No active vacancy/i, "Earlier role profiles must be unconfirmed");
+assert.match(source.status, /earlierState/i, "Old status labels should remain contextualized");
+assert.match(source.projects, /earlier site|original project catalogue/i, "Project descriptions need editorial scope");
 assert.match(source.projects, /@\/data\/projects/);
 assert.match(source.docs, /@\/data\/projects/);
-assert.match(source.blog, /<h1[^>]*>Research notes\.<\/h1>/);
+assert.match(source.blog, /<h1[^>]*>Writing\.<\/h1>/);
 
 const projects = [...source.catalogue.matchAll(/repository:\s*"(https:\/\/github\.com\/SentinelOps-CI\/[^"]+)"/g)]
   .map((match) => match[1]);

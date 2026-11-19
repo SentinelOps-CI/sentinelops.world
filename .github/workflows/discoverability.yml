@@ -47,5 +47,7 @@ jobs:
         run: node scripts/check-design.mjs
       - name: Verify editorial trust boundaries
         run: node scripts/check-content.mjs
+      - name: Verify original website content preservation
+        run: node scripts/check-preservation.mjs
       - name: Build and check prerendered pages
         run: npm run build

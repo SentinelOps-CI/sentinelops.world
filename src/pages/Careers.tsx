@@ -25,6 +25,32 @@ const areas = [
   },
 ];
 
+/** Original site role profiles, retained with vacancy status unverified. */
+const earlierRoleProfiles = [
+  {
+    title: "Formal Verification Engineer",
+    arrangement: "Full-time · Remote",
+    description: "Develop proof systems and verification tools for behavioural safety of autonomous agents. Work primarily with Lean and Rust. Supporting systems use Coq and TypeScript.",
+  },
+  {
+    title: "ML Safety Researcher",
+    arrangement: "Full-time · Remote",
+    description: "Research and formalize safety constraints plus verification patterns for machine-learning systems. Publish artifacts and datasets alongside reproducible benchmarks and written results.",
+  },
+  {
+    title: "Developer Experience Engineer",
+    arrangement: "Full-time · Remote",
+    description: "Make formal verification accessible through technical writing and tooling. Build end-to-end developer onboarding. Maintain documentation and examples alongside CI and contributor pathways.",
+  },
+];
+
+const originalValues = [
+  { title: "Safety first", description: "We prioritize the soundness and reliability of AI systems above all else." },
+  { title: "Open source", description: "We work in the open and publish artifacts designed for independent reproduction." },
+  { title: "Community", description: "We foster an inclusive environment where diverse perspectives strengthen the work." },
+  { title: "Impact", description: "We build tools that meaningfully shape the future of trustworthy AI." },
+];
+
 const Careers = () => (
   <Layout>
     <Seo
@@ -95,16 +121,63 @@ const Careers = () => (
         </div>
       </section>
 
+      <section className="mb-16" aria-labelledby="career-profiles">
+        <div className="section-frame section-heading mb-8">
+          <div className="section-index">03 / Earlier role profiles</div>
+          <div className="section-title">
+            <h2 id="career-profiles">Technical roles described on the original site.</h2>
+            <p className="mt-4 max-w-3xl text-muted-foreground">
+              The original website presented three full-time, remote positions.
+              These descriptions are retained for continuity. No active vacancy,
+              hiring commitment, compensation, or work arrangement is confirmed here.
+            </p>
+          </div>
+        </div>
+        <ol className="border-t border-[hsl(var(--rule))]">
+          {earlierRoleProfiles.map((role, i) => (
+            <li key={role.title} className="grid md:grid-cols-12 gap-4 md:gap-8 py-7 border-b border-[hsl(var(--rule))]">
+              <div className="md:col-span-1 text-sm text-primary">0{i + 1}</div>
+              <div className="md:col-span-4">
+                <h3 className="text-lg">{role.title}</h3>
+                <p className="text-sm mt-2 text-muted-foreground">
+                  Original listing: {role.arrangement}
+                </p>
+              </div>
+              <p className="md:col-span-7 leading-relaxed text-muted-foreground">{role.description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="mb-16" aria-labelledby="values-heading">
+        <div className="section-frame section-heading mb-8">
+          <div className="section-index">04 / Principles</div>
+          <div className="section-title">
+            <h2 id="values-heading">What we value.</h2>
+          </div>
+        </div>
+        <dl className="border-t border-[hsl(var(--rule))]">
+          {originalValues.map((value) => (
+            <div key={value.title} className="grid md:grid-cols-12 gap-4 md:gap-8 py-5 border-b border-[hsl(var(--rule))]">
+              <dt className="md:col-span-3 text-lg">{value.title}</dt>
+              <dd className="md:col-span-9 text-muted-foreground leading-relaxed">{value.description}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
       <section>
         <div className="section-frame section-heading mb-8">
-          <div className="section-index">03 / Correspondence</div>
+          <div className="section-index">05 / Correspondence</div>
           <div className="section-title"><h2>Employment inquiries.</h2></div>
         </div>
         <div className="max-w-3xl ml-auto">
           <p className="text-muted-foreground leading-relaxed">
             For a question about potential roles or formal collaboration, include your
-            research interests and links to relevant work. Any vacancy, hiring process,
-            compensation, or work arrangement must be confirmed directly.
+            research interests, a résumé, and links to relevant contributions or
+            publications. The original site described technical interviews, research
+            time, equipment support, publication freedom, and a conference budget.
+            Those arrangements and any vacancy must be confirmed directly.
           </p>
           <div className="flex flex-wrap gap-5 mt-6">
             <a

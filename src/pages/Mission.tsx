@@ -32,23 +32,47 @@ const workProgramme = [
 const researchPrinciples = [
   {
     number: "I",
-    title: "Explicit claim boundaries",
-    description: "A formal result establishes a proposition under stated definitions, premises, and trusted components. Its interpretation must preserve that scope.",
+    title: "Safety first",
+    description: "Safety properties need precise statements, justified assumptions, and scrutiny of the execution paths to which a verified property applies.",
   },
   {
     number: "II",
-    title: "Execution matters",
-    description: "Properties of a model need an implementation boundary. The enforcement point and all paths capable of bypassing it belong in the analysis.",
+    title: "Rigour",
+    description: "Formal verification and proof-carrying code provide evidence for explicit specifications and proof obligations, within their stated scope.",
   },
   {
     number: "III",
-    title: "Evidence follows the claim",
-    description: "A result is useful to an external reviewer only with enough context to reproduce the check, inspect its assumptions, and identify unsupported conclusions.",
+    title: "Open collaboration",
+    description: "Publishing source and evidence enables external examination. Reproducible checks and clear limitations make that examination meaningful.",
   },
   {
     number: "IV",
-    title: "Open technical scrutiny",
-    description: "Public repositories create an opportunity to examine implementations, tests, and revisions. The availability of code does not itself certify correctness.",
+    title: "Practical innovation",
+    description: "Connect academic formal methods to actual interfaces, deployment constraints, and the engineering evidence needed to assess their use.",
+  },
+];
+
+/** Dates and original project aims retained from the pre-redesign site. */
+const originalRoadmap = [
+  {
+    year: "2024",
+    title: "Foundation",
+    description: "The original site described the establishment of an open-source organisation and a core verification toolchain.",
+  },
+  {
+    year: "2025",
+    title: "Industry adoption",
+    description: "The previous roadmap named finance, healthcare, and autonomous-systems pilots. Confirm individual pilot records before treating these as completed deployments.",
+  },
+  {
+    year: "2026",
+    title: "Standard setting",
+    description: "The original objective concerned interoperable specifications and proof-exchange standards. Contributions must be identified through the relevant artifacts.",
+  },
+  {
+    year: "2027+",
+    title: "Ubiquitous verification",
+    description: "The long-range ambition is wider formal verification in consequential applications, not a forecast or a claim of universal adoption.",
   },
 ];
 
@@ -168,12 +192,73 @@ const Mission = () => (
       </div>
     </section>
 
+    <section className="border-b border-[hsl(var(--rule))]">
+      <div className="container-paper py-16 sm:py-20">
+        <div className="section-frame section-heading mb-9">
+          <div className="section-index">04 / Comparison</div>
+          <div className="section-title">
+            <h2>Testing and formal verification.</h2>
+            <p className="mt-4 max-w-3xl text-muted-foreground">
+              The original site compared empirical test coverage with adoption of formal
+              verification. Its numerical estimates lacked cited measurement methods.
+              This comparison preserves the subject without presenting invented percentages.
+            </p>
+          </div>
+        </div>
+        <figure className="research-comparison">
+          <div>
+            <h3>Empirical testing</h3>
+            <p>Examines observed outcomes under selected inputs and environments.</p>
+            <p className="research-comparison__detail">
+              Evidence to inspect: sampling, coverage, baselines, instrumentation, and failure records.
+            </p>
+          </div>
+          <div>
+            <h3>Formal verification</h3>
+            <p>Establishes a precisely stated property under a model and explicit assumptions.</p>
+            <p className="research-comparison__detail">
+              Evidence to inspect: formal statement, dependencies, trusted checker, and implementation correspondence.
+            </p>
+          </div>
+          <figcaption>
+            Comparison adapted from the original programme figure. No unverified
+            population-level coverage or adoption estimates are asserted.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section className="border-b border-[hsl(var(--rule))] bg-[hsl(var(--paper-bright))]">
+      <div className="container-paper py-16 sm:py-20">
+        <div className="section-frame section-heading mb-9">
+          <div className="section-index">05 / Roadmap</div>
+          <div className="section-title">
+            <h2>Programme milestones and ambitions.</h2>
+            <p className="mt-4 max-w-3xl text-muted-foreground">
+              The dated programme sequence is retained from the original website as
+              an editorial roadmap. A milestone's inclusion does not establish that
+              a project, pilot, or standard was completed on that date.
+            </p>
+          </div>
+        </div>
+        <ol className="border-t border-[hsl(var(--rule))]">
+          {originalRoadmap.map((entry) => (
+            <li key={entry.year} className="grid md:grid-cols-12 gap-4 md:gap-8 py-6 border-b border-[hsl(var(--rule))]">
+              <div className="md:col-span-2 text-primary">{entry.year}</div>
+              <h3 className="md:col-span-3 text-lg">{entry.title}</h3>
+              <p className="md:col-span-7 leading-relaxed text-muted-foreground">{entry.description}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
     <section>
       <div className="container-paper py-16 sm:py-20">
         <div className="grid md:grid-cols-12 gap-8">
-          <div className="md:col-span-3 eyebrow">04 / Evidence</div>
+          <div className="md:col-span-3 eyebrow">06 / Participation and evidence</div>
           <div className="md:col-span-9 max-w-3xl">
-            <h2 className="mb-5">Examine the work at source.</h2>
+            <h2 className="mb-5">Research is collective work.</h2>
             <p className="text-muted-foreground leading-relaxed mb-7">
               Implementations, open issues, release records, and research notes provide
               different kinds of evidence. Review the project repository for the versioned

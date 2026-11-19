@@ -2,22 +2,23 @@ import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
 import { Link } from "react-router-dom";
 import { projectGroups } from "@/data/projects";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const reviewSteps = [
   {
     number: "01",
-    title: "Locate the authoritative source",
-    detail: "Open the project's repository and identify the revision, its README, available releases, and issue history.",
+    title: "Choose your tool",
+    detail: "Select a project by its intended function, then open the authoritative repository and examine its README, releases, and issues.",
   },
   {
     number: "02",
-    title: "Identify the stated property",
-    detail: "Find the actual specification, test, or proof obligation. Note its inputs, assumptions, external dependencies, and trusted components.",
+    title: "Clone and install",
+    detail: "Follow the repository's setup instructions. Record the revision, dependency versions, and relevant proof or test obligations.",
   },
   {
     number: "03",
-    title: "Reproduce the relevant check",
-    detail: "Follow the repository's recorded setup and validation procedure. Distinguish a successful local run from a wider claim about deployed behavior.",
+    title: "Run the examples",
+    detail: "Execute provided examples or tests where available. Compare results with the stated specification and record limitations.",
   },
 ];
 
@@ -58,7 +59,7 @@ const Docs = () => (
         <div className="section-frame section-heading mb-9">
           <div className="section-index">01 / Method</div>
           <div className="section-title">
-            <h2>How to examine a project.</h2>
+            <h2>Getting started.</h2>
           </div>
         </div>
         <ol className="grid md:grid-cols-3 border-t border-b border-[hsl(var(--rule))] md:divide-x divide-[hsl(var(--rule))]">
@@ -134,6 +135,48 @@ const Docs = () => (
             </p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-20" aria-labelledby="documentation-faq">
+        <div className="section-frame section-heading mb-9">
+          <div className="section-index">04 / Questions</div>
+          <div className="section-title">
+            <h2 id="documentation-faq">Frequently asked questions.</h2>
+          </div>
+        </div>
+        <Accordion type="single" collapsible className="border-t border-[hsl(var(--rule))]">
+          {[
+  {
+    "q": "Where is the API documentation?",
+    "a": "Each project is documented in its source repository. Check the README and any documentation directories for the revision you intend to use; their scope differs by project."
+  },
+  {
+    "q": "How do I contribute to the documentation?",
+    "a": "Open a focused pull request in the relevant public repository. Follow the project's contribution instructions and include a link to the source or behavior your change documents."
+  },
+  {
+    "q": "Which tool is the best starting point?",
+    "a": "Start with Provability Fabric for runtime mediation, Spec-to-Proof for specification translation, or SpecSync for source-change verification workflows. Inspect the current implementation status before adopting a tool."
+  },
+  {
+    "q": "Are integration examples available?",
+    "a": "Some repositories publish examples and tests. Inspect the project README, examples directory where present, and the PF Testbed for test and integration material."
+  },
+  {
+    "q": "What programming languages are supported?",
+    "a": "The project collection includes Rust, Lean 4, Python, and TypeScript/JavaScript. Check a particular repository for supported bindings and toolchain versions."
+  }
+].map((item, index) => (
+            <AccordionItem value={"faq-" + index} key={item.q} className="border-b border-[hsl(var(--rule))]">
+              <AccordionTrigger className="text-left py-5 text-base hover:no-underline">
+                {item.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-base leading-relaxed text-muted-foreground pb-5">
+                {item.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </section>
 
       <section className="border-t border-[hsl(var(--rule-strong))] pt-9">

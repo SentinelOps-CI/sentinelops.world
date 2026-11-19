@@ -40,48 +40,21 @@ const Index = () => {
   };
 
   const principles = [
-    {
-      n: "I",
-      title: "Defined properties",
-      body: "A formal result establishes a particular proposition under explicit assumptions. Its scope must follow the claim into implementation and review.",
-    },
-    {
-      n: "II",
-      title: "Mediated effects",
-      body: "Runtime controls identify the actions under their authority, the checks applied to those actions, and the conditions outside their reach.",
-    },
-    {
-      n: "III",
-      title: "Inspectability",
-      body: "Versioned source, tests, and recorded decisions permit a reviewer to examine the evidence supporting a particular system property.",
-    },
+    { n: "I", title: "Specification-driven", body: "Behavioral obligations need precise specifications and a record of how policy statements are interpreted." },
+    { n: "II", title: "Runtime mediation", body: "Checks have a defined execution boundary. The governed effects, coverage, and bypass assumptions determine what the control establishes." },
+    { n: "III", title: "Audit by default", body: "Evidence records connect decisions to policy and implementation identity, making selected effects independently examinable." },
   ];
 
   const steps = [
-    {
-      figure: "01 / Specify",
-      title: "State the property",
-      caption: "Translate a policy into a precise condition with defined actors, effects, and assumptions.",
-      sample: "Evidence to inspect / A formal statement and its declared scope",
-    },
-    {
-      figure: "02 / Check",
-      title: "Check the obligation",
-      caption: "Evaluate the stated claim with an appropriate proof checker, model checker, or reproducible test.",
-      sample: "Evidence to inspect / Toolchain, premises, and validation result",
-    },
-    {
-      figure: "03 / Mediate",
-      title: "Connect to execution",
-      caption: "Identify the real action boundary and preserve records of the decisions made at that boundary.",
-      sample: "Evidence to inspect / Control coverage, decisions, and limitations",
-    },
+    { figure: "Fig. 1", title: "Specify", caption: "Interpret policy text as an explicit condition with declared actors and permissions.", sample: "Illustrative policy: Explicit consent authorizes agent access to user data." },
+    { figure: "Fig. 2", title: "Prove", caption: "State and check a formal obligation with recorded assumptions and toolchain versions.", sample: "Schematic proposition: authorized(action) implies allowed(action)." },
+    { figure: "Fig. 3", title: "Enforce", caption: "Mediate the supported effects and preserve evidence of actual runtime decisions.", sample: "Design condition: admit an action only following the applicable check." },
   ];
 
   const writing = [
-    { date: "2025-08-15", title: "Contributing to Verification Infrastructure", slug: "how-to-get-involved", dek: "Research participation across specifications, runtime controls, evidence records, and independent technical review." },
-    { date: "2025-08-15", title: "Building Verification Infrastructure", slug: "building-verification-infrastructure", dek: "Design considerations for linking formal specifications, runtime decisions, and technical evidence." },
-    { date: "2025-06-15", title: "Mapping the Verification Space", slug: "mapping-the-space", dek: "An examination of verification objectives and the boundaries of the evidence used to support them." },
+    { date: "2025-08-15", title: "Contributing to Verification Infrastructure", slug: "how-to-get-involved", dek: "Movements beat companies. Researchers and builders advance the verifiable AI internet through open collaboration. Auditors and adopters strengthen the same cycle." },
+    { date: "2025-08-15", title: "Building Verification Infrastructure", slug: "building-verification-infrastructure", dek: "Multiple stacks already compile policies into monitors, mediate effects, and emit verifiable evidence. The next mile is scale and standards." },
+    { date: "2025-06-15", title: "Mapping the Verification Space", slug: "mapping-the-space", dek: "The safety conversation is noisy. Evidence scales through properties established by proof and enforced online." },
   ];
 
   return (
@@ -96,15 +69,16 @@ const Index = () => {
         <div className="container-paper home-hero__layout">
           <div className="home-hero__primary">
             <div>
-              <div className="home-hero__kicker">Formal methods / runtime systems</div>
-              <h1 id="home-title">Verification at the point of execution.</h1>
+              <div className="home-hero__kicker">Provability Fabric / Open-source research</div>
+              <h1 id="home-title">Provable safety for autonomous agents.</h1>
               <p className="home-hero__summary">
-                SentinelOps investigates how formal properties, runtime controls, and evidence
-                records relate to the behavior of autonomous software.
+                Provability Fabric investigates how specifications, machine-checked proofs,
+                and runtime controls relate to the actions of autonomous software. The
+                research objective is evidence for precisely scoped safety claims.
               </p>
               <div className="home-hero__actions">
                 <Link to="/blog" className="home-hero__action home-hero__action--primary">
-                  Read the research <span aria-hidden="true">↗</span>
+                  Read the writing <span aria-hidden="true">↗</span>
                 </Link>
                 <a
                   href={GITHUB_ORG}
@@ -112,40 +86,52 @@ const Index = () => {
                   rel="noopener noreferrer"
                   className="home-hero__action home-hero__action--secondary"
                 >
-                  Inspect source <span aria-hidden="true">↗</span>
+                  Browse the code <span aria-hidden="true">↗</span>
                 </a>
               </div>
+            </div>
+            <div className="home-hero__metadata" aria-label="Project reference">
+              <div><span>Stack</span><p>Lean 4 · Rust · WASM across projects</p></div>
+              <div><span>Licence</span><p>Project-specific; see repository</p></div>
+              <div><span>Mode</span><p>Open source</p></div>
             </div>
             <div className="home-hero__folio">
               <span>01 — 04</span> Specification / mediation / evidence / replay
             </div>
           </div>
 
-          <aside className="home-hero__aside" aria-label="Research programme areas">
+          <aside className="home-hero__aside" aria-label="Illustrative proof-carrying behaviour model">
             <div className="home-hero__aside-head">
-              <span>Research focus</span>
-              <span>01 / 03</span>
+              <span>Proof-carrying behaviour</span><span>Reference model</span>
             </div>
+            <p className="home-hero__aside-disclaimer">
+              Conceptual interface, not a captured execution or verified certificate.
+            </p>
             <ol className="home-hero__aside-list">
               <li>
-                <span className="home-hero__aside-index">01</span>
-                <h2 className="home-hero__aside-title">Specification</h2>
-                <p className="home-hero__aside-description">Explicit policy and claim boundaries.</p>
+                <span className="home-hero__aside-index">01 / Policy</span>
+                <h2 className="home-hero__aside-title">Specify</h2>
+                <p className="home-hero__aside-description">Bind an action to declared capability and effect constraints.</p>
               </li>
               <li>
-                <span className="home-hero__aside-index">02</span>
-                <h2 className="home-hero__aside-title">Runtime mediation</h2>
-                <p className="home-hero__aside-description">Decision points governing consequential effects.</p>
+                <span className="home-hero__aside-index">02 / Proof</span>
+                <h2 className="home-hero__aside-title">Prove</h2>
+                <p className="home-hero__aside-description">Check the formal claim under stated premises and trusted components.</p>
               </li>
               <li>
-                <span className="home-hero__aside-index">03</span>
-                <h2 className="home-hero__aside-title">Independent evidence</h2>
-                <p className="home-hero__aside-description">Records for inspection, reproduction, and disagreement.</p>
+                <span className="home-hero__aside-index">03 / Runtime</span>
+                <h2 className="home-hero__aside-title">Enforce</h2>
+                <p className="home-hero__aside-description">Mediate supported effects and record the decision.</p>
               </li>
             </ol>
+            <dl className="home-hero__evidence">
+              <div><dt>Policy identity</dt><dd>Declared input</dd></div>
+              <div><dt>Proof status</dt><dd>Check required</dd></div>
+              <div><dt>Effect gate</dt><dd>Defined boundary</dd></div>
+              <div><dt>Evidence</dt><dd>Record to inspect</dd></div>
+            </dl>
             <div className="home-hero__aside-tail">
-              <span>Public research</span>
-              <span>SentinelOps</span>
+              <span>Illustration only</span><span>No runtime verdict implied</span>
             </div>
           </aside>
         </div>
@@ -182,8 +168,8 @@ const Index = () => {
               <div className="section-title">
                 <h2 className="mb-4">From policy text to an inspectable control.</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl">
-                  The stages describe distinct questions. Their relation must be established
-                  for each implementation and its operational setting.
+                  Specification, proof, and enforcement form a proposed chain. Each transition
+                  needs its own implementation and supporting evidence.
                 </p>
               </div>
             </div>
@@ -209,8 +195,8 @@ const Index = () => {
         <div className="container-paper programme-principles__inner">
           <div className="programme-principles__intro">
             <span className="programme-principles__kicker">02 / Principles</span>
-            <h2 id="principles-heading">Evidence defines the claim.</h2>
-            <p>Formal results, executable controls, and observational records answer different questions.</p>
+            <h2 id="principles-heading">Proof over promises.</h2>
+            <p>The original principles are retained, with their scope and limits stated explicitly.</p>
           </div>
           <ol className="programme-principles__list">
             {principles.map((p) => (

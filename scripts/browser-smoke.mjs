@@ -86,7 +86,7 @@ try {
     assert.equal(response?.status(), 200);
     await page.locator("main h1").waitFor();
     assert.equal(await page.locator("main h1").count(), 1);
-    assert.match(await page.locator("main h1").innerText(), /Verification at the point of execution/);
+    assert.match(await page.locator("main h1").innerText(), /Provable safety for autonomous agents/);
     assert.equal(await page.locator("link[rel=canonical]").count(), 1);
     await assertTypography(page);
     await assertViewport(page);
@@ -95,9 +95,9 @@ try {
 
   await check("Client-side research navigation survives hydration", async () => {
     await page.getByRole("navigation", { name: "Main navigation" })
-      .getByRole("link", { name: "Research" }).click();
+      .getByRole("link", { name: "Writing" }).click();
     await page.waitForURL("**/blog");
-    assert.match(await page.locator("main h1").innerText(), /Research notes/);
+    assert.match(await page.locator("main h1").innerText(), /Writing/);
     await page.locator('main a[href="/blog/current-initiatives"]').first().click();
     await page.waitForURL("**/blog/current-initiatives");
     assert.match(await page.locator("main h1").innerText(), /Current Technical Program/);
@@ -115,7 +115,7 @@ try {
   // Exercise every revised institutional page through the actual hydration path.
   const institutionalPages = [
     ["/mission", "From formal claims to controlled execution."],
-    ["/products", "Systems and research code."],
+    ["/products", "Products."],
     ["/docs", "Documentation begins with the source."],
     ["/status", "Public services and incidents."],
     ["/press", "Press and research background."],
@@ -137,6 +137,28 @@ try {
       }
     });
   }
+
+  await check("Original information architecture and technical figure are present", async () => {
+    await page.goto(origin + "/", { waitUntil: "load" });
+    const menu = page.getByRole("navigation", { name: "Main navigation" });
+    for (const label of ["Products", "Mission", "Docs", "Writing"]) {
+      assert.equal(await menu.getByRole("link", { name: label }).count(), 1);
+    }
+    await page.getByRole("complementary", { name: "Illustrative proof-carrying behaviour model" }).waitFor();
+    assert.match(await page.locator("main").innerText(), /Lean 4.*Rust.*WASM/s);
+    assert.match(await page.locator("main").innerText(), /Licence/);
+    assert.match(await page.locator("main").innerText(), /Proof-carrying behaviour/);
+    await page.goto(origin + "/products", { waitUntil: "load" });
+    assert.equal(await page.locator("main details.research-source-note").count(), 11);
+    await page.locator("main details.research-source-note").first().locator("summary").click();
+    assert.match(await page.locator("main").innerText(), /Original catalogue label: Core/);
+    await page.goto(origin + "/docs", { waitUntil: "load" });
+    assert.match(await page.locator("main").innerText(), /Frequently asked questions/);
+    await page.goto(origin + "/mission", { waitUntil: "load" });
+    assert.match(await page.locator("main").innerText(), /2027\+/);
+    await page.goto(origin + "/status", { waitUntil: "load" });
+    assert.match(await page.locator("main").innerText(), /Newsletter/);
+  });
 
   await check("Unknown URL returns native 404", async () => {
     const response = await page.goto(origin + "/__sentinelops_unknown_test__", { waitUntil: "load" });
@@ -185,9 +207,9 @@ try {
       await check("Mobile drawer navigation works", async () => {
         await mobilePage.getByRole("button", { name: "Open navigation" }).click();
         await mobilePage.getByRole("navigation", { name: "Mobile navigation" })
-          .getByRole("link", { name: "Research" }).click();
+          .getByRole("link", { name: "Writing" }).click();
         await mobilePage.waitForURL("**/blog");
-        assert.match(await mobilePage.locator("main h1").innerText(), /Research notes/);
+        assert.match(await mobilePage.locator("main h1").innerText(), /Writing/);
       });
     }
     await check("No hydration errors at " + width + "px", async () => {

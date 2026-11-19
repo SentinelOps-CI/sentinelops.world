@@ -3,27 +3,11 @@ import Seo from "@/components/Seo";
 import { Link } from "react-router-dom";
 
 const publicSurfaces = [
-  {
-    number: "01",
-    name: "Website",
-    description: "Research pages and public project information.",
-    href: "https://sentinelops.world/",
-    label: "sentinelops.world",
-  },
-  {
-    number: "02",
-    name: "Source code",
-    description: "Versioned implementations, issues, release history, and project-specific documentation.",
-    href: "https://github.com/orgs/SentinelOps-CI/repositories",
-    label: "GitHub repositories",
-  },
-  {
-    number: "03",
-    name: "Research archive",
-    description: "Published notes and reference documents indexed by the website.",
-    href: "https://sentinelops.world/blog",
-    label: "Writing index",
-  },
+  { number: "01", name: "Public website", description: "Production site and public research pages.", href: "https://sentinelops.world/", label: "sentinelops.world", earlierState: "Operational" },
+  { number: "02", name: "Source repositories", description: "Source control, implementation history, and release records.", href: "https://github.com/orgs/SentinelOps-CI/repositories", label: "GitHub · SentinelOps-CI", earlierState: "Published" },
+  { number: "03", name: "Documentation", description: "Technical documentation and project reference sources.", href: "https://sentinelops.world/docs", label: "sentinelops.world/docs", earlierState: "Published" },
+  { number: "04", name: "Newsletter", description: "Public subscription interface for research updates; no uptime or delivery monitoring is asserted.", href: "https://sentinelops.world/blog", label: "Subscription form", earlierState: "Active" },
+  { number: "05", name: "Research archive", description: "Previously published research notes and documents.", href: "https://sentinelops.world/blog", label: "Writing index", earlierState: "" },
 ];
 
 /** An editorial register, not a live monitor or uptime assertion. */
@@ -63,10 +47,10 @@ const Status = () => (
           <div className="section-heading">
             <div className="section-index">01 / Public endpoints</div>
             <div className="section-title">
-              <h2>Service directory.</h2>
+              <h2>Service register.</h2>
               <p className="text-muted-foreground mt-3 max-w-2xl">
-                Links identify public resources. Their presence does not establish current
-                reachability or continuous operation.
+                This register retains the original website, source, documentation, and
+                newsletter entries. Their earlier status labels are editorial, not live monitoring.
               </p>
             </div>
           </div>
@@ -84,6 +68,11 @@ const Status = () => (
               </dd>
               <dd className="md:col-span-5 text-muted-foreground leading-relaxed">
                 {surface.description}
+                {surface.earlierState && (
+                  <div className="mt-2 text-xs">
+                    Earlier site label: {surface.earlierState} (not live telemetry)
+                  </div>
+                )}
               </dd>
               <dd className="md:col-span-3 md:text-right">
                 <a
@@ -107,7 +96,7 @@ const Status = () => (
           <div className="section-heading">
             <div className="section-index">02 / Recorded issue</div>
             <div className="section-title">
-              <h2>Canonical-domain TLS configuration.</h2>
+              <h2>Operational history and incident record.</h2>
             </div>
           </div>
         </div>

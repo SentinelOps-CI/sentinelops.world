@@ -37,25 +37,25 @@ const Blog = () => {
   };
 
   const blogPosts = [
-    { id: 5, title: "Current Technical Program", description: "An account of the programme areas, current implementations, and questions still open to validation.", date: "2026-10-06", category: "Updates", readTime: "11 min", slug: "current-initiatives" },
+    { id: 5, title: "Current Technical Program", description: "Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence. The next mile is scale and standards.", date: "2026-10-06", category: "Updates", readTime: "11 min", slug: "current-initiatives" },
     { id: 6, title: "Contributing to Verification Infrastructure", description: "Technical participation guide for public work across the SentinelOps verification stack.", date: "2025-08-15", category: "Participation", readTime: "7 min", slug: "how-to-get-involved" },
-    { id: 4, title: "Building Verification Infrastructure", description: "Design questions for connecting formal specifications to runtime controls and reproducible evidence.", date: "2025-08-15", category: "Infrastructure", readTime: "10 min", slug: "building-verification-infrastructure" },
-    { id: 2, title: "Verification Infrastructure Development Sequence", description: "A proposed development sequence for specifications, verification tools, runtime controls, and evaluation.", date: "2025-07-15", category: "Roadmap", readTime: "8 min", slug: "ecosystem-development-timeline" },
-    { id: 3, title: "Mapping the Verification Space", description: "A taxonomy of technical properties, verification interfaces, and evidence boundaries.", date: "2025-06-15", category: "Technical", readTime: "15 min", slug: "mapping-the-space" },
-    { id: 1, title: "The Verifiable AI Ecosystem", description: "A vision for verification infrastructure and the conditions needed to evaluate its claims.", date: "2025-05-30", category: "Vision", readTime: "12 min", slug: "verifiable-ai-ecosystem" },
+    { id: 4, title: "Building Verification Infrastructure", description: "We are past intent. Multiple stacks already compile policies into monitors and mediate effects. They also emit verifiable evidence.", date: "2025-08-15", category: "Infrastructure", readTime: "10 min", slug: "building-verification-infrastructure" },
+    { id: 2, title: "Verification Infrastructure Development Sequence", description: "Safety emerges through a repeated cadence. Specification leads to proof and execution. Demonstration then supports standardisation across domains.", date: "2025-07-15", category: "Roadmap", readTime: "8 min", slug: "ecosystem-development-timeline" },
+    { id: 3, title: "Mapping the Verification Space", description: "The safety conversation is noisy. Evidence scales through properties established by proof and enforced online.", date: "2025-06-15", category: "Technical", readTime: "15 min", slug: "mapping-the-space" },
+    { id: 1, title: "The Verifiable AI Ecosystem", description: "Three years from now, the \"AI internet\" feels boringly safe. Users benefit from a fabric in which every agent action is mediated through verified controls.", date: "2025-05-30", category: "Vision", readTime: "12 min", slug: "verifiable-ai-ecosystem" },
   ];
 
   const researchPapers = [
-    { id: 1, title: "System Architecture", description: "Architecture reference for the verification programme.", type: "Architecture", pages: "19 pages", url: "/papers/architecture.pdf" },
-    { id: 2, title: "Technical Guide", description: "Technical reference covering implementation and verification topics.", type: "Technical", pages: "14 pages", url: "/papers/technical.pdf" },
-    { id: 3, title: "Whitepaper", description: "Programme overview and research direction.", type: "Whitepaper", pages: "37 pages", url: "/papers/whitepaper.pdf" },
+    { id: 1, title: "System Architecture", description: "Comprehensive architectural design and formal specifications for verifiable AI systems.", type: "Architecture", pages: "19 pages", url: "/papers/architecture.pdf" },
+    { id: 2, title: "Technical Guide", description: "Detailed technical documentation covering implementation methodologies and runtime verification techniques.", type: "Technical", pages: "14 pages", url: "/papers/technical.pdf" },
+    { id: 3, title: "Whitepaper", description: "Strategic roadmap for trusted AI infrastructure, grounded in the programme methodology and vision.", type: "Whitepaper", pages: "37 pages", url: "/papers/whitepaper.pdf" },
   ];
 
   return (
     <Layout>
       <Seo
-        title="Research Notes and Reference Papers | SentinelOps"
-        description="SentinelOps research notes on formal specifications, verification, runtime enforcement, evidence records, and open-source implementations."
+        title="Writing · Formal Methods for AI Safety | SentinelOps"
+        description="Deep dives into formal verification, runtime safety kernels, and the open-source infrastructure for provably safe AI agents."
         path="/blog"
       />
 
@@ -67,10 +67,10 @@ const Blog = () => {
               <div className="eyebrow mt-4">Research & writing</div>
             </div>
             <div className="lg:col-span-9 max-w-4xl">
-              <h1 className="mb-7">Research notes.</h1>
+              <h1 className="mb-7">Writing.</h1>
               <p className="font-serif text-2xl leading-relaxed text-foreground/[0.86] max-w-3xl">
-                Essays, technical notes, and reference documents examine how formal properties
-                relate to actual agent execution. Each text has its own evidentiary scope.
+                Research writing spans formal methods and runtime verification. Technical notes
+                and field reports examine the construction of provably safe AI.
               </p>
             </div>
           </div>
@@ -81,7 +81,7 @@ const Blog = () => {
         <section className="mb-24">
           <header className="flex items-baseline gap-4 mb-6 pb-4 border-b border-foreground">
             <div className="eyebrow">§1</div>
-            <h2 className="text-2xl">Articles and notes</h2>
+            <h2 className="text-2xl">Entries</h2>
           </header>
           <ol className="divide-y divide-[hsl(var(--rule))] border-b border-[hsl(var(--rule))]">
             {blogPosts.map((post) => (
@@ -115,7 +115,7 @@ const Blog = () => {
         <section className="mb-24">
           <header className="flex items-baseline gap-4 mb-8 pb-4 border-b border-foreground">
             <div className="eyebrow">§2</div>
-            <h2 className="text-2xl">Reference documents</h2>
+            <h2 className="text-2xl">Papers</h2>
           </header>
           <ol className="divide-y divide-[hsl(var(--rule))] border-b border-[hsl(var(--rule))]">
             {researchPapers.map((paper, i) => (

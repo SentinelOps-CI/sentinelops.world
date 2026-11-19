@@ -44,14 +44,14 @@ const Products = () => (
           </header>
 
           <ol className="border-t border-[hsl(var(--rule))]">
-            {group.projects.map((project, index) => (
+            {group.projects.map((project) => (
               <li
                 key={project.id}
                 id={project.id}
                 className="grid md:grid-cols-12 gap-4 md:gap-8 border-b border-[hsl(var(--rule))] py-7 sm:py-9 scroll-mt-28"
               >
                 <div className="md:col-span-1 eyebrow text-primary pt-1">
-                  {group.number}.{String(index + 1).padStart(2, "0")}
+                  {project.originalNumber}
                 </div>
                 <div className="md:col-span-4">
                   <h3>{project.name}</h3>

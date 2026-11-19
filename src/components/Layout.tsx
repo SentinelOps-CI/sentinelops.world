@@ -10,10 +10,10 @@ interface LayoutProps {
 const GITHUB_ORG = "https://github.com/orgs/SentinelOps-CI/repositories";
 
 const navLinks = [
-  { to: "/blog", label: "Research" },
-  { to: "/products", label: "Systems" },
-  { to: "/mission", label: "Method" },
+  { to: "/products", label: "Products" },
+  { to: "/mission", label: "Mission" },
   { to: "/docs", label: "Docs" },
+  { to: "/blog", label: "Writing" },
 ] as const;
 
 /**
@@ -128,7 +128,15 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="container-paper">
           <div className="site-footer__main">
             <div className="site-footer__identity">
-              <Link to="/" className="site-footer__name">SentinelOps</Link>
+              <div className="site-footer__brand">
+                <Link to="/" aria-label="SentinelOps home" className="site-footer__mark">
+                  <img src="/brand/sentinelops-mark.png" alt="" width="30" height="30" />
+                </Link>
+                <div>
+                  <Link to="/" className="site-footer__name">SentinelOps</Link>
+                  <div className="site-footer__subtitle">Provability Fabric</div>
+                </div>
+              </div>
               <p>
                 Open research on formal specifications, runtime mediation, and inspectable
                 evidence for autonomous software.
@@ -155,7 +163,7 @@ const Layout = ({ children }: LayoutProps) => {
 
           <div className="site-footer__baseline">
             <span>© 2026 SentinelOps · All rights reserved</span>
-            <span>sentinelops.world</span>
+            <span>Open research infrastructure / sentinelops.world</span>
           </div>
         </div>
       </footer>
