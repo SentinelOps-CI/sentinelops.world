@@ -125,6 +125,13 @@ pre, code, kbd { overflow-wrap: anywhere; }
   font-size: clamp(1.04rem, 1.1vw, 1.15rem);
   line-height: 1.85;
 }
+/*
+ * Article tables have intentional desktop-sized columns. Prevent the
+ * enclosing single-column CSS grid from expanding to the table's min-content
+ * width; the table itself stays horizontally scrollable on narrow screens.
+ */
+.article-paper section.grid > * { min-width: 0; }
+.article-paper .overflow-x-auto { min-width: 0; max-width: 100%; }
 .article-paper p + p { text-indent: 0; }
 .article-paper p { margin-bottom: 1.25em; }
 .article-paper blockquote {

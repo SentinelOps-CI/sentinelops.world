@@ -102,7 +102,7 @@ try {
   // Unrecognized / non-indexable SPA routes retain interactive React routing,
   // while the fallback response explicitly opts out of search indexing.
   const fallback = template.replace(
-    "</head>", '    <meta name="robots" content="noindex,follow" />\n  </head>',
+    "</head>", '    <meta name="robots" content="noindex,follow" data-spa-fallback-noindex="true" />\n  </head>',
   );
   await writeFile(join(dist, "spa-fallback.html"), fallback, "utf8");
 } finally {
