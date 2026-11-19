@@ -5,23 +5,16 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { chromium } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { indexedRoutes } from "./site-routes.mjs";
 
 const origin = process.env.SMOKE_ORIGIN ?? "http://127.0.0.1:4173";
 const outputDir = "artifacts/browser-smoke";
 await mkdir(outputDir, { recursive: true });
 const targets = [
-  { path: "/", width: 1440 },
-  { path: "/blog/current-initiatives", width: 1440 },
-  { path: "/contact", width: 1440 },
-  { path: "/mission", width: 1440 },
-  { path: "/products", width: 1440 },
-  { path: "/docs", width: 1440 },
-  { path: "/status", width: 1440 },
-  { path: "/press", width: 1440 },
-  { path: "/careers", width: 1440 },
-  { path: "/", width: 320 },
-  { path: "/products", width: 320 },
-  { path: "/status", width: 320 },
+  ...indexedRoutes.map((path) => ({ path, width: 1440 })),
+  ...indexedRoutes.map((path) => ({ path, width: 320 })),
+  ...["/contact/success", "/subscribe/success", "/papers/view"].map((path) => ({ path, width: 1440 })),
+  { path: "/__accessibility_unknown__", width: 1440, expectedStatus: 404 },
 ];
 const tags = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
 
@@ -41,7 +34,7 @@ try {
         waitUntil: "load",
         timeout: 30000,
       });
-      if (response?.status() !== 200) {
+      if (response?.status() !== (target.expectedStatus ?? 200)) {
         throw new Error("Accessibility target unavailable: " + target.path);
       }
 
@@ -103,5 +96,5 @@ await writeFile(
   "utf8",
 );
 
-console.log("Accessibility review: " + serious + " serious/critical, " + moderate + " remaining lower-impact rule findings");
-if (serious) process.exitCode = 1;
+console.log("Accessibility review on " + targets.length + " combinations: " + serious + " serious/critical, " + moderate + " moderate/minor findings");
+if (serious || moderate) process.exitCode = 1;

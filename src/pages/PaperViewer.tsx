@@ -5,36 +5,40 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ExternalLink, Download, FileText } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+
+/**
+ * Only the three public research PDFs appear in the viewer. Query parameters
+ * never authorize a fetch to an arbitrary origin or path, nor define a title.
+ */
+const PUBLIC_PAPERS = new Map([
+  ["/papers/architecture.pdf", "System Architecture"],
+  ["/papers/technical.pdf", "Technical Guide"],
+  ["/papers/whitepaper.pdf", "Whitepaper"],
+]);
 
 const PaperViewer = () => {
   const [searchParams] = useSearchParams();
   const file = searchParams.get("file");
-  const title = searchParams.get("title") || "Document";
+  const title = (file && PUBLIC_PAPERS.get(file)) || "Document unavailable";
   const [blobUrl, setBlobUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
-  const safeFileUrl = useMemo(() => {
-    if (!file) return null;
-    try {
-      // Ensure absolute URL for robust behavior across environments
-      return new URL(file, window.location.origin).toString();
-    } catch {
-      return null;
-    }
-  }, [file]);
+  const safeFileUrl = file && PUBLIC_PAPERS.has(file) ? file : null;
 
   useEffect(() => {
     let revoked = false;
     let createdUrl: string | null = null;
+    setBlobUrl(null);
+    setIsLoading(true);
     const load = async () => {
       if (!safeFileUrl) {
         setIsLoading(false);
         toast({
-          title: "Missing file",
-          description: "Select a PDF file to open the viewer.",
+          title: "Document unavailable",
+          description: "Select a research PDF from the writing index.",
           variant: "destructive",
         });
         return;
@@ -43,13 +47,8 @@ const PaperViewer = () => {
         const res = await fetch(safeFileUrl);
         if (!res.ok) throw new Error(`Failed to load PDF (${res.status})`);
         const blob = await res.blob();
-        // Basic content-type sanity check
         if (blob.type && !blob.type.includes("pdf")) {
-          // Continue preview and inform the user
-          toast({
-            title: "Unexpected file type",
-            description: "Attempting to preview the file.",
-          });
+          throw new Error("Document response is not a PDF");
         }
         const url = URL.createObjectURL(blob);
         if (!revoked) {
@@ -81,7 +80,7 @@ const PaperViewer = () => {
       <Seo
         noIndex
         title={`${title} · Paper Viewer | SentinelOps`}
-        description={`Read ${title} from SentinelOps, featuring research on formal verification and runtime safety for provably safe AI systems.`}
+        description={`Research document viewer for ${title} from SentinelOps.`}
         path="/papers/view"
       />
       <div className="container mx-auto px-4 py-8">
