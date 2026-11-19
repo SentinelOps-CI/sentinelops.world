@@ -118,7 +118,7 @@ const Index = () => {
               </li>
             </ol>
             <details className="home-hero__project-detail">
-              <summary>Evidence fields</summary>
+              <summary>Proof-carrying behaviour</summary>
               <dl className="home-hero__evidence">
                 <div><dt>Policy identity</dt><dd>Declared input</dd></div>
                 <div><dt>Proof status</dt><dd>Check required</dd></div>
