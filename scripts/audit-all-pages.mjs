@@ -73,6 +73,20 @@ try {
               documentWidth: document.documentElement.scrollWidth,
               bodyWidth: document.body.scrollWidth,
               viewportWidth: window.innerWidth,
+              overflowingElements: [...document.querySelectorAll("main *")]
+                .map((element) => {
+                  const r = element.getBoundingClientRect();
+                  return {
+                    tag: element.tagName.toLowerCase(),
+                    className: typeof element.className === "string" ? element.className.slice(0, 100) : "",
+                    left: Math.round(r.left), right: Math.round(r.right),
+                    width: Math.round(r.width),
+                    text: (element.textContent ?? "").trim().slice(0, 90),
+                  };
+                })
+                .filter((element) => element.right > window.innerWidth + 2 || element.left < -2)
+                .sort((a, b) => b.right - a.right)
+                .slice(0, 8),
               brokenImages: [...document.images]
                 .filter((img) => !img.complete || img.naturalWidth === 0)
                 .map((img) => img.getAttribute("src")),
@@ -83,7 +97,7 @@ try {
                   rel: link.getAttribute("rel") ?? "",
                 })),
             }));
-            assert.ok(inspection.documentWidth <= width + 1, "Document horizontal overflow");
+            assert.ok(inspection.documentWidth <= width + 1, "Document horizontal overflow: " + JSON.stringify({ doc: inspection.documentWidth, body: inspection.bodyWidth, offenders: inspection.overflowingElements }));
             assert.ok(inspection.bodyWidth <= width + 1, "Body horizontal overflow");
             assert.deepEqual(inspection.brokenImages, [], "Broken image");
             assert.deepEqual(runtimeErrors, [], "React hydration/runtime error");
