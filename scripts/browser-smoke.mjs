@@ -97,7 +97,7 @@ try {
     await page.getByRole("navigation", { name: "Main navigation" })
       .getByRole("link", { name: "Research" }).click();
     await page.waitForURL("**/blog");
-    assert.match(await page.locator("main h1").innerText(), /Writing/);
+    assert.match(await page.locator("main h1").innerText(), /Research notes/);
     await page.locator('main a[href="/blog/current-initiatives"]').first().click();
     await page.waitForURL("**/blog/current-initiatives");
     assert.match(await page.locator("main h1").innerText(), /Current Technical Program/);
@@ -149,7 +149,7 @@ try {
         await mobilePage.getByRole("navigation", { name: "Mobile navigation" })
           .getByRole("link", { name: "Research" }).click();
         await mobilePage.waitForURL("**/blog");
-        assert.match(await mobilePage.locator("main h1").innerText(), /Writing/);
+        assert.match(await mobilePage.locator("main h1").innerText(), /Research notes/);
       });
     }
     await check("No hydration errors at " + width + "px", async () => {

@@ -42,53 +42,53 @@ const Index = () => {
   const principles = [
     {
       n: "I",
-      title: "Specification-driven",
-      body: "Every behavioural requirement starts as a formal specification. Policy statements translate into machine-checkable constraints.",
+      title: "Defined properties",
+      body: "A formal result establishes a particular proposition under explicit assumptions. Its scope must follow the claim into implementation and review.",
     },
     {
       n: "II",
-      title: "Runtime mediation",
-      body: "Execution admits behaviour accompanied by a valid proof. Verification occurs in-line at runtime.",
+      title: "Mediated effects",
+      body: "Runtime controls identify the actions under their authority, the checks applied to those actions, and the conditions outside their reach.",
     },
     {
       n: "III",
-      title: "Audit by default",
-      body: "Every action ships with cryptographic evidence. Post-incident analysis follows directly from the evidence record.",
+      title: "Inspectability",
+      body: "Versioned source, tests, and recorded decisions permit a reviewer to examine the evidence supporting a particular system property.",
     },
   ];
 
   const steps = [
     {
-      figure: "Fig. 1",
-      title: "Specify",
-      caption: "Policy text is compiled into a formal specification.",
-      sample: `"Explicit consent authorizes\nagent access to user data."`,
+      figure: "01 / Specify",
+      title: "State the property",
+      caption: "Translate a policy into a precise condition with defined actors, effects, and assumptions.",
+      sample: "Evidence to inspect / A formal statement and its declared scope",
     },
     {
-      figure: "Fig. 2",
-      title: "Prove",
-      caption: "Automated theorem proving produces a Lean certificate.",
-      sample: "∀ a : Action, authorized(a) → allowed(a)",
+      figure: "02 / Check",
+      title: "Check the obligation",
+      caption: "Evaluate the stated claim with an appropriate proof checker, model checker, or reproducible test.",
+      sample: "Evidence to inspect / Toolchain, premises, and validation result",
     },
     {
-      figure: "Fig. 3",
-      title: "Enforce",
-      caption: "The runtime admits only actions with valid certificates.",
-      sample: "→ certificate verified · action admitted",
+      figure: "03 / Mediate",
+      title: "Connect to execution",
+      caption: "Identify the real action boundary and preserve records of the decisions made at that boundary.",
+      sample: "Evidence to inspect / Control coverage, decisions, and limitations",
     },
   ];
 
   const writing = [
-    { date: "2025-08-15", title: "Contributing to Verification Infrastructure", slug: "how-to-get-involved", dek: "Movements beat companies. Researchers and builders advance the verifiable AI internet through open collaboration. Auditors and adopters strengthen the same cycle." },
-    { date: "2025-08-15", title: "Building Verification Infrastructure", slug: "building-verification-infrastructure", dek: "Multiple stacks already compile policies into monitors, mediate effects, and emit verifiable evidence. The next mile is scale and standards." },
-    { date: "2025-06-15", title: "Mapping the Verification Space", slug: "mapping-the-space", dek: "The safety conversation is noisy. Evidence scales through properties established by proof and enforced online." },
+    { date: "2025-08-15", title: "Contributing to Verification Infrastructure", slug: "how-to-get-involved", dek: "Research participation across specifications, runtime controls, evidence records, and independent technical review." },
+    { date: "2025-08-15", title: "Building Verification Infrastructure", slug: "building-verification-infrastructure", dek: "Design considerations for linking formal specifications, runtime decisions, and technical evidence." },
+    { date: "2025-06-15", title: "Mapping the Verification Space", slug: "mapping-the-space", dek: "An examination of verification objectives and the boundaries of the evidence used to support them." },
   ];
 
   return (
     <Layout>
       <Seo
-        title="SentinelOps | Verified AI Runtime"
-        description="SentinelOps is a research programme on provable safety for AI agents. Formal specifications and machine-checked proofs connect directly to runtime enforcement."
+        title="SentinelOps | Formal Verification and Runtime Control"
+        description="Research on formal specifications, conditional verification, runtime mediation, and inspectable evidence for autonomous software."
         path="/"
       />
 
@@ -99,8 +99,8 @@ const Index = () => {
               <div className="home-hero__kicker">Formal methods / runtime systems</div>
               <h1 id="home-title">Verification at the point of execution.</h1>
               <p className="home-hero__summary">
-                SentinelOps studies the interfaces connecting formal specifications, runtime
-                controls, and the evidence needed to examine autonomous-system behaviour.
+                SentinelOps investigates how formal properties, runtime controls, and evidence
+                records relate to the behavior of autonomous software.
               </p>
               <div className="home-hero__actions">
                 <Link to="/blog" className="home-hero__action home-hero__action--primary">
@@ -159,15 +159,15 @@ const Index = () => {
             </div>
             <div className="lg:col-span-9 grid md:grid-cols-2 gap-7 md:gap-10 font-serif text-lg leading-relaxed">
               <p>
-                Modern AI agents reach deployment faster than rigorous analysis keeps pace.
-                Testing estimates behaviour. Formal proof establishes stated properties.
-                High-consequence domains such as medicine and critical infrastructure demand
-                verified actions and explicit evidence.
+                Formal verification establishes specified properties under explicit assumptions.
+                The evidence for a deployed system must also address the correspondence
+                between its specification, its executable interfaces, and the conditions
+                covered by the original result.
               </p>
               <p>
-                <em>Provability Fabric</em> uses <strong>proof-carrying behaviour</strong> as its
-                operating model. Specifications are first-class artefacts. Proofs travel with
-                actions. The runtime serves as the verifier.
+                Provability Fabric studies the connection between policy constraints,
+                mediation of consequential effects, and independently inspectable records.
+                The objective is to make each claim and the limits of its support precise.
               </p>
             </div>
           </div>
@@ -180,10 +180,10 @@ const Index = () => {
             <div className="section-heading">
               <div className="section-index">01 / Method</div>
               <div className="section-title">
-                <h2 className="mb-4">From natural language to machine-checked guarantee.</h2>
+                <h2 className="mb-4">From policy text to an inspectable control.</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl">
-                  Three stages run in sequence. Each output feeds the next stage. Their combined
-                  record forms the audit trail.
+                  The stages describe distinct questions. Their relation must be established
+                  for each implementation and its operational setting.
                 </p>
               </div>
             </div>
@@ -198,9 +198,7 @@ const Index = () => {
                 </div>
                 <h3 className="mb-3">{s.title}</h3>
                 <p className="text-sm text-muted-foreground mb-7 min-h-[3.3rem]">{s.caption}</p>
-                <pre className="mono text-foreground/[0.78] whitespace-pre-wrap border-t border-[hsl(var(--rule))] pt-5 min-h-[5.6rem] leading-relaxed">
-{s.sample}
-                </pre>
+                <p className="text-sm text-foreground/75 border-t border-[hsl(var(--rule))] pt-5 leading-relaxed">{s.sample}</p>
               </article>
             ))}
           </div>
@@ -211,8 +209,8 @@ const Index = () => {
         <div className="container-paper programme-principles__inner">
           <div className="programme-principles__intro">
             <span className="programme-principles__kicker">02 / Principles</span>
-            <h2 id="principles-heading">Proof over promises.</h2>
-            <p>Three commitments distinguish a verified system from a tested system.</p>
+            <h2 id="principles-heading">Evidence defines the claim.</h2>
+            <p>Formal results, executable controls, and observational records answer different questions.</p>
           </div>
           <ol className="programme-principles__list">
             {principles.map((p) => (
@@ -250,7 +248,7 @@ const Index = () => {
                   className="group grid md:grid-cols-12 gap-4 md:gap-8 py-7 md:py-8 transition-colors hover:bg-[hsl(var(--paper-bright))] md:-mx-5 md:px-5"
                 >
                   <div className="md:col-span-1 mono text-xs text-muted-foreground">0{i + 1}</div>
-                  <time className="md:col-span-2 eyebrow text-muted-foreground pt-1">
+                  <time dateTime={w.date} className="md:col-span-2 eyebrow text-muted-foreground pt-1">
                     {new Date(w.date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" })}
                   </time>
                   <div className="md:col-span-7">

@@ -45,5 +45,7 @@ jobs:
         run: npx tsc --project tsconfig.app.json --noEmit
       - name: Verify institutional interface invariants
         run: node scripts/check-design.mjs
+      - name: Verify editorial trust boundaries
+        run: node scripts/check-content.mjs
       - name: Build and check prerendered pages
         run: npm run build

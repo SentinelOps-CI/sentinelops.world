@@ -1,89 +1,109 @@
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
+import { Link } from "react-router-dom";
 
-const Press = () => {
-  const pressReleases = [
-    {
-      date: "2024-01-15",
-      title: "SentinelOps launches open-source AI safety verification platform",
-      summary: "New tools enable developers to establish mathematical safety properties prior to deployment.",
-    },
-    {
-      date: "2023-12-01",
-      title: "SentinelOps receives backing for formal verification research",
-      summary: "Funding supports development of proof-carrying behavior systems for autonomous agents.",
-    },
-  ];
+const references = [
+  { title: "Research notes", path: "/blog", description: "Programme ideas, technical arguments, and references." },
+  { title: "Project directory", path: "/products", description: "Repository links organized by research area." },
+  { title: "Documentation", path: "/docs", description: "Entry points to implementation evidence and source material." },
+];
 
-  return (
-    <Layout>
-      <Seo
-        title="Press & Media · SentinelOps"
-        description="Press releases and background on SentinelOps, an open-source verification programme for safer AI systems."
-        path="/press"
-      />
-      <article className="container-article article-paper">
-        <header className="mb-12 pb-8 border-b border-border">
-          <div className="eyebrow mb-4">Communications · Press dossier</div>
-          <h1 className="font-light tracking-tight text-4xl md:text-5xl leading-[1.05]">Press</h1>
-          <p className="mt-6 text-lg italic text-foreground/80">
-            Resources for journalists, researchers, and partners covering SentinelOps and the broader
-            verified-AI programme.
-          </p>
-        </header>
+const Press = () => (
+  <Layout>
+    <Seo
+      title="Press and Research Background | SentinelOps"
+      description="Reference material and contact details for journalists examining the SentinelOps open-source verification research programme."
+      path="/press"
+    />
 
-        <section className="mb-16">
-          <div className="eyebrow mb-6">§ I · About SentinelOps</div>
-          <p>
-            SentinelOps develops open-source safety and verification tools for AI systems, enabling
-            developers to construct machine-checkable guarantees about system behaviour prior to deployment.
-            The work spans formal specification and runtime mediation. Evidence schemas and reproducible
-            audit artifacts connect those systems to independent evaluation.
-          </p>
-          <p>
-            Founded in 2023. Remote-first organisation.
-          </p>
-        </section>
-
-        <section className="mb-16">
-          <div className="eyebrow mb-6">§ II · Statement</div>
-          <blockquote className="font-serif italic text-xl leading-snug text-foreground/[0.85]">
-            Greater AI autonomy raises the value of mathematical certainty. SentinelOps connects formal
-            verification research to the practical demands
-            of deployment.
-          </blockquote>
-          <p className="eyebrow mt-4">Founder, SentinelOps</p>
-        </section>
-
-        <section className="mb-16">
-          <div className="eyebrow mb-6">§ III · Releases</div>
-          <div className="space-y-8">
-            {pressReleases.map((r, i) => (
-              <article key={i} className="border-l-2 border-border pl-6">
-                <div className="eyebrow mb-2">
-                  {new Date(r.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
-                </div>
-                <h3 className="font-light text-xl mb-2 tracking-tight">{r.title}</h3>
-                <p className="text-base text-foreground/[0.85]">{r.summary}</p>
-              </article>
-            ))}
+    <section className="border-b border-[hsl(var(--rule))] bg-[hsl(var(--paper-bright))]">
+      <div className="container-paper py-16 sm:py-20 lg:py-24">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+          <div className="lg:col-span-3">
+            <div className="hero-kicker">Background</div>
+            <div className="eyebrow mt-4">Media reference</div>
           </div>
-        </section>
+          <div className="lg:col-span-9 max-w-4xl">
+            <h1 className="mb-7">Press and research background.</h1>
+            <p className="text-xl sm:text-2xl leading-relaxed max-w-3xl">
+              An introduction to SentinelOps and direct references for journalists and
+              researchers examining its work.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section className="mb-16">
-          <div className="eyebrow mb-6">§ IV · Inquiries</div>
-          <p>
-            For interviews and background briefings, including embargoed information, write to{" "}
-            <a href="mailto:press@sentinelops.dev">press@sentinelops.dev</a>. We typically respond within
-            four hours on business days.
+    <div className="container-paper py-16 sm:py-20">
+      <section className="mb-16">
+        <div className="section-frame section-heading mb-8">
+          <div className="section-index">01 / About the programme</div>
+          <div className="section-title"><h2>Formal methods for autonomous systems.</h2></div>
+        </div>
+        <div className="max-w-3xl ml-auto">
+          <p className="leading-relaxed text-lg">
+            SentinelOps is an open-source research programme concerned with the relation
+            of formal specifications, runtime controls, and evidence for autonomous software.
+            Its projects examine how particular system properties are stated, checked,
+            connected to execution, and independently assessed.
           </p>
-          <p>
-            Brand assets and screenshots are available on request.
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            The existence of code or a published research objective does not establish
+            end-to-end safety. Claims about a specific implementation belong to its
+            source version, stated assumptions, and verification record.
           </p>
-        </section>
-      </article>
-    </Layout>
-  );
-};
+        </div>
+      </section>
+
+      <section className="mb-16">
+        <div className="section-frame section-heading mb-8">
+          <div className="section-index">02 / References</div>
+          <div className="section-title"><h2>Primary materials.</h2></div>
+        </div>
+        <dl className="border-t border-[hsl(var(--rule))]">
+          {references.map((item) => (
+            <div key={item.path} className="grid md:grid-cols-12 gap-4 md:gap-8 py-6 border-b border-[hsl(var(--rule))]">
+              <dt className="md:col-span-4">
+                <Link to={item.path} className="underline underline-offset-4 hover:text-primary">
+                  {item.title} ↗
+                </Link>
+              </dt>
+              <dd className="md:col-span-8 text-muted-foreground leading-relaxed">
+                {item.description}
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <a
+          href="https://github.com/orgs/SentinelOps-CI/repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-6 underline underline-offset-4 hover:text-primary"
+        >
+          Public GitHub organization ↗
+        </a>
+      </section>
+
+      <section>
+        <div className="section-frame section-heading mb-8">
+          <div className="section-index">03 / Correspondence</div>
+          <div className="section-title"><h2>Media inquiries.</h2></div>
+        </div>
+        <div className="max-w-3xl ml-auto">
+          <p className="text-muted-foreground leading-relaxed">
+            For a technical briefing, background information, or an inquiry about a
+            particular publication, use the existing media contact channel.
+          </p>
+          <a
+            href="mailto:press@sentinelops.dev"
+            className="inline-block mt-5 underline underline-offset-4 hover:text-primary"
+          >
+            press@sentinelops.dev ↗
+          </a>
+        </div>
+      </section>
+    </div>
+  </Layout>
+);
 
 export default Press;

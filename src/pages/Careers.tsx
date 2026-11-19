@@ -1,99 +1,126 @@
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
+import { Link } from "react-router-dom";
 
-const Careers = () => {
-  const openings = [
-    {
-      title: "Formal Verification Engineer",
-      type: "Full-time · Remote",
-      description:
-        "Develop proof systems and verification tools for behavioural safety of autonomous agents. Work primarily with Lean and Rust. Supporting systems use Coq and TypeScript.",
-    },
-    {
-      title: "ML Safety Researcher",
-      type: "Full-time · Remote",
-      description:
-        "Research and formalize safety constraints plus verification patterns for machine-learning systems. Publish artifacts and datasets alongside reproducible benchmarks and written results.",
-    },
-    {
-      title: "Developer Experience Engineer",
-      type: "Full-time · Remote",
-      description:
-        "Make formal verification accessible through technical writing and tooling. Build end-to-end developer onboarding. Maintain documentation and examples alongside CI and contributor pathways.",
-    },
-  ];
+const areas = [
+  {
+    number: "01",
+    title: "Formal methods",
+    description: "Theorem statements, proof obligations, trusted components, and the translation of policy requirements into precise specifications.",
+  },
+  {
+    number: "02",
+    title: "Runtime control",
+    description: "Mediation of agent actions, admissibility decisions, tool interfaces, and evidence about the effects that an execution boundary governs.",
+  },
+  {
+    number: "03",
+    title: "Reproducible evaluation",
+    description: "Test design, independent checks, failure analysis, and clear records of what an experiment or verifier result establishes.",
+  },
+  {
+    number: "04",
+    title: "Technical documentation",
+    description: "Accurate implementation guides, architecture explanations, and contributor-facing material tied to versioned source.",
+  },
+];
 
-  const values = [
-    { title: "Safety first", body: "We prioritize the soundness and reliability of AI systems above all else." },
-    { title: "Open source", body: "We work in the open and publish artifacts designed for independent reproduction." },
-    { title: "Community", body: "We foster an inclusive environment where diverse perspectives strengthen the work." },
-    { title: "Impact", body: "We build tools that meaningfully shape the future of trustworthy AI." },
-  ];
+const Careers = () => (
+  <Layout>
+    <Seo
+      title="Research Participation and Careers | SentinelOps"
+      description="Areas of technical contribution to SentinelOps verification research, public repositories, and a contact path for employment inquiries."
+      path="/careers"
+    />
 
-  return (
-    <Layout>
-      <Seo
-        title="Careers · Join the Verified-AI Mission | SentinelOps"
-        description="Open roles and collaboration paths at SentinelOps for researchers and engineers building open-source infrastructure for provably safe AI systems."
-        path="/careers"
-      />
-      <article className="container-article article-paper">
-        <header className="mb-12 pb-8 border-b border-border">
-          <div className="eyebrow mb-4">Programme · Calls for collaboration</div>
-          <h1 className="font-light tracking-tight text-4xl md:text-5xl leading-[1.05]">Careers</h1>
-          <p className="mt-6 text-lg italic text-foreground/80">
-            We are convening a small group of researchers and engineers committed to building the open
-            infrastructure for provably safe AI. The work is technical, durable, and conducted in the open.
-          </p>
-        </header>
-
-        <section className="mb-16">
-          <div className="eyebrow mb-6">§ I · Open Positions</div>
-          <div className="space-y-10">
-            {openings.map((o, i) => (
-              <article key={i} className="grid grid-cols-12 gap-4">
-                <div className="col-span-12 sm:col-span-3 eyebrow pt-1">{String(i + 1).padStart(2, "0")}</div>
-                <div className="col-span-12 sm:col-span-9">
-                  <h3 className="font-light text-2xl mb-1 tracking-tight">{o.title}</h3>
-                  <div className="eyebrow mb-3">{o.type}</div>
-                  <p className="text-base">{o.description}</p>
-                  <a href="mailto:careers@sentinelops.dev" className="eyebrow inline-block mt-3 hover:text-foreground transition-colors">
-                    → Apply by writing to us
-                  </a>
-                </div>
-              </article>
-            ))}
+    <section className="border-b border-[hsl(var(--rule))] bg-[hsl(var(--paper-bright))]">
+      <div className="container-paper py-16 sm:py-20 lg:py-24">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+          <div className="lg:col-span-3">
+            <div className="hero-kicker">Participation</div>
+            <div className="eyebrow mt-4">Research and careers</div>
           </div>
-        </section>
+          <div className="lg:col-span-9 max-w-4xl">
+            <h1 className="mb-7">Contribute to the research.</h1>
+            <p className="text-xl sm:text-2xl leading-relaxed max-w-3xl">
+              SentinelOps maintains public source repositories concerned with formal
+              verification and controlled execution of autonomous systems.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mt-5 max-w-3xl">
+              This page describes areas of technical contribution; it is not a listing of
+              confirmed paid vacancies. Employment availability and terms must be established
+              through direct correspondence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section className="mb-16">
-          <div className="eyebrow mb-6">§ II · How to Apply</div>
-          <p>
-            Write to <a href="mailto:careers@sentinelops.dev">careers@sentinelops.dev</a> with a brief note on
-            your interest, a résumé, and any open-source contributions or publications relevant to the role.
-            Initial conversations are unstructured. Subsequent steps include a technical discussion and a
-            meeting with the team you would work alongside.
+    <div className="container-paper py-16 sm:py-20">
+      <section className="mb-16">
+        <div className="section-frame section-heading mb-9">
+          <div className="section-index">01 / Research areas</div>
+          <div className="section-title"><h2>Where contributions matter.</h2></div>
+        </div>
+        <ol className="border-t border-[hsl(var(--rule))]">
+          {areas.map((area) => (
+            <li key={area.number} className="grid md:grid-cols-12 gap-4 md:gap-8 py-7 border-b border-[hsl(var(--rule))]">
+              <div className="md:col-span-1 eyebrow text-primary pt-1">{area.number}</div>
+              <div className="md:col-span-4"><h3>{area.title}</h3></div>
+              <div className="md:col-span-7 text-muted-foreground leading-relaxed">{area.description}</div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="mb-16">
+        <div className="section-frame section-heading mb-8">
+          <div className="section-index">02 / Open-source work</div>
+          <div className="section-title"><h2>Begin with a specific repository.</h2></div>
+        </div>
+        <div className="max-w-3xl ml-auto">
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            Technical questions, narrowly scoped improvements, and reproducible issue reports
+            are most useful alongside the implementation they concern. Review a project's
+            contribution instructions and existing discussion before proposing a change.
           </p>
-        </section>
+          <a
+            href="https://github.com/orgs/SentinelOps-CI/repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 hover:text-primary"
+          >
+            Inspect the source repositories ↗
+          </a>
+        </div>
+      </section>
 
-        <section className="mb-16">
-          <div className="eyebrow mb-6">§ III · What We Value</div>
-          <dl className="divide-y divide-border border-y border-border">
-            {values.map((v, i) => (
-              <div key={i} className="grid grid-cols-12 gap-4 py-5">
-                <dt className="col-span-12 sm:col-span-3 font-sans font-medium text-base">{v.title}</dt>
-                <dd className="col-span-12 sm:col-span-9 text-base">{v.body}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-
-        <footer className="mt-16 pt-8 border-t border-border text-sm text-muted-foreground italic">
-          Remote-first. The role includes generous research time and a conference budget. Equipment and publication freedom support the work.
-        </footer>
-      </article>
-    </Layout>
-  );
-};
+      <section>
+        <div className="section-frame section-heading mb-8">
+          <div className="section-index">03 / Correspondence</div>
+          <div className="section-title"><h2>Employment inquiries.</h2></div>
+        </div>
+        <div className="max-w-3xl ml-auto">
+          <p className="text-muted-foreground leading-relaxed">
+            For a question about potential roles or formal collaboration, include your
+            research interests and links to relevant work. Any vacancy, hiring process,
+            compensation, or work arrangement must be confirmed directly.
+          </p>
+          <div className="flex flex-wrap gap-5 mt-6">
+            <a
+              href="mailto:careers@sentinelops.dev"
+              className="underline underline-offset-4 hover:text-primary"
+            >
+              careers@sentinelops.dev ↗
+            </a>
+            <Link to="/contact" className="underline underline-offset-4 hover:text-primary">
+              Other contact channels ↗
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  </Layout>
+);
 
 export default Careers;
