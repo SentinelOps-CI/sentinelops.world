@@ -64,7 +64,7 @@ const Sitemap = () => {
                 <dt className="col-span-7 font-serif text-base">
                   <Link to={p.path}>{p.name}</Link>
                 </dt>
-                <dd className="col-span-5 text-right mono text-xs text-muted-foreground">{p.path}</dd>
+                <dd className="col-span-5 min-w-0 break-all text-right mono text-xs text-muted-foreground">{p.path}</dd>
               </div>
             ))}
           </dl>

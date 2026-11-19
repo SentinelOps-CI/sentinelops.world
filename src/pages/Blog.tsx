@@ -62,11 +62,8 @@ const Blog = () => {
       <section className="border-b border-[hsl(var(--rule))] bg-[hsl(var(--paper-bright))]">
         <div className="container-paper py-16 sm:py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-            <div className="lg:col-span-3 pt-2">
-              <div className="hero-kicker">Journal</div>
-              <div className="eyebrow mt-4">Research & writing</div>
-            </div>
-            <div className="lg:col-span-9 max-w-4xl">
+
+<div className="lg:col-span-12 max-w-4xl">
               <h1 className="mb-7">Writing.</h1>
               <p className="font-serif text-2xl leading-relaxed text-foreground/[0.86] max-w-3xl">
                 Research writing spans formal methods and runtime verification. Technical notes
@@ -91,7 +88,7 @@ const Blog = () => {
                   className="grid md:grid-cols-12 gap-4 md:gap-8 py-8 group hover:bg-muted/30 -mx-4 px-4 transition-colors"
                 >
                   <div className="md:col-span-2">
-                    <time className="eyebrow text-foreground block">
+                    <time dateTime={post.date} className="eyebrow text-foreground block">
                       {new Date(post.date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" })}
                     </time>
                     <span className="eyebrow text-muted-foreground mt-1 block">{post.category}</span>
@@ -154,7 +151,9 @@ const Blog = () => {
               <p className="text-muted-foreground">Occasional research dispatches for technical readers.</p>
             </div>
             <form onSubmit={handleSubscribe} className="md:col-span-6 flex flex-col sm:flex-row gap-3">
+              <label htmlFor="blog-subscribe-email" className="sr-only">Email address</label>
               <Input
+                id="blog-subscribe-email"
                 type="email"
                 placeholder="you@institution.edu"
                 value={email}

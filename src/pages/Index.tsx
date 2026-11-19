@@ -3,12 +3,9 @@ import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-
-const GITHUB_ORG = "https://github.com/orgs/SentinelOps-CI/repositories";
 
 const Index = () => {
   const [email, setEmail] = useState("");
@@ -41,42 +38,15 @@ const Index = () => {
   };
 
   const principles = [
-    {
-      n: "I",
-      title: "Specification-driven",
-      body: "Every behavioural requirement starts as a formal specification. Policy statements translate into machine-checkable constraints.",
-    },
-    {
-      n: "II",
-      title: "Runtime mediation",
-      body: "Execution admits behaviour accompanied by a valid proof. Verification occurs in-line at runtime.",
-    },
-    {
-      n: "III",
-      title: "Audit by default",
-      body: "Every action ships with cryptographic evidence. Post-incident analysis follows directly from the evidence record.",
-    },
+    { n: "I", title: "Specification-driven", body: "Behavioral obligations need precise specifications and a record of how policy statements are interpreted." },
+    { n: "II", title: "Runtime mediation", body: "Checks have a defined execution boundary. The governed effects, coverage, and bypass assumptions determine what the control establishes." },
+    { n: "III", title: "Audit by default", body: "Evidence records connect decisions to policy and implementation identity, making selected effects independently examinable." },
   ];
 
   const steps = [
-    {
-      figure: "Fig. 1",
-      title: "Specify",
-      caption: "Policy text is compiled into a formal specification.",
-      sample: `"Explicit consent authorizes\nagent access to user data."`,
-    },
-    {
-      figure: "Fig. 2",
-      title: "Prove",
-      caption: "Automated theorem proving produces a Lean certificate.",
-      sample: "∀ a : Action, authorized(a) → allowed(a)",
-    },
-    {
-      figure: "Fig. 3",
-      title: "Enforce",
-      caption: "The runtime admits only actions with valid certificates.",
-      sample: "→ certificate verified · action admitted",
-    },
+    { figure: "Fig. 1", title: "Specify", caption: "Interpret policy text as an explicit condition with declared actors and permissions.", sample: "Illustrative policy: Explicit consent authorizes agent access to user data." },
+    { figure: "Fig. 2", title: "Prove", caption: "State and check a formal obligation with recorded assumptions and toolchain versions.", sample: "Schematic proposition: authorized(action) implies allowed(action)." },
+    { figure: "Fig. 3", title: "Enforce", caption: "Mediate the supported effects and preserve evidence of actual runtime decisions.", sample: "Design condition: admit an action only following the applicable check." },
   ];
 
   const writing = [
@@ -88,109 +58,78 @@ const Index = () => {
   return (
     <Layout>
       <Seo
-        title="SentinelOps | Verified AI Runtime"
-        description="SentinelOps is a research programme on provable safety for AI agents. Formal specifications and machine-checked proofs connect directly to runtime enforcement."
+        title="SentinelOps | Formal Verification and Runtime Control"
+        description="Research on formal specifications, conditional verification, runtime mediation, and inspectable evidence for autonomous software."
         path="/"
       />
 
-      <section className="border-b border-[hsl(var(--rule))] overflow-hidden">
-        <div className="container-paper">
-          <div className="grid lg:grid-cols-12 min-h-[680px] lg:min-h-[720px]">
-            <div className="lg:col-span-7 py-16 sm:py-24 lg:py-28 lg:pr-14 xl:pr-20 flex flex-col justify-between">
-              <div>
-                <div className="hero-kicker mb-8">Provability Fabric</div>
-                <h1 className="max-w-4xl mb-8">
-                  Provable safety for <span className="display-serif">autonomous agents</span>.
-                </h1>
-                <p className="font-serif text-2xl sm:text-[1.72rem] leading-[1.38] max-w-3xl text-foreground/90 mb-6">
-                  We are building an open-source fabric in which every action an AI agent
-                  takes is mediated, every outbound effect is attestable, and every guarantee
-                  is backed by machine-checked proofs.
-                </p>
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mb-10">
-                  Specifications compile to proofs. Proofs are checked at runtime.
-                  Evidence is recorded for audit. The result is a substrate that supports
-                  rigorous analysis of AI systems.
-                </p>
-
-                <div className="flex flex-wrap gap-3 items-center">
-                  <Button asChild size="lg" className="h-12 px-6 font-medium">
-                    <Link to="/blog">
-                      Read the writing
-                      <ArrowUpRight className="ml-1 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="h-12 px-6 font-medium border-foreground/50 bg-transparent">
-                    <a href={GITHUB_ORG} target="_blank" rel="noopener noreferrer">
-                      Browse the code ↗
-                    </a>
-                  </Button>
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-3 gap-4 mt-16 pt-5 border-t border-[hsl(var(--rule))]">
-                <div>
-                  <div className="eyebrow mb-1">Stack</div>
-                  <div className="mono text-sm text-foreground/[0.85]">Lean 4 · Rust · WASM</div>
-                </div>
-                <div>
-                  <div className="eyebrow mb-1">Licence</div>
-                  <div className="mono text-sm text-foreground/[0.85]">Apache 2.0 · MIT</div>
-                </div>
-                <div>
-                  <div className="eyebrow mb-1">Mode</div>
-                  <div className="mono text-sm text-foreground/[0.85]">Open source</div>
-                </div>
+      <section className="home-hero" aria-labelledby="home-title">
+        <div className="container-paper home-hero__layout">
+          <div className="home-hero__primary">
+            <div>
+              <h1 id="home-title">Provable safety for autonomous agents.</h1>
+              <p className="home-hero__summary">
+                SentinelOps develops open-source research projects in formal verification,
+                runtime safety, and evidence for autonomous systems. Explore the work,
+                its implementations, and the limits of the claims they support.
+              </p>
+              <div className="home-hero__actions">
+                <Link to="/products" className="home-hero__action home-hero__action--primary">
+                  Explore projects <span aria-hidden="true">↗</span>
+                </Link>
+                <Link to="/blog" className="home-hero__action home-hero__action--secondary">
+                  Read the writing <span aria-hidden="true">↗</span>
+                </Link>
               </div>
             </div>
-
-            <div className="lg:col-span-5 lg:border-l border-[hsl(var(--rule))] lg:pl-10 xl:pl-14 py-10 lg:py-16 flex items-center">
-              <div className="technical-panel w-full">
-                <div className="px-6 sm:px-8 pt-6 sm:pt-8 pb-5 flex items-start justify-between gap-5">
-                  <div>
-                    <div className="mono text-[0.62rem] tracking-[0.13em] uppercase text-white/50 mb-2">Runtime specimen / PF-01</div>
-                    <div className="font-serif text-2xl sm:text-3xl text-white leading-tight">Proof-carrying behaviour</div>
-                  </div>
-                  <div className="mono text-[0.58rem] tracking-[0.1em] uppercase text-white/[0.55] border border-white/20 px-2 py-1">verified</div>
-                </div>
-
-                <div className="px-6 sm:px-8 py-6 border-t border-white/[0.15]">
-                  <div className="mono text-[0.68rem] leading-relaxed text-white/[0.68] whitespace-pre-wrap">
-                    <span className="text-white/[0.35]">policy / </span>
-                    Agent action must satisfy the declared capability and effect constraints.
-                  </div>
-                </div>
-
-                <div className="px-6 sm:px-8">
-                  <div className="spec-line">
-                    <span className="spec-line-index">01</span>
-                    <span className="spec-line-label">specify</span>
-                    <span className="spec-line-state">bound</span>
-                  </div>
-                  <div className="spec-line">
-                    <span className="spec-line-index">02</span>
-                    <span className="spec-line-label">prove</span>
-                    <span className="spec-line-state">checked</span>
-                  </div>
-                  <div className="spec-line">
-                    <span className="spec-line-index">03</span>
-                    <span className="spec-line-label">enforce</span>
-                    <span className="spec-line-state">admitted</span>
-                  </div>
-                </div>
-
-                <div className="px-6 sm:px-8 py-7 mt-2 border-t border-white/[0.15]">
-                  <div className="mono text-[0.64rem] tracking-[0.08em] uppercase text-white/[0.48] mb-3">Certificate</div>
-                  <div className="mono text-[0.7rem] leading-6 text-white/[0.78]">
-                    policy_hash&nbsp;&nbsp;&nbsp;7f2a…91cd<br />
-                    proof_status&nbsp;&nbsp;valid<br />
-                    effect_gate&nbsp;&nbsp;&nbsp;admit<br />
-                    evidence&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recorded
-                  </div>
-                </div>
-              </div>
-            </div>
+            <details className="home-hero__technical">
+              <summary>Technical information</summary>
+              <dl className="home-hero__metadata">
+                <div><dt>Stack</dt><dd>Lean 4 · Rust · WASM across projects</dd></div>
+                <div><dt>Licence</dt><dd>Project-specific; see repository</dd></div>
+                <div><dt>Mode</dt><dd>Open source</dd></div>
+              </dl>
+            </details>
           </div>
+
+          <aside className="home-hero__aside" aria-label="Provability Fabric project example">
+            <div className="home-hero__aside-head">
+              <span>Provability Fabric</span>
+            </div>
+            <p className="home-hero__aside-disclaimer">
+              One of the SentinelOps projects. This illustrates its research direction,
+              not a recorded verification result.
+            </p>
+            <ol className="home-hero__aside-list">
+              <li>
+                <span className="home-hero__aside-index">01 / Policy</span>
+                <h2 className="home-hero__aside-title">Specify</h2>
+                <p className="home-hero__aside-description">Bind an action to declared capability and effect constraints.</p>
+              </li>
+              <li>
+                <span className="home-hero__aside-index">02 / Proof</span>
+                <h2 className="home-hero__aside-title">Prove</h2>
+                <p className="home-hero__aside-description">Check the formal claim under stated premises and trusted components.</p>
+              </li>
+              <li>
+                <span className="home-hero__aside-index">03 / Runtime</span>
+                <h2 className="home-hero__aside-title">Enforce</h2>
+                <p className="home-hero__aside-description">Mediate supported effects and record the decision.</p>
+              </li>
+            </ol>
+            <details className="home-hero__project-detail">
+              <summary>Proof-carrying behaviour</summary>
+              <dl className="home-hero__evidence">
+                <div><dt>Policy identity</dt><dd>Declared input</dd></div>
+                <div><dt>Proof status</dt><dd>Check required</dd></div>
+                <div><dt>Effect gate</dt><dd>Defined boundary</dd></div>
+                <div><dt>Evidence</dt><dd>Record to inspect</dd></div>
+              </dl>
+            </details>
+            <Link className="home-hero__project-link" to="/products#provability-fabric">
+              View this project <span aria-hidden="true">↗</span>
+            </Link>
+          </aside>
         </div>
       </section>
 
@@ -198,19 +137,18 @@ const Index = () => {
         <div className="container-paper py-14 sm:py-16">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-14">
             <div className="lg:col-span-3">
-              <div className="eyebrow">Abstract</div>
             </div>
             <div className="lg:col-span-9 grid md:grid-cols-2 gap-7 md:gap-10 font-serif text-lg leading-relaxed">
               <p>
-                Modern AI agents reach deployment faster than rigorous analysis keeps pace.
-                Testing estimates behaviour. Formal proof establishes stated properties.
-                High-consequence domains such as medicine and critical infrastructure demand
-                verified actions and explicit evidence.
+                Formal verification establishes specified properties under explicit assumptions.
+                The evidence for a deployed system must also address the correspondence
+                between its specification, its executable interfaces, and the conditions
+                covered by the original result.
               </p>
               <p>
-                <em>Provability Fabric</em> uses <strong>proof-carrying behaviour</strong> as its
-                operating model. Specifications are first-class artefacts. Proofs travel with
-                actions. The runtime serves as the verifier.
+                The programme includes work on proof tooling, execution controls,
+                provenance, and reproducible evaluation. Each repository documents a
+                different part of that research.
               </p>
             </div>
           </div>
@@ -223,10 +161,10 @@ const Index = () => {
             <div className="section-heading">
               <div className="section-index">01 / Method</div>
               <div className="section-title">
-                <h2 className="mb-4">From natural language to machine-checked guarantee.</h2>
+                <h2 className="mb-4">From policy text to an inspectable control.</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl">
-                  Three stages run in sequence. Each output feeds the next stage. Their combined
-                  record forms the audit trail.
+                  Specification, proof, and enforcement form a proposed chain. Each transition
+                  needs its own implementation and supporting evidence.
                 </p>
               </div>
             </div>
@@ -241,35 +179,29 @@ const Index = () => {
                 </div>
                 <h3 className="mb-3">{s.title}</h3>
                 <p className="text-sm text-muted-foreground mb-7 min-h-[3.3rem]">{s.caption}</p>
-                <pre className="mono text-foreground/[0.78] whitespace-pre-wrap border-t border-[hsl(var(--rule))] pt-5 min-h-[5.6rem] leading-relaxed">
-{s.sample}
-                </pre>
+                <p className="text-sm text-foreground/75 border-t border-[hsl(var(--rule))] pt-5 leading-relaxed">{s.sample}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[hsl(var(--navy))] text-[hsl(var(--hero-foreground))]">
-        <div className="container-paper py-20 sm:py-24">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
-            <div className="lg:col-span-4">
-              <div className="mono text-[0.66rem] uppercase tracking-[0.11em] text-white/[0.45] mb-5">02 / Principles</div>
-              <h2 className="!text-white mb-4">Proof over promises.</h2>
-              <p className="text-white/[0.62] max-w-sm">
-                Three commitments distinguish a verified system from a tested system.
-              </p>
-            </div>
-            <ol className="lg:col-span-8 grid sm:grid-cols-3 border-t border-white/20 sm:border-t-0 sm:border-l border-white/20">
-              {principles.map((p) => (
-                <li key={p.n} className="py-7 sm:py-0 sm:px-7 lg:px-8 border-b sm:border-b-0 sm:border-r border-white/20 last:border-r-0">
-                  <div className="font-serif italic text-4xl text-white/[0.35] mb-5">{p.n}</div>
-                  <h3 className="!text-white text-xl mb-4">{p.title}</h3>
-                  <p className="text-sm text-white/[0.64] leading-relaxed">{p.body}</p>
-                </li>
-              ))}
-            </ol>
+      <section className="programme-principles" aria-labelledby="principles-heading">
+        <div className="container-paper programme-principles__inner">
+          <div className="programme-principles__intro">
+            <h2 id="principles-heading">Proof over promises.</h2>
           </div>
+          <ol className="programme-principles__list">
+            {principles.map((p) => (
+              <li key={p.n}>
+                <span className="programme-principles__number">{p.n}</span>
+                <div>
+                  <h3>{p.title}</h3>
+                  <p>{p.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -295,8 +227,8 @@ const Index = () => {
                   className="group grid md:grid-cols-12 gap-4 md:gap-8 py-7 md:py-8 transition-colors hover:bg-[hsl(var(--paper-bright))] md:-mx-5 md:px-5"
                 >
                   <div className="md:col-span-1 mono text-xs text-muted-foreground">0{i + 1}</div>
-                  <time className="md:col-span-2 eyebrow text-muted-foreground pt-1">
-                    {new Date(w.date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
+                  <time dateTime={w.date} className="md:col-span-2 eyebrow text-muted-foreground pt-1">
+                    {new Date(w.date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" })}
                   </time>
                   <div className="md:col-span-7">
                     <h3 className="text-xl mb-2 group-hover:text-primary transition-colors">{w.title}</h3>

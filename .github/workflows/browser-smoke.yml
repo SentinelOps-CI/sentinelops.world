@@ -1,0 +1,65 @@
+name: Browser and responsive smoke tests
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'index.html'
+      - 'tailwind.config.ts'
+      - 'package*.json'
+      - '.github/workflows/browser-smoke.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'index.html'
+      - 'tailwind.config.ts'
+      - 'package*.json'
+      - '.github/workflows/browser-smoke.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  chromium:
+    name: Browser hydration and responsive smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Locked application dependencies
+        run: npm ci
+      - name: Build and validate static HTML
+        run: npm run build
+      - name: Install pinned browser smoke tooling
+        run: |
+          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund @playwright/test@1.58.0 @axe-core/playwright@4.10.2
+      - name: Run Chromium checks against production dist
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/serve-dist.mjs > /tmp/sentinelops-dist.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..30}; do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:4173/; then break; fi
+            sleep 0.5
+          done
+          curl --fail --silent --output /dev/null http://127.0.0.1:4173/
+          node scripts/browser-smoke.mjs
+          node scripts/audit-all-pages.mjs
+          node scripts/accessibility-smoke.mjs
+      - name: Preserve screenshots and failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sentinelops-browser-smoke
+          path: artifacts/browser-smoke/
+          if-no-files-found: ignore
+          retention-days: 7

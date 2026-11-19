@@ -10,7 +10,7 @@ const channels = [
   {
     label: "Careers",
     address: "careers@sentinelops.dev",
-    note: "Open roles and research collaborations, including applications.",
+    note: "Employment inquiries and research participation; confirm openings directly.",
   },
   {
     label: "Privacy",
@@ -35,14 +35,11 @@ const Contact = () => (
     <section className="border-b border-[hsl(var(--rule))] bg-[hsl(var(--paper-bright))]">
       <div className="container-paper py-16 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-          <div className="lg:col-span-3 pt-2">
-            <div className="hero-kicker">Correspondence</div>
-            <div className="eyebrow mt-4">Contact</div>
-          </div>
-          <div className="lg:col-span-9 max-w-4xl">
+
+<div className="lg:col-span-12 max-w-4xl">
             <h1 className="mb-7">Contact.</h1>
             <p className="font-serif text-2xl leading-relaxed text-foreground/[0.86] max-w-3xl">
-              Use the channel closest to your inquiry. Technical questions and implementation issues are handled in the relevant public repository.
+              Media, employment, privacy, and institutional correspondence have dedicated contact channels. Implementation questions belong in the relevant public repository.
             </p>
           </div>
         </div>

@@ -1,148 +1,208 @@
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { projectGroups } from "@/data/projects";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const repositories = [
-  { name: "Provability Fabric", url: "https://github.com/SentinelOps-CI/provability-fabric", description: "The foundational runtime for proof-carrying behaviour verification.", category: "Platform" },
-  { name: "Spec-to-Proof", url: "https://github.com/SentinelOps-CI/spec-to-proof", description: "Compile natural-language specifications into Lean theorem proofs.", category: "Build & verify" },
-  { name: "SpecCursor", url: "https://github.com/SentinelOps-CI/speccursor", description: "Formal qualification for dependency upgrades and changes.", category: "Build & verify" },
-  { name: "SpecSync", url: "https://github.com/SentinelOps-CI/SpecSync", description: "GitHub-native specification coverage and verification gates.", category: "Build & verify" },
-  { name: "Lean Toolchain", url: "https://github.com/SentinelOps-CI/lean-toolchain", description: "Optimised Lean theorem prover distribution for verification workflows.", category: "Build & verify" },
-  { name: "Runtime Safety Kernels", url: "https://github.com/SentinelOps-CI/runtime-safety-kernels", description: "Minimal trusted computing base for AI system isolation.", category: "Runtime & evidence" },
-  { name: "Security Envelopes", url: "https://github.com/SentinelOps-CI/security-envelopes", description: "Cryptographic containers for sensitive AI operations.", category: "Runtime & evidence" },
-  { name: "Model Asset Guard", url: "https://github.com/SentinelOps-CI/model-asset-guard", description: "Integrity verification for AI models and training artefacts.", category: "Runtime & evidence" },
-  { name: "Post-Incident Proofs", url: "https://github.com/SentinelOps-CI/post-incident-proofs", description: "Cryptographically sealed audit trails for forensic analysis.", category: "Runtime & evidence" },
-  { name: "PF Testbed", url: "https://github.com/SentinelOps-CI/pf-testbed", description: "Testing framework for proof-carrying behaviour systems.", category: "Test & data" },
-  { name: "Dataset Safety Specs", url: "https://github.com/SentinelOps-CI/dataset-safety-specs", description: "Formal specifications for training-data safety and compliance.", category: "Test & data" },
-];
-
-const categories = ["Platform", "Build & verify", "Runtime & evidence", "Test & data"];
-
-const faqs = [
-  { q: "Where is the API documentation?", a: "Each repository contains API documentation in its README and accompanying markdown files. Detailed guides also appear in /docs directories inside individual repositories." },
-  { q: "How do I contribute to the documentation?", a: "Documentation improvements are welcome. Submit pull requests to the relevant repository and follow each project's CONTRIBUTING guidelines." },
-  { q: "Which tool is the best starting point?", a: "Provability Fabric is the starting point for runtime verification. Spec-to-Proof covers specification management. SpecSync covers CI/CD integration." },
-  { q: "Are integration examples available?", a: "Yes. Most repositories include practical examples in their /examples directories. The PF Testbed repository contains integration patterns and test cases." },
-  { q: "What programming languages are supported?", a: "Our tools primarily support Rust, TypeScript/JavaScript, and Python. Language-specific bindings are documented in each repository's README." },
+const reviewSteps = [
+  {
+    number: "01",
+    title: "Choose your tool",
+    detail: "Select a project by its intended function, then open the authoritative repository and examine its README, releases, and issues.",
+  },
+  {
+    number: "02",
+    title: "Clone and install",
+    detail: "Follow the repository's setup instructions. Record the revision, dependency versions, and relevant proof or test obligations.",
+  },
+  {
+    number: "03",
+    title: "Run the examples",
+    detail: "Execute provided examples or tests where available. Compare results with the stated specification and record limitations.",
+  },
 ];
 
 const Docs = () => (
   <Layout>
     <Seo
-      title="Documentation · Getting Started with Verification | SentinelOps"
-      description="Guides and API references for SentinelOps verification tools, with FAQs covering core workflows."
+      title="Documentation and Verification Sources | SentinelOps"
+      description="Entry points to SentinelOps source repositories, documented specifications, test artifacts, and the evidence needed to assess verification claims."
       path="/docs"
     />
 
     <section className="border-b border-[hsl(var(--rule))] bg-[hsl(var(--paper-bright))]">
       <div className="container-paper py-16 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-          <div className="lg:col-span-3 pt-2">
-            <div className="hero-kicker">Reference</div>
-            <div className="eyebrow mt-4">Documentation</div>
-          </div>
-          <div className="lg:col-span-9 max-w-4xl">
-            <h1 className="mb-7">Documentation.</h1>
-            <p className="font-serif text-2xl leading-relaxed text-foreground/[0.86] max-w-3xl">
-              Each product maintains its primary documentation in its repository. This page
-              provides an index and orientation to those source materials.
+
+<div className="lg:col-span-12 max-w-5xl">
+            <h1 className="mb-7">Documentation begins with the source.</h1>
+            <p className="text-xl sm:text-2xl leading-relaxed max-w-4xl">
+              This directory connects the research programme with its public implementations.
+              Each repository is the reference point for the code, supported behavior,
+              test procedures, and changes relevant to that project.
+            </p>
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">
+              Repository descriptions identify a field of work. A particular guarantee
+              must be evaluated against the corresponding version, assumptions, and
+              verification record.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <div className="container-paper py-16">
-      {/* Getting started */}
+    <div className="container-paper py-16 sm:py-20">
       <section className="mb-20">
-        <header className="flex items-baseline gap-4 mb-8 pb-4 border-b border-foreground">
-          <div className="eyebrow">§1</div>
-          <h2 className="text-2xl">Getting started</h2>
-        </header>
-        <ol className="grid md:grid-cols-3 gap-px bg-[hsl(var(--rule))] border border-[hsl(var(--rule))]">
-          {[
-            { n: "1", title: "Choose your tool", body: "Select the verification tool that matches your use case from the index below." },
-            { n: "2", title: "Clone and install", body: "Follow the installation instructions in each repository's README file." },
-            { n: "3", title: "Run the examples", body: "Try the provided examples to understand the tool's capabilities and integration patterns." },
-          ].map((s) => (
-            <li key={s.n} className="bg-background p-8">
-              <div className="display-serif italic text-3xl mb-3">{s.n}</div>
-              <h3 className="mb-2">{s.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{s.body}</p>
+        <div className="section-frame section-heading mb-9">
+          <div className="section-index">01 / Method</div>
+          <div className="section-title">
+            <h2>Getting started.</h2>
+          </div>
+        </div>
+        <ol className="grid md:grid-cols-3 border-t border-b border-[hsl(var(--rule))] md:divide-x divide-[hsl(var(--rule))]">
+          {reviewSteps.map((step) => (
+            <li key={step.number} className="py-7 md:py-9 md:px-7 lg:px-9 first:pl-0 last:pr-0">
+              <div className="eyebrow text-primary mb-5">{step.number}</div>
+              <h3 className="mb-3">{step.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">{step.detail}</p>
             </li>
           ))}
         </ol>
       </section>
 
-      {/* Product index */}
       <section className="mb-20">
-        <header className="flex items-baseline gap-4 mb-8 pb-4 border-b border-foreground">
-          <div className="eyebrow">§2</div>
-          <h2 className="text-2xl">Product index</h2>
-        </header>
-
-        {categories.map((cat) => {
-          const items = repositories.filter((r) => r.category === cat);
-          return (
-            <div key={cat} className="mb-12">
-              <h3 className="text-base mb-4 eyebrow text-foreground">{cat}</h3>
-              <dl className="divide-y divide-[hsl(var(--rule))] border-t border-b border-[hsl(var(--rule))]">
-                {items.map((r) => (
-                  <div key={r.name} className="grid md:grid-cols-12 gap-4 md:gap-8 py-5">
-                    <dt className="md:col-span-3">
-                      <a
-                        href={r.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground underline underline-offset-4 decoration-[hsl(var(--rule-strong))] hover:decoration-foreground"
-                      >
-                        {r.name} ↗
-                      </a>
-                    </dt>
-                    <dd className="md:col-span-9 text-muted-foreground leading-relaxed">
-                      {r.description}
-                      <div className="mono text-xs mt-1 text-foreground/60">{r.url.replace("https://", "")}</div>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          );
-        })}
+        <div className="section-frame section-heading mb-9">
+          <div className="section-index">02 / Repositories</div>
+          <div className="section-title">
+            <h2>Implementation index.</h2>
+            <p className="text-muted-foreground mt-4 max-w-2xl">
+              Links lead to public source repositories. Check their individual instructions
+              and dependencies before attempting to reproduce a result.
+            </p>
+          </div>
+        </div>
+        {projectGroups.map((group) => (
+          <div key={group.number} className="mb-12">
+            <h3 className="text-base mb-5">{group.title}</h3>
+            <dl className="border-t border-[hsl(var(--rule))]">
+              {group.projects.map((project) => (
+                <div key={project.id} className="grid md:grid-cols-12 gap-3 md:gap-8 py-5 border-b border-[hsl(var(--rule))]">
+                  <dt className="md:col-span-4">
+                    <a
+                      href={project.repository}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-4 hover:text-primary"
+                    >
+                      {project.name} ↗
+                    </a>
+                  </dt>
+                  <dd className="md:col-span-8 text-muted-foreground leading-relaxed text-sm">
+                    {project.focus}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
       </section>
 
-      {/* FAQ */}
       <section className="mb-20">
-        <header className="flex items-baseline gap-4 mb-8 pb-4 border-b border-foreground">
-          <div className="eyebrow">§3</div>
-          <h2 className="text-2xl">Frequently asked questions</h2>
-        </header>
+        <div className="section-frame section-heading mb-9">
+          <div className="section-index">03 / Reading evidence</div>
+          <div className="section-title">
+            <h2>What an implementation record establishes.</h2>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl">
+          <div>
+            <h3 className="text-lg mb-3">Machine-checked results</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              An accepted proof is evidence for its formal statement under the assumptions
+              and trusted components of the checker. Source code and build provenance determine
+              whether that statement applies to a particular executable.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg mb-3">Runtime and empirical results</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Tests and execution traces document behavior under the evaluated conditions.
+              The test environment, coverage, instrumentation, and handling of failed
+              checks determine the strength of the resulting claim.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mb-20" aria-labelledby="documentation-faq">
+        <div className="section-frame section-heading mb-9">
+          <div className="section-index">04 / Questions</div>
+          <div className="section-title">
+            <h2 id="documentation-faq">Frequently asked questions.</h2>
+          </div>
+        </div>
         <Accordion type="single" collapsible className="border-t border-[hsl(var(--rule))]">
-          {faqs.map((f, i) => (
-            <AccordionItem key={i} value={`q${i}`} className="border-b border-[hsl(var(--rule))]">
-              <AccordionTrigger className="text-left hover:no-underline py-5 text-lg font-normal">
-                <span className="display-serif italic">{f.q}</span>
+          {[
+  {
+    "q": "Where is the API documentation?",
+    "a": "Each project is documented in its source repository. Check the README and any documentation directories for the revision you intend to use; their scope differs by project."
+  },
+  {
+    "q": "How do I contribute to the documentation?",
+    "a": "Open a focused pull request in the relevant public repository. Follow the project's contribution instructions and include a link to the source or behavior your change documents."
+  },
+  {
+    "q": "Which tool is the best starting point?",
+    "a": "Start with Provability Fabric for runtime mediation, Spec-to-Proof for specification translation, or SpecSync for source-change verification workflows. Inspect the current implementation status before adopting a tool."
+  },
+  {
+    "q": "Are integration examples available?",
+    "a": "Some repositories publish examples and tests. Inspect the project README, examples directory where present, and the PF Testbed for test and integration material."
+  },
+  {
+    "q": "What programming languages are supported?",
+    "a": "The project collection includes Rust, Lean 4, Python, and TypeScript/JavaScript. Check a particular repository for supported bindings and toolchain versions."
+  }
+].map((item, index) => (
+            <AccordionItem value={"faq-" + index} key={item.q} className="border-b border-[hsl(var(--rule))]">
+              <AccordionTrigger className="text-left py-5 text-base hover:no-underline">
+                {item.q}
               </AccordionTrigger>
               <AccordionContent className="text-base leading-relaxed text-muted-foreground pb-5">
-                {f.a}
+                {item.a}
               </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
       </section>
 
-      <div className="border-t border-foreground pt-10 max-w-2xl">
-        <h2 className="mb-3">All projects</h2>
-        <p className="text-muted-foreground mb-6">
-          The complete collection of repositories, including utilities and experimental work.
-        </p>
-        <Button asChild size="lg" className="rounded-none">
-          <a href="https://github.com/orgs/SentinelOps-CI/repositories" target="_blank" rel="noopener noreferrer">
-            All projects on GitHub ↗
-          </a>
-        </Button>
-      </div>
+      <section className="border-t border-[hsl(var(--rule-strong))] pt-9">
+        <div className="grid md:grid-cols-12 gap-6">
+          <div className="md:col-span-3 eyebrow">Further reading</div>
+          <div className="md:col-span-9 max-w-3xl">
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              The research notes explain the programme's ideas and questions. Technical
+              claims about an implementation must be checked against its repository.
+            </p>
+            <div className="flex flex-wrap gap-5 text-sm">
+              <Link to="/blog" className="underline underline-offset-4 hover:text-primary">
+                Research notes ↗
+              </Link>
+              <Link to="/products" className="underline underline-offset-4 hover:text-primary">
+                Project directory ↗
+              </Link>
+              <a
+                href="https://github.com/orgs/SentinelOps-CI/repositories"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 hover:text-primary"
+              >
+                Full source index ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </Layout>
 );

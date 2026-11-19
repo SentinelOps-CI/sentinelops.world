@@ -8,24 +8,24 @@ const SubscribeSuccess = () => {
     <Layout>
       <Seo
         noIndex
-        title="Subscribed · Thanks for Joining | SentinelOps"
-        description="You're subscribed to the SentinelOps newsletter. Expect updates on verified AI research, releases, and contributor calls."
+        title="Newsletter Information | SentinelOps"
+        description="Information about subscribing to SentinelOps research updates."
         path="/subscribe/success"
       />
       <article className="container-article article-paper">
-        <div className="eyebrow mb-6">Subscription · Confirmed</div>
-        <h1 className="font-light text-4xl md:text-5xl mb-6 tracking-tight">You are subscribed.</h1>
+        <div className="eyebrow mb-6">Newsletter</div>
+        <h1 className="font-light text-4xl md:text-5xl mb-6 tracking-tight">Newsletter subscription.</h1>
         <p className="text-lg italic text-foreground/80 mb-10">
-          You will receive periodic dispatches on verified AI research, releases, and contributor calls.
+          Subscribe through the form on the Writing page. A successful submission is confirmed in the form itself.
         </p>
         <hr className="rule mb-10" />
         <div className="space-y-4 text-base">
           <p>
-            Each dispatch is short. In the meantime, the <Link to="/mission">mission</Link> and the
+            Read the <Link to="/mission">mission</Link> and the
             {" "}<Link to="/docs">documentation</Link> are good starting points.
           </p>
           <p className="text-sm text-muted-foreground italic">
-            Preference updates and unsubscribe controls appear in every email. Your address stays within the SentinelOps mailing system.
+            Questions about subscription preferences and personal information belong with the contact channels.
           </p>
         </div>
         <div className="mt-12 pt-8 border-t border-border">

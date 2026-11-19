@@ -89,7 +89,7 @@ const MappingSpace = () => (
           <p className="leading-7 text-foreground/80">
             Monitor evaluation tests semantic agreement and execution coverage. Information-flow evaluation tests observer views under controlled trace variation. Permission evaluation tests state transitions and revocation semantics. Provenance evaluation tests identity binding. Replay evaluation tests reconstruction fidelity.
           </p>
-          <div className="overflow-x-auto border-y border-border">
+          <div className="overflow-x-auto border-y border-border" role="region" aria-label="Scrollable research table" tabIndex={0}>
             <table className="w-full min-w-[700px] border-collapse text-left text-sm">
               <thead className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                 <tr className="border-b border-border">
