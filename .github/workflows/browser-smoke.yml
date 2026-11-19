@@ -39,7 +39,7 @@ jobs:
         run: npm run build
       - name: Install pinned browser smoke tooling
         run: |
-          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund @playwright/test@1.58.0
+          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund @playwright/test@1.58.0 @axe-core/playwright@4.10.2
       - name: Run Chromium checks against production dist
         shell: bash
         run: |
@@ -53,6 +53,7 @@ jobs:
           done
           curl --fail --silent --output /dev/null http://127.0.0.1:4173/
           node scripts/browser-smoke.mjs
+          node scripts/accessibility-smoke.mjs
       - name: Preserve screenshots and failure evidence
         if: always()
         uses: actions/upload-artifact@v4
