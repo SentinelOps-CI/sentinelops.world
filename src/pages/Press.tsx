@@ -61,7 +61,7 @@ const Press = () => {
             {pressReleases.map((r, i) => (
               <article key={i} className="border-l-2 border-border pl-6">
                 <div className="eyebrow mb-2">
-                  {new Date(r.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
+                  {new Date(r.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
                 </div>
                 <h3 className="font-light text-xl mb-2 tracking-tight">{r.title}</h3>
                 <p className="text-base text-foreground/[0.85]">{r.summary}</p>

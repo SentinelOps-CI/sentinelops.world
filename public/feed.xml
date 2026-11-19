@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://sentinelops.world/blog</id>
+  <title>SentinelOps Research Notes</title>
+  <updated>2026-10-06T00:00:00Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://sentinelops.world/feed.xml"/>
+  <link rel="alternate" href="https://sentinelops.world/blog"/>
+  <author><name>SentinelOps</name></author>
+  <entry>
+    <id>https://sentinelops.world/blog/current-initiatives</id>
+    <title>Current Technical Program</title>
+    <link rel="alternate" href="https://sentinelops.world/blog/current-initiatives"/>
+    <published>2026-10-06T00:00:00Z</published>
+    <updated>2026-10-06T00:00:00Z</updated>
+    <summary>The active SentinelOps technical program across runtime control, permissions, evidence records, replay, and conformance testing.</summary>
+  </entry>
+  <entry>
+    <id>https://sentinelops.world/blog/how-to-get-involved</id>
+    <title>Contributing to Verification Infrastructure</title>
+    <link rel="alternate" href="https://sentinelops.world/blog/how-to-get-involved"/>
+    <published>2025-08-15T00:00:00Z</published>
+    <updated>2026-10-06T00:00:00Z</updated>
+    <summary>Contribution guide for SentinelOps verification infrastructure, from formal specifications through runtime controls and independent evaluation.</summary>
+  </entry>
+  <entry>
+    <id>https://sentinelops.world/blog/building-verification-infrastructure</id>
+    <title>Building Verification Infrastructure</title>
+    <link rel="alternate" href="https://sentinelops.world/blog/building-verification-infrastructure"/>
+    <published>2025-08-15T00:00:00Z</published>
+    <updated>2025-08-15T00:00:00Z</updated>
+    <summary>Technical note on the institutional structure and engineering structure of verification infrastructure for autonomous systems.</summary>
+  </entry>
+  <entry>
+    <id>https://sentinelops.world/blog/ecosystem-development-timeline</id>
+    <title>Verification Infrastructure Development Sequence</title>
+    <link rel="alternate" href="https://sentinelops.world/blog/ecosystem-development-timeline"/>
+    <published>2025-07-15T00:00:00Z</published>
+    <updated>2025-07-15T00:00:00Z</updated>
+    <summary>Staged development sequence for verification infrastructure from reference implementation through production integration.</summary>
+  </entry>
+  <entry>
+    <id>https://sentinelops.world/blog/mapping-the-space</id>
+    <title>Mapping the Verification Space</title>
+    <link rel="alternate" href="https://sentinelops.world/blog/mapping-the-space"/>
+    <published>2025-06-15T00:00:00Z</published>
+    <updated>2025-06-15T00:00:00Z</updated>
+    <summary>Technical taxonomy of verification objectives and evidence boundaries for autonomous systems.</summary>
+  </entry>
+  <entry>
+    <id>https://sentinelops.world/blog/verifiable-ai-ecosystem</id>
+    <title>The Verifiable AI Ecosystem</title>
+    <link rel="alternate" href="https://sentinelops.world/blog/verifiable-ai-ecosystem"/>
+    <published>2025-05-30T00:00:00Z</published>
+    <updated>2025-05-30T00:00:00Z</updated>
+    <summary>Systems view of verification infrastructure for autonomous software, focused on governed execution and independent evidence.</summary>
+  </entry>
+</feed>

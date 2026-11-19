@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0",
+  "site": "https://sentinelops.world/",
+  "title": "SentinelOps research index",
+  "note": "Dates are declarations in article page metadata; research claims need independent verification from referenced artifacts.",
+  "entries": [
+    {
+      "url": "https://sentinelops.world/blog/verifiable-ai-ecosystem",
+      "title": "The Verifiable AI Ecosystem",
+      "description": "Systems view of verification infrastructure for autonomous software, focused on governed execution and independent evidence.",
+      "datePublished": "2025-05-30",
+      "declaredAuthor": "SentinelOps",
+      "sourceUrl": "https://github.com/SentinelOps-CI/sentinelops.world/blob/main/src/pages/blog/VerifiableAIEcosystem.tsx"
+    },
+    {
+      "url": "https://sentinelops.world/blog/ecosystem-development-timeline",
+      "title": "Verification Infrastructure Development Sequence",
+      "description": "Staged development sequence for verification infrastructure from reference implementation through production integration.",
+      "datePublished": "2025-07-15",
+      "declaredAuthor": "SentinelOps",
+      "sourceUrl": "https://github.com/SentinelOps-CI/sentinelops.world/blob/main/src/pages/blog/EcosystemTimeline.tsx"
+    },
+    {
+      "url": "https://sentinelops.world/blog/mapping-the-space",
+      "title": "Mapping the Verification Space",
+      "description": "Technical taxonomy of verification objectives and evidence boundaries for autonomous systems.",
+      "datePublished": "2025-06-15",
+      "declaredAuthor": "SentinelOps",
+      "sourceUrl": "https://github.com/SentinelOps-CI/sentinelops.world/blob/main/src/pages/blog/MappingSpace.tsx"
+    },
+    {
+      "url": "https://sentinelops.world/blog/building-verification-infrastructure",
+      "title": "Building Verification Infrastructure",
+      "description": "Technical note on the institutional structure and engineering structure of verification infrastructure for autonomous systems.",
+      "datePublished": "2025-08-15",
+      "declaredAuthor": "SentinelOps",
+      "sourceUrl": "https://github.com/SentinelOps-CI/sentinelops.world/blob/main/src/pages/blog/BuildingInfrastructure.tsx"
+    },
+    {
+      "url": "https://sentinelops.world/blog/current-initiatives",
+      "title": "Current Technical Program",
+      "description": "The active SentinelOps technical program across runtime control, permissions, evidence records, replay, and conformance testing.",
+      "datePublished": "2026-10-06",
+      "declaredAuthor": "SentinelOps",
+      "sourceUrl": "https://github.com/SentinelOps-CI/sentinelops.world/blob/main/src/pages/blog/CurrentInitiatives.tsx"
+    },
+    {
+      "url": "https://sentinelops.world/blog/how-to-get-involved",
+      "title": "Contributing to Verification Infrastructure",
+      "description": "Contribution guide for SentinelOps verification infrastructure, from formal specifications through runtime controls and independent evaluation.",
+      "datePublished": "2025-08-15",
+      "dateModified": "2026-10-06",
+      "declaredAuthor": "SentinelOps",
+      "sourceUrl": "https://github.com/SentinelOps-CI/sentinelops.world/blob/main/src/pages/blog/HowToGetInvolved.tsx"
+    }
+  ],
+  "documents": [
+    {
+      "url": "https://sentinelops.world/papers/architecture.pdf",
+      "mediaType": "application/pdf"
+    },
+    {
+      "url": "https://sentinelops.world/papers/technical.pdf",
+      "mediaType": "application/pdf"
+    },
+    {
+      "url": "https://sentinelops.world/papers/whitepaper.pdf",
+      "mediaType": "application/pdf"
+    }
+  ]
+}

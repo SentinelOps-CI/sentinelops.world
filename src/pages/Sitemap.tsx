@@ -10,15 +10,19 @@ const Sitemap = () => {
     { name: "Mission", path: "/mission" },
     { name: "Documentation", path: "/docs" },
     { name: "Blog", path: "/blog" },
+    { name: "The Verifiable AI Ecosystem", path: "/blog/verifiable-ai-ecosystem" },
+    { name: "Verification Infrastructure Development Sequence", path: "/blog/ecosystem-development-timeline" },
+    { name: "Mapping the Verification Space", path: "/blog/mapping-the-space" },
+    { name: "Building Verification Infrastructure", path: "/blog/building-verification-infrastructure" },
+    { name: "Current Technical Program", path: "/blog/current-initiatives" },
+    { name: "Contributing to Verification Infrastructure", path: "/blog/how-to-get-involved" },
     { name: "Status", path: "/status" },
     { name: "Contact", path: "/contact" },
-    { name: "Contact Success", path: "/contact/success" },
     { name: "Careers", path: "/careers" },
     { name: "Press", path: "/press" },
     { name: "Terms of Service", path: "/legal/terms" },
     { name: "Privacy Policy", path: "/legal/privacy" },
     { name: "Sitemap", path: "/sitemap" },
-    { name: "Subscribe Success", path: "/subscribe/success" }
   ];
 
   const externalLinks = [

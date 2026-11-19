@@ -32,8 +32,12 @@ The build output is written to `dist/`. The prebuild step regenerates `public/si
 
 Production deploys from `main` through Vercel. The canonical domain is `https://sentinelops.world`.
 
-The site uses client-side routing. `vercel.json` rewrites application routes to `index.html` and preserves static assets.
+Canonical public routes are prerendered at build time. Vercel serves static HTML with clean URLs, a native 404 page, and narrowly scoped client-only rewrites.
 
 ## Environment
 
 The Supabase client expects the environment variables referenced in `src/integrations/supabase/client.ts`. Keep local credentials in an untracked `.env` file and configure production values through the deployment platform.
+
+## Search and agent discoverability
+
+The production build prerenders canonical public routes to HTML, publishes a research JSON index and Atom feed, and validates metadata, headings, and sitemap entries. Client-side React hydration preserves the existing interface. See `docs/DISCOVERABILITY.md` for architecture, verification steps, and known limitations.

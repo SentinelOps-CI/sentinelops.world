@@ -27,19 +27,8 @@ const PaperViewer = () => {
   }, [file]);
 
   useEffect(() => {
-    document.title = `${title} · View PDF`;
-    // Canonical tag
-    const link = document.createElement("link");
-    link.rel = "canonical";
-    link.href = window.location.href;
-    document.head.appendChild(link);
-    return () => {
-      document.head.removeChild(link);
-    };
-  }, [title]);
-
-  useEffect(() => {
     let revoked = false;
+    let createdUrl: string | null = null;
     const load = async () => {
       if (!safeFileUrl) {
         setIsLoading(false);
@@ -63,7 +52,12 @@ const PaperViewer = () => {
           });
         }
         const url = URL.createObjectURL(blob);
-        if (!revoked) setBlobUrl(url);
+        if (!revoked) {
+          createdUrl = url;
+          setBlobUrl(url);
+        } else {
+          URL.revokeObjectURL(url);
+        }
       } catch (err) {
         console.error("PDF view error:", err);
         toast({
@@ -78,13 +72,14 @@ const PaperViewer = () => {
     load();
     return () => {
       revoked = true;
-      if (blobUrl) URL.revokeObjectURL(blobUrl);
+      if (createdUrl) URL.revokeObjectURL(createdUrl);
     };
   }, [safeFileUrl, toast]);
 
   return (
     <Layout>
       <Seo
+        noIndex
         title={`${title} · Paper Viewer | SentinelOps`}
         description={`Read ${title} from SentinelOps, featuring research on formal verification and runtime safety for provably safe AI systems.`}
         path="/papers/view"
