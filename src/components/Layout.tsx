@@ -35,8 +35,8 @@ const Layout = ({ children }: LayoutProps) => {
 
       <div className="institutional-strip">
         <div className="container-paper institutional-strip__inner">
-          <span>SentinelOps / Open verification infrastructure</span>
-          <span className="institutional-strip__right">Research programme — public record</span>
+          <span>SentinelOps / Formal methods and agent execution</span>
+          <span className="institutional-strip__right">Open research / Versioned sources</span>
         </div>
       </div>
 
@@ -130,8 +130,8 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="site-footer__identity">
               <Link to="/" className="site-footer__name">SentinelOps</Link>
               <p>
-                SentinelOps is a research programme on provable safety for AI agents, spanning
-                specifications, machine-checked proofs, and runtime enforcement.
+                Open research on formal specifications, runtime mediation, and inspectable
+                evidence for autonomous software.
               </p>
               <a href={GITHUB_ORG} target="_blank" rel="noopener noreferrer" className="site-footer__source">
                 Inspect the source <span aria-hidden="true">↗</span>

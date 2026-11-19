@@ -24,7 +24,7 @@ const ResearchNote = ({
         to="/blog"
         className="eyebrow inline-block transition-colors hover:text-foreground"
       >
-        Writing index
+        Research notes
       </Link>
 
       <div className="mt-8 grid gap-6 md:grid-cols-[150px_1fr] md:gap-10">
@@ -53,7 +53,7 @@ const ResearchNote = ({
         to="/blog"
         className="eyebrow transition-colors hover:text-foreground"
       >
-        Writing index
+        Research notes
       </Link>
     </footer>
   </article>
