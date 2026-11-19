@@ -1,8 +1,9 @@
 /**
  * Preservation gate for the original SentinelOps website content.
  * Baseline Git blob hashes come from the production main tree as audited
- * on 19 November 2026. The six research articles, three PDF sources, the
- * brand mark, and the two legal pages remain byte-identical to main.
+ * on 19 November 2026. The six research articles preserve all original text and data: only keyboard
+ * accessibility attributes on table wrappers differ from main. Three PDF
+ * sources, the brand mark, and the two legal pages remain byte-identical.
  *
  * Supporting-page checks test semantic inventory rather than exact wording,
  * allowing design improvements without silently discarding earlier content.
@@ -11,13 +12,16 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 
-const baselineBlobs = {
+const originalArticleBlobs = {
   "src/pages/blog/VerifiableAIEcosystem.tsx": "359192983815a30be2ca0b6d0b2db1eb9770e7cf",
   "src/pages/blog/EcosystemTimeline.tsx": "485e192e09cb3962b64f17fe8a6aeb85fe8e9c64",
   "src/pages/blog/MappingSpace.tsx": "83b0e2c4729098d0efeaa1400fd81e15f4da2d63",
   "src/pages/blog/BuildingInfrastructure.tsx": "6d0bdfc5f6710f15643b81ee796ae6eade4b1179",
   "src/pages/blog/CurrentInitiatives.tsx": "58bc400411d69f77188df3ad3209044fc0b25c53",
   "src/pages/blog/HowToGetInvolved.tsx": "88149fb3dd5785e73c5bf92ce8208f9c4ac3bd22",
+};
+
+const baselineBlobs = {
   "src/pages/Privacy.tsx": "af4498ac0502a2c0b7ecdff4c4c95e0b6311cd48",
   "src/pages/Terms.tsx": "fd0f39ae017c492732f42c72b00978fd6576351e",
   "public/papers/architecture.pdf": "f5705bd34f4386446b5758a74522f63ad2d48abd",
@@ -25,13 +29,31 @@ const baselineBlobs = {
   "public/papers/whitepaper.pdf": "45fa20e20b8aa10a5776aa144bd7428cdaafb9f2",
   "public/brand/sentinelops-mark.png": "798b2fc6580c9d7b178d58c0e2320717c4f7725b",
 };
-for (const [path, sha] of Object.entries(baselineBlobs)) {
-  const data = readFileSync(path);
-  const digest = createHash("sha1")
+
+function blobDigest(data) {
+  return createHash("sha1")
     .update("blob " + data.length + "\0")
     .update(data)
     .digest("hex");
-  assert.equal(digest, sha, path + " changed from the production content baseline");
+}
+
+for (const [path, sha] of Object.entries(baselineBlobs)) {
+  assert.equal(blobDigest(readFileSync(path)), sha, path + " differs from the main baseline");
+}
+
+// The only permitted modifications to the six article files are keyboard
+// accessibility attributes on their existing horizontal table containers.
+// Strip those exact attributes and verify the complete original blob identity.
+const originalTable = '<div className="overflow-x-auto border-y border-border">';
+const accessibleTable = '<div className="overflow-x-auto border-y border-border" role="region" aria-label="Scrollable research table" tabIndex={0}>';
+
+for (const [path, sha] of Object.entries(originalArticleBlobs)) {
+  const current = readFileSync(path, "utf8");
+  assert.equal(current.split(accessibleTable).length - 1, 1,
+    path + " must retain one accessible horizontal research table");
+  const original = current.replace(accessibleTable, originalTable);
+  assert.equal(blobDigest(Buffer.from(original, "utf8")), sha,
+    path + " differs from the original article beyond the permitted markup");
 }
 
 const read = (path) => readFileSync(path, "utf8");
@@ -75,5 +97,5 @@ for (const item of ["01", "02", "03", "04"]) {
   assert.ok(files.projects.includes('number: "' + item + '"'));
 }
 console.log(
-  "Preservation gate passed: 12 unchanged source/assets and original supporting-page inventory",
+  "Preservation gate passed: 6 articles text-identical modulo table accessibility attributes; 6 exact original assets and legal files",
 );

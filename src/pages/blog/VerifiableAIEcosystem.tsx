@@ -80,7 +80,7 @@ const VerifiableAIEcosystem = () => (
         <div className="eyebrow">04 · Interoperability</div>
         <div className="space-y-7">
           <h2 className="text-2xl font-medium tracking-tight">Standards matter at the boundaries between systems</h2>
-          <div className="overflow-x-auto border-y border-border">
+          <div className="overflow-x-auto border-y border-border" role="region" aria-label="Scrollable research table" tabIndex={0}>
             <table className="w-full min-w-[680px] border-collapse text-left text-sm">
               <thead className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                 <tr className="border-b border-border">

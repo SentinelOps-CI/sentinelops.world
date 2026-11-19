@@ -87,6 +87,14 @@ try {
                 .filter((element) => element.right > window.innerWidth + 2 || element.left < -2)
                 .sort((a, b) => b.right - a.right)
                 .slice(0, 8),
+              scrollableTables: [...document.querySelectorAll(".article-paper .overflow-x-auto")]
+                .map((region) => ({
+                  clientWidth: region.clientWidth,
+                  scrollWidth: region.scrollWidth,
+                  tabIndex: region.tabIndex,
+                  role: region.getAttribute("role"),
+                  label: region.getAttribute("aria-label"),
+                })),
               brokenImages: [...document.images]
                 .filter((img) => !img.complete || img.naturalWidth === 0)
                 .map((img) => img.getAttribute("src")),
@@ -100,6 +108,15 @@ try {
             assert.ok(inspection.documentWidth <= width + 1, "Document horizontal overflow: " + JSON.stringify({ doc: inspection.documentWidth, body: inspection.bodyWidth, offenders: inspection.overflowingElements }));
             assert.ok(inspection.bodyWidth <= width + 1, "Body horizontal overflow");
             assert.deepEqual(inspection.brokenImages, [], "Broken image");
+            if (width === 320 && path.startsWith("/blog/")) {
+              assert.equal(inspection.scrollableTables.length, 1, "Research table container missing");
+              for (const table of inspection.scrollableTables) {
+                assert.ok(table.scrollWidth > table.clientWidth, "Research table must scroll within page");
+                assert.equal(table.tabIndex, 0, "Research table needs keyboard focus");
+                assert.equal(table.role, "region");
+                assert.ok(table.label?.trim(), "Scrollable region needs an accessible name");
+              }
+            }
             assert.deepEqual(runtimeErrors, [], "React hydration/runtime error");
 
             for (const link of inspection.links) {

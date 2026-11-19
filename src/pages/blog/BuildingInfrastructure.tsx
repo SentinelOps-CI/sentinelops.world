@@ -79,7 +79,7 @@ const BuildingInfrastructure = () => (
           <p className="leading-7 text-foreground/80">
             Cross-implementation verification depends on a small set of stable objects. Policy identity ties an execution to a governed specification. Monitor identity ties a verdict to executable semantics. Certificate identity ties an emitted result to the relevant policy and runtime decision. Replay identity ties an incident record to the trace used for external examination.
           </p>
-          <div className="overflow-x-auto border-y border-border">
+          <div className="overflow-x-auto border-y border-border" role="region" aria-label="Scrollable research table" tabIndex={0}>
             <table className="w-full min-w-[640px] border-collapse text-left text-sm">
               <thead className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                 <tr className="border-b border-border">

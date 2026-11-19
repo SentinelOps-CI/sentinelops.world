@@ -125,7 +125,7 @@ const EcosystemTimeline = () => (
         <div className="eyebrow">05 · Programme metrics</div>
         <div className="space-y-7">
           <h2 className="text-2xl font-medium tracking-tight">Measure evidence quality directly</h2>
-          <div className="overflow-x-auto border-y border-border">
+          <div className="overflow-x-auto border-y border-border" role="region" aria-label="Scrollable research table" tabIndex={0}>
             <table className="w-full min-w-[660px] border-collapse text-left text-sm">
               <thead className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                 <tr className="border-b border-border">

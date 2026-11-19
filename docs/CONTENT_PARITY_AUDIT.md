@@ -8,7 +8,7 @@ Purpose: design changes must retain the substance, functions, and recognizable i
 
 | Original site element | Retained location or treatment |
 | --- | --- |
-| SentinelOps brand mark and Provability Fabric subline | Header and footer, original brand asset unchanged |
+| SentinelOps brand mark and Provability Fabric project identity | Original brand asset unchanged; the masthead identifies SentinelOps, while Provability Fabric appears as a project |
 | Products, Mission, Docs, Writing, GitHub navigation | Original names and destinations restored in desktop/mobile navigation |
 | Homepage: Provable safety for autonomous agents | Original lead headline restored with research-objective explanation |
 | Homepage: Provability Fabric, proof-carrying behaviour | Dedicated reference-model panel explicitly identified as illustrative |
@@ -25,7 +25,7 @@ Purpose: design changes must retain the substance, functions, and recognizable i
 | Products: descriptions, topic tags, Core/Active/Beta/Research labels | Source descriptions and original labels retained in explicitly historical disclosures, alongside technical scope |
 | Docs: Getting started three steps | Original choose, install, and examples journey restored |
 | Docs: repository index and five FAQs | All original topic questions restored with source-aware answers |
-| Writing: six articles and three PDFs | Original index restored; all articles and PDF source bytes unchanged |
+| Writing: six articles and three PDFs | Original texts and tables preserved; keyboard navigation added to article table wrappers, PDF bytes unchanged |
 | Writing and homepage newsletter forms | Original subscription handling retained; service delivery is a separate operational gate |
 | Status: website, source, documentation, newsletter | All four original public entries, historical status labels contextualized |
 | Status: operational history and contact reporting | Dated incident description and issue-reporting links retained; no invented uptime claims |
@@ -40,9 +40,9 @@ This matrix checks coverage of original material, not scientific validation of t
 
 ## Exact original-file invariants
 
-The six research articles, three original PDF files, both legal pages, and the brand mark are checked byte-for-byte against their Git blob identities from main. The build invokes the preservation gate alongside the discoverability and editorial tests.
+All three PDFs, both legal pages, and the original brand mark are checked byte-for-byte against their main-branch Git blob identities. The six article sources are compared against the original blobs after stripping only the exact keyboard-accessibility attributes added to their table containers. All article text, data, and research arguments are preserved. The build invokes this preservation gate alongside the discoverability and editorial tests.
 
-Do not revise articles indirectly via site-wide copy scripts or branding substitutions. An article change is a substantive scientific edit subject to its own author-reviewed source audit.
+Do not rewrite research articles through site-wide copy or branding scripts. Changes to scientific arguments or evidence require a separate author-reviewed source audit. Accessibility markup changes are permitted only with a narrow, auditable preservation invariant.
 
 ## Non-template visual identity criteria
 

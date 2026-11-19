@@ -60,7 +60,7 @@ const CurrentInitiatives = () => (
           <p className="leading-7 text-foreground/80">
             The certificate schema records policy identity and monitor identity. It also records permission state and verdict data. Relevant proof artifacts are referenced separately. Signatures protect artifact identity. Supply-chain provenance documents the software build associated with the runtime record.
           </p>
-          <div className="overflow-x-auto border-y border-border">
+          <div className="overflow-x-auto border-y border-border" role="region" aria-label="Scrollable research table" tabIndex={0}>
             <table className="w-full min-w-[660px] border-collapse text-left text-sm">
               <thead className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                 <tr className="border-b border-border">

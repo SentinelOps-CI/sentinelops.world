@@ -139,7 +139,7 @@ const HowToGetInvolved = () => (
           <h2 className="text-2xl font-medium tracking-tight">
             Review the claim and the artifact together
           </h2>
-          <div className="overflow-x-auto border-y border-border">
+          <div className="overflow-x-auto border-y border-border" role="region" aria-label="Scrollable research table" tabIndex={0}>
             <table className="w-full min-w-[640px] border-collapse text-left text-sm">
               <thead className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                 <tr className="border-b border-border">
