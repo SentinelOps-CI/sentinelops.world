@@ -248,7 +248,7 @@ pre, code, kbd { overflow-wrap: anywhere; }
   padding-block: clamp(2.1rem, 4vw, 3.25rem);
 }
 .site-footer__identity { max-width: 27rem; }
-.site-footer__name { font-size: 1.55rem; letter-spacing: -.04em; text-decoration: none; }
+.site-footer__name { font-size: 1.55rem; letter-spacing: -.04em; text-transform: none; text-decoration: none; }
 .site-footer__identity p { font-size: .92rem; color: hsl(var(--muted-foreground)); margin-block: 1.15rem; line-height: 1.8; }
 .site-footer__source {
   font-size: .78rem;
@@ -268,8 +268,8 @@ pre, code, kbd { overflow-wrap: anywhere; }
   border-top: 1px solid hsl(var(--rule));
   padding-block: 1.1rem 1.4rem;
   font-size: .65rem;
-  text-transform: uppercase;
-  letter-spacing: .1em;
+  text-transform: none;
+  letter-spacing: 0;
   color: hsl(var(--muted-foreground));
 }
 
@@ -394,8 +394,8 @@ pre, code, kbd { overflow-wrap: anywhere; }
  */
 .site-brand__name {
   font-size: 1.01rem;
-  letter-spacing: .085em;
-  text-transform: uppercase;
+  letter-spacing: -.035em;
+  text-transform: none;
 }
 .site-footer__brand {
   display: flex;
