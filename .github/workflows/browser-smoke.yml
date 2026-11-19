@@ -40,7 +40,6 @@ jobs:
       - name: Install pinned browser smoke tooling
         run: |
           npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund @playwright/test@1.58.0
-          npx playwright install --with-deps chromium
       - name: Run Chromium checks against production dist
         shell: bash
         run: |

@@ -11,7 +11,7 @@ const origin = process.env.SMOKE_ORIGIN ?? "http://127.0.0.1:4173";
 const artifacts = "artifacts/browser-smoke";
 await mkdir(artifacts, { recursive: true });
 
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch({ headless: true, channel: "chrome" });
 const failures = [];
 let checks = 0;
 
