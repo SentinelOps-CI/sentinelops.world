@@ -112,6 +112,32 @@ try {
     assert.equal(await page.locator('script[type="application/ld+json"]').count() >= 2, true);
   });
 
+  // Exercise every revised institutional page through the actual hydration path.
+  const institutionalPages = [
+    ["/mission", "From formal claims to controlled execution."],
+    ["/products", "Systems and research code."],
+    ["/docs", "Documentation begins with the source."],
+    ["/status", "Public services and incidents."],
+    ["/press", "Press and research background."],
+    ["/careers", "Contribute to the research."],
+  ];
+  for (const [path, expectedTitle] of institutionalPages) {
+    await check("Institutional route " + path, async () => {
+      const response = await page.goto(origin + path, { waitUntil: "load" });
+      assert.equal(response?.status(), 200, path + " must return HTTP 200");
+      const heading = await page.locator("main h1").innerText();
+      assert.equal(heading.trim(), expectedTitle);
+      await assertTypography(page);
+      await assertViewport(page);
+      if (["/mission", "/products", "/status"].includes(path)) {
+        await page.screenshot({
+          path: artifacts + "/" + path.slice(1) + "-desktop.png",
+          fullPage: true,
+        });
+      }
+    });
+  }
+
   await check("Unknown URL returns native 404", async () => {
     const response = await page.goto(origin + "/__sentinelops_unknown_test__", { waitUntil: "load" });
     assert.equal(response?.status(), 404);
@@ -142,6 +168,18 @@ try {
         await mobilePage.screenshot({ path: artifacts + "/home-mobile.png", fullPage: true });
       }
     });
+
+    if (width === 375) {
+      await check("Mobile institutional page layouts", async () => {
+        for (const path of ["/mission", "/products", "/status"]) {
+          const response = await mobilePage.goto(origin + path, { waitUntil: "load" });
+          assert.equal(response?.status(), 200);
+          await mobilePage.locator("main h1").waitFor();
+          await assertViewport(mobilePage);
+        }
+      });
+      await mobilePage.goto(origin + "/");
+    }
 
     if (width === 375) {
       await check("Mobile drawer navigation works", async () => {

@@ -13,7 +13,15 @@ const targets = [
   { path: "/", width: 1440 },
   { path: "/blog/current-initiatives", width: 1440 },
   { path: "/contact", width: 1440 },
+  { path: "/mission", width: 1440 },
+  { path: "/products", width: 1440 },
+  { path: "/docs", width: 1440 },
+  { path: "/status", width: 1440 },
+  { path: "/press", width: 1440 },
+  { path: "/careers", width: 1440 },
   { path: "/", width: 320 },
+  { path: "/products", width: 320 },
+  { path: "/status", width: 320 },
 ];
 const tags = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
 
