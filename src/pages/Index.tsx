@@ -67,43 +67,38 @@ const Index = () => {
         <div className="container-paper home-hero__layout">
           <div className="home-hero__primary">
             <div>
-              <div className="home-hero__kicker">Provability Fabric / Open-source research</div>
               <h1 id="home-title">Provable safety for autonomous agents.</h1>
               <p className="home-hero__summary">
-                Provability Fabric investigates how specifications, machine-checked proofs,
-                and runtime controls relate to the actions of autonomous software. The
-                research objective is evidence for precisely scoped safety claims.
+                SentinelOps develops open-source research projects in formal verification,
+                runtime safety, and evidence for autonomous systems. Explore the work,
+                its implementations, and the limits of the claims they support.
               </p>
               <div className="home-hero__actions">
-                <Link to="/blog" className="home-hero__action home-hero__action--primary">
+                <Link to="/products" className="home-hero__action home-hero__action--primary">
+                  Explore projects <span aria-hidden="true">↗</span>
+                </Link>
+                <Link to="/blog" className="home-hero__action home-hero__action--secondary">
                   Read the writing <span aria-hidden="true">↗</span>
                 </Link>
-                <a
-                  href={GITHUB_ORG}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="home-hero__action home-hero__action--secondary"
-                >
-                  Browse the code <span aria-hidden="true">↗</span>
-                </a>
               </div>
             </div>
-            <div className="home-hero__metadata" aria-label="Project reference">
-              <div><span>Stack</span><p>Lean 4 · Rust · WASM across projects</p></div>
-              <div><span>Licence</span><p>Project-specific; see repository</p></div>
-              <div><span>Mode</span><p>Open source</p></div>
-            </div>
-            <div className="home-hero__folio">
-              <span>01 — 04</span> Specification / mediation / evidence / replay
-            </div>
+            <details className="home-hero__technical">
+              <summary>Technical information</summary>
+              <dl className="home-hero__metadata">
+                <div><dt>Stack</dt><dd>Lean 4 · Rust · WASM across projects</dd></div>
+                <div><dt>Licence</dt><dd>Project-specific; see repository</dd></div>
+                <div><dt>Mode</dt><dd>Open source</dd></div>
+              </dl>
+            </details>
           </div>
 
-          <aside className="home-hero__aside" aria-label="Illustrative proof-carrying behaviour model">
+          <aside className="home-hero__aside" aria-label="Provability Fabric project example">
             <div className="home-hero__aside-head">
-              <span>Proof-carrying behaviour</span><span>Reference model</span>
+              <span>Provability Fabric</span>
             </div>
             <p className="home-hero__aside-disclaimer">
-              Conceptual interface, not a captured execution or verified certificate.
+              One of the SentinelOps projects. This illustrates its research direction,
+              not a recorded verification result.
             </p>
             <ol className="home-hero__aside-list">
               <li>
@@ -122,15 +117,18 @@ const Index = () => {
                 <p className="home-hero__aside-description">Mediate supported effects and record the decision.</p>
               </li>
             </ol>
-            <dl className="home-hero__evidence">
-              <div><dt>Policy identity</dt><dd>Declared input</dd></div>
-              <div><dt>Proof status</dt><dd>Check required</dd></div>
-              <div><dt>Effect gate</dt><dd>Defined boundary</dd></div>
-              <div><dt>Evidence</dt><dd>Record to inspect</dd></div>
-            </dl>
-            <div className="home-hero__aside-tail">
-              <span>Illustration only</span><span>No runtime verdict implied</span>
-            </div>
+            <details className="home-hero__project-detail">
+              <summary>Evidence fields</summary>
+              <dl className="home-hero__evidence">
+                <div><dt>Policy identity</dt><dd>Declared input</dd></div>
+                <div><dt>Proof status</dt><dd>Check required</dd></div>
+                <div><dt>Effect gate</dt><dd>Defined boundary</dd></div>
+                <div><dt>Evidence</dt><dd>Record to inspect</dd></div>
+              </dl>
+            </details>
+            <Link className="home-hero__project-link" to="/products#provability-fabric">
+              View this project <span aria-hidden="true">↗</span>
+            </Link>
           </aside>
         </div>
       </section>
@@ -139,7 +137,6 @@ const Index = () => {
         <div className="container-paper py-14 sm:py-16">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-14">
             <div className="lg:col-span-3">
-              <div className="eyebrow">Abstract</div>
             </div>
             <div className="lg:col-span-9 grid md:grid-cols-2 gap-7 md:gap-10 font-serif text-lg leading-relaxed">
               <p>
@@ -149,9 +146,9 @@ const Index = () => {
                 covered by the original result.
               </p>
               <p>
-                Provability Fabric studies the connection between policy constraints,
-                mediation of consequential effects, and independently inspectable records.
-                The objective is to make each claim and the limits of its support precise.
+                The programme includes work on proof tooling, execution controls,
+                provenance, and reproducible evaluation. Each repository documents a
+                different part of that research.
               </p>
             </div>
           </div>
@@ -192,9 +189,7 @@ const Index = () => {
       <section className="programme-principles" aria-labelledby="principles-heading">
         <div className="container-paper programme-principles__inner">
           <div className="programme-principles__intro">
-            <span className="programme-principles__kicker">02 / Principles</span>
             <h2 id="principles-heading">Proof over promises.</h2>
-            <p>The original principles are retained, with their scope and limits stated explicitly.</p>
           </div>
           <ol className="programme-principles__list">
             {principles.map((p) => (
