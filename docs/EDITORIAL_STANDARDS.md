@@ -32,9 +32,9 @@ The homepage, research-method page, project catalogue, documentation index, medi
 
 The eleven linked repository names and URLs in the project catalogue were checked against the public GitHub organization on 19 November 2026. Project maturity, independent validation, and proof completeness are not inferred from that metadata. A shared TypeScript directory now supports both the Projects and Documentation pages.
 
-Removed or reframed material includes unsourced behavioral-coverage percentages, speculative sector-adoption milestones, universal mathematical-certainty claims, simulated proof outputs, static operational labels presented as live state, unsupported press history, fixed response-time commitments, and employment terms without primary confirmation.
+Claims without supporting evidence were removed from assertive presentation, while original page elements have been retained in contextual form. Uncited coverage percentages and simulated proof results are not reproduced as measured facts. The mission roadmap, historic press notices, career profiles, and former status labels are preserved as earlier website material, with explicit statements distinguishing archives from current verified facts.
 
-The removal of a claim reflects insufficient evidence for publication, not a determination that the historical event is false.
+The absence of supporting material in this review does not establish that an earlier historical claim was false. See the exact content parity and source-integrity matrix in docs/CONTENT_PARITY_AUDIT.md.
 
 ## Outstanding verification
 
