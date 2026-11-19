@@ -18,15 +18,15 @@ const Products = () => (
             <div className="eyebrow mt-4">Project directory</div>
           </div>
           <div className="lg:col-span-9 max-w-5xl">
-            <h1 className="mb-7">Systems and research code.</h1>
+            <h1 className="mb-7">Products.</h1>
             <p className="text-xl sm:text-2xl leading-relaxed max-w-3xl">
               The public repositories address different parts of the verification problem,
               from stating properties to checking and mediating execution.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground mt-5 max-w-3xl">
-              These descriptions identify each project's research focus. Supported behavior,
-              implementation maturity, test coverage, and applicable proof assumptions must
-              be assessed from the corresponding repository and versioned evidence.
+              The original project catalogue, technical topics, and source links are retained.
+              Its status classifications and feature descriptions describe the earlier site,
+              not an independently verified release or guarantee.
             </p>
           </div>
         </div>
@@ -56,8 +56,21 @@ const Products = () => (
                 <div className="md:col-span-4">
                   <h3>{project.name}</h3>
                 </div>
-                <div className="md:col-span-5 text-muted-foreground leading-relaxed max-w-xl">
-                  {project.focus}
+                <div className="md:col-span-5 max-w-xl">
+                  <p className="text-muted-foreground leading-relaxed">{project.focus}</p>
+                  <ul aria-label={project.name + " technical topics"} className="research-topics">
+                    {project.topics.map((topic) => (
+                      <li key={topic}>{topic}</li>
+                    ))}
+                  </ul>
+                  <details className="research-source-note">
+                    <summary>Original project description and classification</summary>
+                    <p className="mt-3 leading-relaxed">{project.previousDescription}</p>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Original catalogue label: {project.previousStatus}. This label is
+                      retained for continuity and is not a current certification.
+                    </p>
+                  </details>
                 </div>
                 <div className="md:col-span-2 md:text-right">
                   <a
