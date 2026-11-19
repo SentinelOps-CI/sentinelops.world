@@ -89,6 +89,16 @@ try {
     assert.match(await page.locator("main h1").innerText(), /Provable safety for autonomous agents/);
     assert.equal(await page.locator("link[rel=canonical]").count(), 1);
     await assertTypography(page);
+    for (const selector of [".site-brand__name", ".site-footer__name", ".site-footer__baseline"]) {
+      const textTransform = await page.locator(selector).evaluate((element) => getComputedStyle(element).textTransform);
+      assert.equal(textTransform, "none", selector + " must retain its written capitalization");
+    }
+    assert.equal((await page.locator(".site-brand__name").textContent())?.trim(), "SentinelOps");
+    assert.equal((await page.locator(".site-footer__name").textContent())?.trim(), "SentinelOps");
+    assert.equal(
+      (await page.locator(".site-footer__baseline").textContent())?.trim(),
+      "© 2026 SentinelOps · All rights reserved",
+    );
     await assertViewport(page);
     await page.screenshot({ path: artifacts + "/home-desktop.png", fullPage: true });
   });
