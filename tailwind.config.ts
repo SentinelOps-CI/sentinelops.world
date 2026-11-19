@@ -21,11 +21,11 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				serif: ["'Newsreader'", "Georgia", "'Times New Roman'", "serif"],
-				sans: ["'IBM Plex Sans'", "ui-sans-serif", "system-ui", "sans-serif"],
-				mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
-			},
-			colors: {
+        serif: ["'IBM Plex Sans'", "system-ui", "sans-serif"],
+        sans: ["'IBM Plex Sans'", "system-ui", "sans-serif"],
+        mono: ["'IBM Plex Sans'", "system-ui", "sans-serif"],
+      },
+      colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

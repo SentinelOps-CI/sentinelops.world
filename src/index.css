@@ -93,9 +93,9 @@
   }
 
   h1, h2 {
-    font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
     color: hsl(var(--foreground));
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -0.035em;
     text-wrap: balance;
   }
@@ -108,13 +108,13 @@
 
   h1 { @apply text-5xl md:text-6xl lg:text-7xl; line-height: 0.98; }
   h2 { @apply text-3xl md:text-4xl; line-height: 1.06; }
-  h3 { @apply text-xl md:text-2xl; font-weight: 500; line-height: 1.22; }
-  h4 { @apply text-lg md:text-xl; font-weight: 500; }
-  h5 { @apply text-base; font-weight: 600; }
-  h6 { @apply text-sm; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  h3 { @apply text-xl md:text-2xl; font-weight: 400; line-height: 1.22; }
+  h4 { @apply text-lg md:text-xl; font-weight: 400; }
+  h5 { @apply text-base; font-weight: 400; }
+  h6 { @apply text-sm; font-weight: 400; text-transform: uppercase; letter-spacing: 0.08em; }
 
   a { text-underline-offset: 0.2em; }
-  strong, b { font-weight: 600; }
+  strong, b { font-weight: 400; }
   button, input, textarea, select { font: inherit; }
 
   ::selection {
@@ -149,7 +149,7 @@
   .eyebrow,
   .figure-caption,
   .nav-link {
-    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.105em;
   }
@@ -157,14 +157,14 @@
   .eyebrow {
     font-size: 0.68rem;
     line-height: 1.45;
-    font-weight: 500;
+    font-weight: 400;
     color: hsl(var(--muted-foreground));
   }
 
   .figure-caption {
     font-size: 0.67rem;
     line-height: 1.4;
-    font-weight: 500;
+    font-weight: 400;
     color: hsl(var(--muted-foreground));
   }
 
@@ -172,17 +172,17 @@
     @apply text-foreground/60 hover:text-foreground transition-colors duration-150;
     font-size: 0.69rem;
     line-height: 1;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .display-serif {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 500;
-    font-style: italic;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }
 
   .mono {
-    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
     font-size: 0.84em;
   }
 
@@ -204,9 +204,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
     font-size: 0.68rem;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.11em;
     text-transform: uppercase;
     color: hsl(var(--primary));
@@ -251,13 +251,13 @@
   }
 
   .spec-line-index {
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
     color: hsl(var(--hero-foreground) / 0.48);
     font-size: 0.7rem;
   }
 
   .spec-line-label {
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.09em;
     font-size: 0.7rem;
@@ -265,7 +265,7 @@
   }
 
   .spec-line-state {
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.62rem;
@@ -295,7 +295,7 @@
   }
 
   .section-heading .section-index {
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
     font-size: 0.68rem;
     line-height: 1.5;
     letter-spacing: 0.1em;
@@ -319,7 +319,7 @@
   }
 
   .article-paper {
-    font-family: 'Newsreader', Georgia, serif;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
     font-size: 1.08rem;
     line-height: 1.75;
   }
@@ -327,12 +327,12 @@
   .article-paper > header,
   .article-paper > section,
   .article-paper > footer {
-    font-family: 'Newsreader', Georgia, serif;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
   }
 
   .article-paper h1,
   .article-paper h2 {
-    font-family: 'Newsreader', Georgia, serif;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
   }
 
   .article-paper h3,
@@ -343,7 +343,7 @@
   }
 
   .article-paper .eyebrow {
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
   }
 
   .article-paper p { margin-bottom: 1.2em; }
@@ -352,7 +352,7 @@
     border-left: 3px solid hsl(var(--primary));
     padding: 0.1rem 0 0.1rem 1.4rem;
     margin: 1.75rem 0;
-    font-style: italic;
+    font-style: normal;
   }
   .article-paper a {
     color: hsl(var(--primary));
@@ -363,8 +363,8 @@
   .article-paper a:hover { text-decoration-color: hsl(var(--primary)); }
 
   .dropcap::first-letter {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 600;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
     float: left;
     font-size: 4.25em;
     line-height: 0.8;
