@@ -147,7 +147,7 @@ try {
     await page.getByRole("complementary", { name: "Illustrative proof-carrying behaviour model" }).waitFor();
     assert.match(await page.locator("main").innerText(), /Lean 4.*Rust.*WASM/s);
     assert.match(await page.locator("main").innerText(), /licence/i);
-    assert.match(await page.locator("main").innerText(), /Proof-carrying behaviour/);
+    assert.match(await page.locator("main").innerText(), /proof-carrying behaviour/i);
     await page.goto(origin + "/products", { waitUntil: "load" });
     assert.equal(await page.locator("main details.research-source-note").count(), 11);
     await page.locator("main details.research-source-note").first().locator("summary").click();
