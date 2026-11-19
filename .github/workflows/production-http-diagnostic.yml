@@ -1,0 +1,18 @@
+name: Temporary production HTTP verification
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/production-http-diagnostic.yml'
+permissions:
+  contents: read
+jobs:
+  production-http:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify canonical production HTTP routes
+        run: node scripts/check-live.mjs https://sentinelops.world
