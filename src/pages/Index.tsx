@@ -96,39 +96,72 @@ const Index = () => {
             <div className="home-hero__aside-head">
               <span>Provability Fabric</span>
             </div>
-            <p className="home-hero__aside-disclaimer">
-              One of the SentinelOps projects. This illustrates its research direction,
-              not a recorded verification result.
-            </p>
-            <ol className="home-hero__aside-list">
-              <li>
-                <span className="home-hero__aside-index">01 / Policy</span>
-                <h2 className="home-hero__aside-title">Specify</h2>
-                <p className="home-hero__aside-description">Bind an action to declared capability and effect constraints.</p>
-              </li>
-              <li>
-                <span className="home-hero__aside-index">02 / Proof</span>
-                <h2 className="home-hero__aside-title">Prove</h2>
-                <p className="home-hero__aside-description">Check the formal claim under stated premises and trusted components.</p>
-              </li>
-              <li>
-                <span className="home-hero__aside-index">03 / Runtime</span>
-                <h2 className="home-hero__aside-title">Enforce</h2>
-                <p className="home-hero__aside-description">Mediate supported effects and record the decision.</p>
-              </li>
-            </ol>
-            <details className="home-hero__project-detail">
-              <summary>Proof-carrying behaviour</summary>
-              <dl className="home-hero__evidence">
-                <div><dt>Policy identity</dt><dd>Declared input</dd></div>
-                <div><dt>Proof status</dt><dd>Check required</dd></div>
-                <div><dt>Effect gate</dt><dd>Defined boundary</dd></div>
-                <div><dt>Evidence</dt><dd>Record to inspect</dd></div>
-              </dl>
-            </details>
-            <Link className="home-hero__project-link" to="/products#provability-fabric">
-              View this project <span aria-hidden="true">↗</span>
-            </Link>
+
+            <div className="home-hero__diagram" role="group" aria-label="Illustrative action-control sequence">
+              <div className="home-hero__diagram-terminal">
+                <span className="home-hero__diagram-terminal-mark" aria-hidden="true" />
+                <span className="home-hero__diagram-terminal-label">Proposed action</span>
+              </div>
+
+              <ol className="home-hero__aside-list">
+                <li>
+                  <span className="home-hero__aside-index" aria-hidden="true">01</span>
+                  <div className="home-hero__stage-copy">
+                    <span className="home-hero__stage-kind">Policy</span>
+                    <h2 className="home-hero__aside-title">Specify</h2>
+                    <p className="home-hero__aside-description">
+                      Bind the action to declared permissions and effect constraints.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span className="home-hero__aside-index" aria-hidden="true">02</span>
+                  <div className="home-hero__stage-copy">
+                    <span className="home-hero__stage-kind">Formal obligation</span>
+                    <h2 className="home-hero__aside-title">Prove</h2>
+                    <p className="home-hero__aside-description">
+                      Check the claim under explicit premises and trusted components.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span className="home-hero__aside-index" aria-hidden="true">03</span>
+                  <div className="home-hero__stage-copy">
+                    <span className="home-hero__stage-kind">Runtime boundary</span>
+                    <h2 className="home-hero__aside-title">Enforce</h2>
+                    <p className="home-hero__aside-description">
+                      Mediate covered effects and record the decision.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+
+              <div className="home-hero__diagram-terminal home-hero__diagram-terminal--output">
+                <span className="home-hero__diagram-terminal-mark" aria-hidden="true" />
+                <div>
+                  <span className="home-hero__diagram-terminal-label">Decision record</span>
+                  <span className="home-hero__diagram-terminal-detail">Policy · check · effect</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="home-hero__aside-foot">
+              <p className="home-hero__aside-disclaimer">
+                One of the SentinelOps projects. This is a conceptual control path, not a recorded verification result.
+              </p>
+              <details className="home-hero__project-detail">
+                <summary>Proof-carrying behaviour</summary>
+                <dl className="home-hero__evidence">
+                  <div><dt>Policy identity</dt><dd>Declared input</dd></div>
+                  <div><dt>Proof status</dt><dd>Check required</dd></div>
+                  <div><dt>Effect gate</dt><dd>Defined boundary</dd></div>
+                  <div><dt>Evidence</dt><dd>Record to inspect</dd></div>
+                </dl>
+              </details>
+              <Link className="home-hero__project-link" to="/products#provability-fabric">
+                View this project <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
           </aside>
         </div>
       </section>
