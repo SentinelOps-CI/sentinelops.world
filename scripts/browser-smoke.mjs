@@ -145,7 +145,7 @@ try {
       assert.equal(await menu.getByRole("link", { name: label }).count(), 1);
     }
     await page.getByRole("complementary", { name: "Provability Fabric project example" }).waitFor();
-    assert.equal(await page.locator(".site-brand__name").innerText(), "SentinelOps");
+    assert.equal((await page.locator(".site-brand__name").textContent())?.trim(), "SentinelOps");
     assert.equal(await page.locator(".institutional-strip").count(), 0);
     assert.equal(await page.locator(".site-brand__subline").count(), 0);
     assert.match(await page.locator("aside.home-hero__aside").innerText(), /One of the SentinelOps projects/);
